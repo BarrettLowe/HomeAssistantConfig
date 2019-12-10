@@ -1,0 +1,116 @@
+barrett:
+  name: Barrett
+  entities:
+    - device_tracker.barrett_pixel
+    - device_tracker.barrett_pixel_nmap
+brandie:
+  name: Brandie
+  entities:
+    - device_tracker.brandie_pixel
+    - device_tracker.brandie_pixel_nmap
+all_people:
+  name: "Who's Here"
+  entities:
+    - group.barrett
+    - group.brandie
+
+interior:
+  name: Interior
+  entities:
+    - group.bedroom
+    - group.dining_room
+    - group.family_room
+    - group.kitchen
+    - group.living_room
+    - group.office
+    - light.entry
+  
+## ROOMS
+family_room:
+  name: Family Room
+  view: yes
+  icon: mdi:television-classic
+  entities:
+    - switch.fireplace_lamp
+    - switch.game_table
+    - light.bar
+    - light.tv_lamp
+    - light.recessed_lights
+    - light.smells_shelf
+    - light.mantle_lamp
+    - switch.mantle
+
+bedroom:
+  name: Bedroom
+  view: yes
+  icon: mdi:bed-empty
+  entities:
+    - light.barretts_side
+    - light.brandies_side
+    - light.dresser
+    - switch.jewelry_lamp
+
+kitchen:
+  name: Kitchen
+  view: yes
+  icon: mdi:pot-mix
+  entities:
+    - light.sink
+    - light.kitchen_lamp
+    - light.kitchen_desk
+    - switch.kitchen_crappy
+    - light.under_cabinet_lights
+
+dining_room:
+  name: Dining Room
+  view: yes
+  icon: mdi:silverware
+  entities:
+    - light.dog_lamp
+    - light.wemo_dimmer
+
+living_room:
+  name: Living Room
+  icon: mdi:account-multiple
+  view: yes
+  entities:
+    - light.couch_lamp
+    - switch.christmas_tree
+    - light.piano_lamp
+
+office:
+  name: Office
+  icon: mdi:desktop-mac
+  view: yes
+  entities:
+    - light.engineering_lamp
+    - light.brandies_desk
+    - light.high_bookshelf
+
+movie_room:
+  name: Movie Room
+  view: yes
+  entities:
+    - switch.futon
+
+back_yard:
+  name: Backyard
+  icon: mdi:tree
+  view: yes
+  entities:
+    - switch.globe_lights
+    - switch.tree
+    - light.east_beds
+    - light.southeast_corner_bed
+    - light.garden_behind_pool
+    - light.fig_and_sun_deck
+    
+front_yard:
+  name: Front Yard
+  view: yes
+  entities:
+    - light.garage_landscape
+    - light.porch_landscape
+    - light.bedroom_landscape
+    - light.east_oak
+## END ROOMS

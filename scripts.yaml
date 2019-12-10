@@ -1,0 +1,252 @@
+garage_opened_start_timer:
+  alias: Garage Countdown Script
+  sequence:
+    - service: timer.start
+      data_template:
+        entity_id: >
+          timer.{{ theGarage }}
+
+
+sawyer_send_them_off:
+  alias: SendThemOff
+  sequence:
+    - service: media_player.turn_on
+      data:
+        entity_id: media_player.hugh_jass
+    - delay: '00:00:5'
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.hugh_jass
+        volume_level: .5
+    - delay: '00:00:5'
+    - service: tts.google_say
+      entity_id: media_player.hugh_jass
+      data:
+        message: 'Alexa, play send them off by bastille'
+
+        # https://open.spotify.com/user/12605317/playlist/16Z4y5Px4y2BOqzQymG93S?si=j4K7yHklSLGPMn-yxjgOPw
+
+all_lights_off:
+  alias: All Lights Off (Night time when sleeping)
+  sequence:
+    - service: homeassistant.turn_off
+      data:
+        entity_id: 
+          - automation.under_cabinet_lights_daytime
+          - automation.under_cabinet_lights_nighttime
+    - service: homeassistant.turn_off
+      data:
+        entity_id: 
+          - group.interior
+          - group.back_yard
+          - light.bedroom_landscape
+    - service: homeassistant.turn_on
+      data:
+        entity_id: 
+          - automation.under_cabinet_lights_daytime
+          - automation.under_cabinet_lights_nighttime
+
+all_lights_away:
+  alias: Lights In Away State
+  sequence:
+    - service: homeassistant.turn_off
+      data:
+        entity_id: 
+          - group.interior
+          - group.back_yard
+
+morning_routine:
+  alias: Morning Routine
+  sequence:
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - light.sink
+          - light.kitchen_lamp
+          - light.smells_shelf
+          - light.bar
+          - light.under_cabinet_lights
+          - light.mantle_lamp
+          - light.kitchen_desk
+        transition: 120
+    - delay: '00:02:00'
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - switch.mantle
+fireplace:
+  alias: Fireplace
+  sequence:
+    - service: homeassistant.turn_off
+      data:
+        entity_id:
+          - group.kitchen
+          - group.back_yard
+    - service: homeassistant.turn_on
+      data:
+        entity_id: switch.fireplace_lamp
+
+find_barretts_phone:
+  alias: Ring Barretts Phone
+  sequence:
+    - service: shell_command.ring_barrett
+
+find_brandies_phone:
+  alias: Ring Brandies Phone
+  sequence:
+    - service: shell_command.ring_brandie
+    
+start_neato:
+  alias: Start Neato from Barretts Phone
+  sequence:
+    - service: shell_command.start_neato
+    
+brandie_sleeps:
+  alias: Brandie Sleeps
+  sequence:
+    - service: homeassistant.turn_off
+      data:
+        entity_id:
+        - light.brandies_side
+        - switch.jewelry_lamp
+        - light.dresser
+    - service: light.turn_on
+      data:
+        entity_id: light.barretts_side
+        brightness: 100
+        
+
+alarm_driveway:
+    alias: Alarm driveway
+    sequence:
+      - alias: Alarm Driveway Start
+        service: homeassistant.turn_on
+        data:
+          entity_id: light.driveway
+      - alias: Run Flasher
+        service: homeassistant.turn_on
+        data:
+          entity_id: script.flash_driveway_popo
+
+      - delay:
+          # time interval for alarm sound and light flashing
+          seconds: 60
+      - alias: Alarm Driveway Stop
+        service: homeassistant.turn_off
+        data:
+          entity_id: 
+           - script.flash_driveway_popo
+           - script.flash_driveway_loop
+      - alias: Stop Flashing
+        service: homeassistant.turn_on
+        data:
+          entity_id: light.driveway
+          brightness: 255
+          rgb_color:
+           - 200
+           - 200
+           - 150
+          transition: 0.1
+            
+       
+
+
+
+flash_driveway_popo:
+    alias: Flash Driveway Po-Po
+    sequence:
+      - alias: Light Driveway Red
+        service: light.turn_on
+        data:
+          entity_id: light.driveway
+          rgb_color:
+            - 255
+            - 0
+            - 0
+          transition: 0.1
+      - alias: Light Driveway White
+        service: light.turn_on
+        data:
+          entity_id: light.driveway
+          rgb_color:
+            - 255
+            - 255
+            - 255
+          transition: 0.1
+      - alias: Light Driveway Blue
+        service: light.turn_on
+        data:
+          entity_id: light.driveway
+          rgb_color:
+            - 0
+            - 0
+            - 255
+          transition: 0.1
+      - alias: Light Driveway White2
+        service: light.turn_on
+        data:
+          entity_id: light.driveway
+          rgb_color:
+            - 255
+            - 255
+            - 255
+          transition: 0.1
+      - alias: Run Loop Script
+        service: script.turn_on
+        data:
+          entity_id: script.flash_driveway_loop
+
+flash_driveway_loop:
+    alias: Flash_loop
+    sequence:
+      - condition: state
+        entity_id: script.alarm_driveway
+        state: 'on'
+      - wait_template: "{{ is_state('script.flash_driveway_popo', 'off') }}"
+        timeout: '00:00:01'
+        continue_on_timeout: 'false'
+      - service: script.turn_on
+        data:
+          entity_id: script.flash_driveway_popo
+
+flash_kitchen:
+  alias: Flash Kitchen
+  sequence:
+    - service: homeassistant.turn_on
+      data:
+        transition: 0.1
+        entity_id: group.office
+    - delay: 0.5
+    - service: homeassistant.turn_off
+      data:
+        transition: 0.1
+        entity_id: group.office
+    - service: script.turn_on
+      entity_id: script.flash_kitchen_loop
+      
+
+flash_kitchen_loop:
+  alias: loop to start flashing again
+  sequence:
+    - delay: 0.5
+    - service: script.turn_on
+      entity_id: script.flash_kitchen
+      
+flash_kitchen_stop:
+  alias: stop flashing kitchen
+  sequence:
+    - service: script.turn_off
+      entity_id: script.flash_kitchen
+    - service: script.turn_off
+      entity_id: script.flash_kitchen_loop
+      
+start_bedroom_diffuser:
+  alias: Start Bedroom Diffuser
+  sequence:
+    - service: homeassistant.turn_on
+      entity_id: switch.bedroom_diffuser
+    - delay:
+        hours: 3
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.bedroom_diffuser_empty
+    

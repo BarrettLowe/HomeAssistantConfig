@@ -1,0 +1,390 @@
+- alias: Aurora
+  id: 'AURORA'
+  action:
+    - service: notify.barrett
+      data:
+        message: 'There is a chance to see the northern lights in the next 5 minutes!'
+        title: Northern Lights
+        data:
+          icon: https://goo.gl/xeetdy
+    - service: notify.brandie
+      data:
+        message: 'There is a chance to see the northern lights in the next 5 minutes!'
+        title: Northern Lights
+        data:
+          icon: https://goo.gl/xeetdy
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.northernlights_sensor
+      from: 'off'
+      to: 'on'
+
+- alias: Cancel timer if Garage closed
+  id: '123456789'
+  hide_entity: true
+  trigger:
+    - platform: state
+      entity_id: cover.middle_garage
+      to: 'closed'
+    - platform: state
+      entity_id: cover.near_garage
+      to: 'closed'
+    - platform: state
+      entity_id: cover.far_garage
+      to: 'closed'
+  action:
+    - service: timer.cancel
+      data_template: 
+        entity_id: >
+          timer.{{ trigger.entity_id.split('.')[-1] }}
+
+- alias: Notify if Garage Opened
+  id: '123456789'
+  trigger:
+    - platform: state
+      entity_id: cover.middle_garage
+      to: 'open'
+    - platform: state
+      entity_id: cover.near_garage
+      to: 'open'
+    - platform: state
+      entity_id: cover.far_garage
+      to: 'open'
+  action:
+    - service: notify.barrett
+      data_template:
+        message: >
+          {{ trigger.to_state.attributes.friendly_name }} has been opened
+        title: 'Alert'
+#     - service: script.turn_on
+#       entity_id: script.garage_opened_start_timer
+#       data_template:
+#         variables:
+#           theGarage: "{{ trigger.entity_id.split('.')[-1] }}"
+
+# - alias: Garage Timer Stop
+#   id: 'GarageTimerStop'
+#   hide_entity: true
+#   trigger:
+#   - platform: event
+#     event_type: timer.finished
+#   action:
+#   - service: notify.barrett
+#     data_template:
+#       message: >
+#         {{ trigger.event.data.entity_id.split('.')[-1] }} has been open for too long
+#       title: ALERT
+#       data:
+#         icon: https://goo.gl/xeetdy
+#   - service: notify.brandie
+#     data_template:
+#       message: >
+#         {{ trigger.event.data.entity_id.split('.')[-1] }} has been open for too long
+#       title: ALERT
+#       data:
+#         icon: https://goo.gl/xeetdy
+#   - service: notify.brandie
+#     data:
+#       message: A garage has been open for too long
+#       title: ALERT
+#       data:
+#         icon: https://goo.gl/xeetdy
+
+- alias: Coffee Timer Expired
+  trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.coffee_timer
+  action:
+    - service: script.turn_on
+      entity_id: script.flash_kitchen
+
+
+
+- alias: Test Notify
+  action:
+    - service: notify.brandie
+      data:
+        message: Test Notification
+        title: TEST
+        data:
+          icon: https://goo.gl/xeetdy
+    - service: notify.barrett
+      data:
+        message: Test Notification
+        title: TEST
+        data:
+          icon: https://goo.gl/xeetdy
+  condition: []
+  id: '1524716348156'
+  trigger: []
+
+- id: 'BELLEAVES'
+  alias: Barrett Leaves
+  trigger:
+  - entity_id: group.barrett
+    from: 'home'
+    platform: state
+    to: 'not_home'
+  condition:
+  - condition: state
+    entity_id: group.brandie
+    state: 'not_home'
+  - condition: state
+    entity_id: cover.middle_garage
+    state: 'open'
+  action:
+  - data:
+      message: The middle garage is open but nobody is home!
+      title: Garage Alert
+    service: notify.barrett
+
+- id: 'BLLLEAVES'
+  alias: Brandie Leaves
+  trigger:
+  - entity_id: group.brandie
+    from: 'home'
+    platform: state
+    to: 'not_home'
+  condition:
+  - condition: state
+    entity_id: group.barrett
+    state: 'not_home'
+  - condition: state
+    entity_id: cover.middle_garage
+    state: 'open'
+  action:
+  - data:
+      message: The middle garage is open but nobody is home!
+      title: Garage Alert
+    service: notify.brandie
+
+
+
+- alias: "Default Theme after Sunrise"
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: "+00:00:00"
+  action:
+    - service: frontend.set_theme
+      data:
+        name: default
+- alias: "dark Theme after Sunset"
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "+00:00:00"
+  action:
+    - service: frontend.set_theme
+      data:
+        name: slate
+        
+- alias: "Set Theme On Boot"
+  trigger:
+    platform: homeassistant
+    event: start
+  condition:
+    condition: or
+    conditions:
+      - condition: sun
+        after: sunset
+      - condition: sun
+        before: sunrise
+  action:
+    - delay:
+        seconds: 30
+    - service: frontend.set_theme
+      data:
+        name: slate
+
+
+# backups
+- alias: Make snapshot
+  trigger:
+    platform: time
+    at: '3:00:00'
+  condition:
+    condition: time
+    weekday:
+      - mon
+  action:
+    service: hassio.snapshot_full
+    data_template:
+      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+
+- alias: Upload to S3
+  trigger:
+    platform: time
+    at: '3:30:00'
+  condition:
+    condition: time
+    weekday:
+      - mon
+  action:
+    service: hassio.addon_start
+    data:
+      addon: local_backup_s3
+      
+# update snapshot of a camera 3 seconds after recording begins
+- alias: Camera Snapshot
+  trigger:
+  - entity_id: camera.aarlo_driveway,camera.aarlo_front_door
+    for: 00:00:03
+    from: 'idle'
+    platform: state
+    to: 'recording'
+  - entity_id: camera.aarlo_driveway,camera.aarlo_front_door
+    for: 00:00:03
+    from: 'recently active'
+    platform: state
+    to: 'recording'
+  condition: []
+  action:
+  - data_template:
+      entity_id: "{{ trigger.entity_id }}"
+    service: camera.aarlo_request_snapshot
+    
+- alias: Notify Brandie when Barrett's Phone is about to die
+  trigger:
+    platform: numeric_state
+    entity_id: device_tracker.barrett_pixel
+    value_template: '{{ states("sensor.barrett_phone_battery") }}'
+    below: 20
+  action:
+    - service: notify.brandie
+      data:
+        message: FYI - Barrett's phone battery < 20%
+        title: Barrett's Phone is Dying
+        
+- alias: Notify Barrett when Brandie's Phone is about to die
+  trigger:
+    platform: numeric_state
+    entity_id: device_tracker.brandie_pixel
+    value_template: '{{ states("sensor.brandie_phone_battery") }}'
+    below: 20
+  action:
+    - service: notify.barrett
+      data:
+        message: FYI - Brandie's phone battery < 20%
+        title: Brandie's Phone is Dying
+
+
+- alias: Log Backwash
+  trigger:
+    entity_id: binary_sensor.custom_button
+    from: 'off'
+    to: 'on'
+    platform: state
+  action:
+    service: homeassistant.toggle
+    entity_id: group.kitchen
+    # - service: ifttt.trigger
+    #   data:
+    #     event: "pool_log_backwash"
+    #     value1: "Backwash"
+    #     value2: "Home Assistant"
+
+        
+- alias: Trash Reminder the Night Before
+  trigger:
+    platform: time
+    at: '18:00:00'
+  condition:
+    condition: template
+    value_template: >-
+      '{{ now().weekday() == 3 }}' #TODO: Make this not be the 2nd source of truth
+  action: 
+    service_template: >-
+      {% if is_state("person.barrett", "Wisconsin") %}
+      notify.brandie
+      {% else %}
+      notify.barrett
+      {% endif %}
+    data:
+      message: The trash needs to be taken out tonight, don't forget!
+      title: Don't let it get stinky...
+      
+- alias: Trash Reminder the Morning Of
+  trigger:
+    platform: state
+    entity_id:
+      - binary_sensor.barrett_phone_charging
+      - binary_sensor.brandie_phone_charging
+    from: 'on'
+    to: 'off'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.trash_day
+        state: 'on'
+      - condition: time
+        after: '05:00:00'
+        before: '11:00:00'
+  action:
+    service_template: >-
+      notify.{{ (trigger.entity_id.split('.')[-1]).split('_')[0] }}
+    data:
+      message: "Today is trash day. Don't forget!"
+      title: "Good Morning!"
+      
+      
+- alias: Deep Freeze Off Warning
+  trigger:
+    platform: state
+    entity_id:
+      - switch.deep_freeze
+    from: 'on'
+    to: 'off'
+  action:
+    - service: notify.barrett
+      data:
+        message: The deep freeze has been turned off. Is this right?!"
+        title: WARNING
+    - service: notify.brandie
+      data:
+        message: The deep freeze has been turned off. Is this right?!
+        title: WARNING
+
+- alias: Deep Freeze Broken Warning
+  trigger:
+    platform: numeric_state
+    entity_id:
+      - sensor.deep_freeze_power
+    below: 1
+    for: 00:45:00
+  action:
+    - service: notify.barrett
+      data:
+        message: The deep freeze is drawing about {{ states("sensor.deep_freeze_power") }} watts! That's a little low!
+        title: WARNING
+
+      
+# - id: 'Coffee Timer'
+#   alias: Coffee Timer
+#   trigger:
+#     entity_id: binary_sensor.custom_button
+#     from: 'off'
+#     to: 'on'
+#     platform: state
+#   action:
+#     - service_template: >
+#         {% if is_state('script.flash_kitchen', 'on') or is_state('script.flash_kitchen_loop', 'on') %}
+#         script.turn_off
+#         {% else %}
+#         timer.start
+#         {% endif %}
+#       data_template:
+#         entity_id: >-
+#           {% if is_state('script.flash_kitchen', 'on') or is_state('script.flash_kitchen_loop', 'on') %} 
+#           script.flash_kitchen, script.flash_kitchen_loop
+#           {% else %}
+#           timer.coffee_timer
+#           {% endif %}
+#     - service: light.turn_off
+#       entity_id: light.brandies_desk
+#     - delay: '00:00:01'
+#     - service: light.turn_on
+#       entity_id: light.brandies_desk

@@ -1,0 +1,29 @@
+- cal_id: ua7oodfq3tacht6mopfptq4kpo@group.calendar.google.com
+  entities:
+    - device_id: entertaining
+      name: Entertaining Guests
+      track: true
+      search: "#Entertain"
+      offset: "!!"
+
+
+- cal_id: barrett.lowe@gmail.com
+  entities:
+  - device_id: barrett_lowe_gmail_com
+    ignore_availability: true
+    name: barrett.lowe@gmail.com
+    track: false
+
+- cal_id: addressbook#contacts@group.v.calendar.google.com
+  entities:
+  - device_id: contacts
+    ignore_availability: true
+    name: Contacts
+    track: false
+
+- cal_id: en.usa#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: holidays_in_united_states
+    ignore_availability: true
+    name: Holidays in United States
+    track: false

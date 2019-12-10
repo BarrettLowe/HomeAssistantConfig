@@ -1,0 +1,31 @@
+group.all_people:
+  entity_picture: /local/Honeymoon.png
+device_tracker.brandie_pixel:
+  hidden: false
+device_tracker.brandie_pixel_nmap:
+  hidden: false
+device_tracker.barrett_pixel_nmap:
+  hidden: false
+sun.sun:
+  hidden: true
+device_tracker.barrett_pixel: {}
+person.barrett:
+  entity_picture: /local/barrett.jpg
+person.brandie:
+  entity_picture: /local/brandie.jpg
+binary_sensor.barretts_closet_door:
+  device_class: door
+binary_sensor.brandies_closet_door:
+  device_class: door
+device_tracker.00_21_5d_dc_d9_4a: {}
+binary_sensor.pantry_door:
+  device_class: door
+switch.bedroom_diffuser:
+  hidden: true
+  icon: mdi:air-purifier
+binary_sensor.bedroom_diffuser:
+  icon: mdi:air-purifier
+input_boolean.bedroom_diffuser_empty:
+  icon: mdi:water-off
+script.start_bedroom_diffuser:
+  icon: mdi:spray

@@ -1,0 +1,708 @@
+homeassistant:
+  customize: !include customize.yaml
+
+system_health:
+
+mobile_app:
+
+recorder:
+  exclude:
+    domains:
+      - updater
+    entities:
+      - script.flash_kitchen_stop
+      - script.flash_kitchen_loop
+      - script.flash_driveway_popo
+      - script.flash_driveway_loop
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_daily_max_precip_intensity_0d
+      - sensor.dark_sky_daily_max_precip_intensity_1d
+      - sensor.dark_sky_daily_max_precip_intensity_2d
+      - sensor.dark_sky_daily_max_precip_intensity_3d
+      - sensor.dark_sky_daily_max_precip_intensity_4d
+      - sensor.dark_sky_daily_max_precip_intensity_5d
+      - sensor.dark_sky_daily_summary
+      - sensor.dark_sky_daytime_high_apparent_temperature_0d
+      - sensor.dark_sky_daytime_high_apparent_temperature_1d
+      - sensor.dark_sky_daytime_high_apparent_temperature_2d
+      - sensor.dark_sky_daytime_high_apparent_temperature_3d
+      - sensor.dark_sky_daytime_high_apparent_temperature_4d
+      - sensor.dark_sky_daytime_high_apparent_temperature_5d
+      - sensor.dark_sky_daytime_high_temperature_0d
+      - sensor.dark_sky_daytime_high_temperature_1d
+      - sensor.dark_sky_daytime_high_temperature_2d
+      - sensor.dark_sky_daytime_high_temperature_3d
+      - sensor.dark_sky_daytime_high_temperature_4d
+      - sensor.dark_sky_daytime_high_temperature_5d
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_humidity_0d
+      - sensor.dark_sky_humidity_1d
+      - sensor.dark_sky_humidity_2d
+      - sensor.dark_sky_humidity_3d
+      - sensor.dark_sky_humidity_4d
+      - sensor.dark_sky_humidity_5d
+      - sensor.dark_sky_icon
+      - sensor.dark_sky_icon_0d
+      - sensor.dark_sky_icon_1d
+      - sensor.dark_sky_icon_2d
+      - sensor.dark_sky_icon_3d
+      - sensor.dark_sky_icon_4d
+      - sensor.dark_sky_icon_5d
+      - sensor.dark_sky_nearest_storm_bearing
+      - sensor.dark_sky_nearest_storm_distance
+      - sensor.dark_sky_overnight_low_apparent_temperature_0d
+      - sensor.dark_sky_overnight_low_apparent_temperature_1d
+      - sensor.dark_sky_overnight_low_apparent_temperature_2d
+      - sensor.dark_sky_overnight_low_apparent_temperature_3d
+      - sensor.dark_sky_overnight_low_apparent_temperature_4d
+      - sensor.dark_sky_overnight_low_apparent_temperature_5d
+      - sensor.dark_sky_overnight_low_temperature_0d
+      - sensor.dark_sky_overnight_low_temperature_1d
+      - sensor.dark_sky_overnight_low_temperature_2d
+      - sensor.dark_sky_overnight_low_temperature_3d
+      - sensor.dark_sky_overnight_low_temperature_4d
+      - sensor.dark_sky_overnight_low_temperature_5d
+      - sensor.dark_sky_precip
+      - sensor.dark_sky_precip_0d
+      - sensor.dark_sky_precip_1d
+      - sensor.dark_sky_precip_2d
+      - sensor.dark_sky_precip_3d
+      - sensor.dark_sky_precip_4d
+      - sensor.dark_sky_precip_5d
+      - sensor.dark_sky_precip_accumulation_0d
+      - sensor.dark_sky_precip_accumulation_1d
+      - sensor.dark_sky_precip_accumulation_2d
+      - sensor.dark_sky_precip_accumulation_3d
+      - sensor.dark_sky_precip_accumulation_4d
+      - sensor.dark_sky_precip_accumulation_5d
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_precip_intensity_0d
+      - sensor.dark_sky_precip_intensity_1d
+      - sensor.dark_sky_precip_intensity_2d
+      - sensor.dark_sky_precip_intensity_3d
+      - sensor.dark_sky_precip_intensity_4d
+      - sensor.dark_sky_precip_intensity_5d
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_precip_probability_0d
+      - sensor.dark_sky_precip_probability_1d
+      - sensor.dark_sky_precip_probability_2d
+      - sensor.dark_sky_precip_probability_3d
+      - sensor.dark_sky_precip_probability_4d
+      - sensor.dark_sky_precip_probability_5d
+      - sensor.dark_sky_pressure
+      - sensor.dark_sky_pressure_0d
+      - sensor.dark_sky_pressure_1d
+      - sensor.dark_sky_pressure_2d
+      - sensor.dark_sky_pressure_3d
+      - sensor.dark_sky_pressure_4d
+      - sensor.dark_sky_pressure_5d
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_summary_0d
+      - sensor.dark_sky_summary_1d
+      - sensor.dark_sky_summary_2d
+      - sensor.dark_sky_summary_3d
+      - sensor.dark_sky_summary_4d
+      - sensor.dark_sky_summary_5d
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_uv_index
+      - sensor.dark_sky_uv_index_0d
+      - sensor.dark_sky_uv_index_1d
+      - sensor.dark_sky_uv_index_2d
+      - sensor.dark_sky_uv_index_3d
+      - sensor.dark_sky_uv_index_4d
+      - sensor.dark_sky_uv_index_5d
+      - sensor.dark_sky_visibility
+      - sensor.dark_sky_visibility_0d
+      - sensor.dark_sky_visibility_1d
+      - sensor.dark_sky_visibility_2d
+      - sensor.dark_sky_visibility_3d
+      - sensor.dark_sky_visibility_4d
+      - sensor.dark_sky_visibility_5d
+      - sensor.dark_sky_wind_bearing
+      - sensor.dark_sky_wind_bearing_0d
+      - sensor.dark_sky_wind_bearing_1d
+      - sensor.dark_sky_wind_bearing_2d
+      - sensor.dark_sky_wind_bearing_3d
+      - sensor.dark_sky_wind_bearing_4d
+      - sensor.dark_sky_wind_bearing_5d
+      - sensor.dark_sky_wind_speed
+      - sensor.dark_sky_wind_speed_0d
+      - sensor.dark_sky_wind_speed_1d
+      - sensor.dark_sky_wind_speed_2d
+      - sensor.dark_sky_wind_speed_3d
+      - sensor.dark_sky_wind_speed_4d
+      - sensor.dark_sky_wind_speed_5d
+  
+  
+  
+# Enables the frontend
+frontend:
+  themes: !include_dir_merge_named themes
+
+# Enables configuration UI
+config:
+
+# hacs:
+#   theme: true
+
+ifttt:
+  key: gmYDlPOe-6l8Z4ra6GgplsChRRthv5ixSNJ7V5eVHOJ
+  
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+tuya:
+  username: !secret tuyaUsername
+  password: !secret tuyaPassword
+  country_code: 1
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+  exclude:
+    entities:
+      - sun.sun
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_daily_max_precip_intensity_0d
+      - sensor.dark_sky_daily_max_precip_intensity_1d
+      - sensor.dark_sky_daily_max_precip_intensity_2d
+      - sensor.dark_sky_daily_max_precip_intensity_3d
+      - sensor.dark_sky_daily_max_precip_intensity_4d
+      - sensor.dark_sky_daily_max_precip_intensity_5d
+      - sensor.dark_sky_daily_summary
+      - sensor.dark_sky_daytime_high_apparent_temperature_0d
+      - sensor.dark_sky_daytime_high_apparent_temperature_1d
+      - sensor.dark_sky_daytime_high_apparent_temperature_2d
+      - sensor.dark_sky_daytime_high_apparent_temperature_3d
+      - sensor.dark_sky_daytime_high_apparent_temperature_4d
+      - sensor.dark_sky_daytime_high_apparent_temperature_5d
+      - sensor.dark_sky_daytime_high_temperature_0d
+      - sensor.dark_sky_daytime_high_temperature_1d
+      - sensor.dark_sky_daytime_high_temperature_2d
+      - sensor.dark_sky_daytime_high_temperature_3d
+      - sensor.dark_sky_daytime_high_temperature_4d
+      - sensor.dark_sky_daytime_high_temperature_5d
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_humidity_0d
+      - sensor.dark_sky_humidity_1d
+      - sensor.dark_sky_humidity_2d
+      - sensor.dark_sky_humidity_3d
+      - sensor.dark_sky_humidity_4d
+      - sensor.dark_sky_humidity_5d
+      - sensor.dark_sky_icon
+      - sensor.dark_sky_icon_0d
+      - sensor.dark_sky_icon_1d
+      - sensor.dark_sky_icon_2d
+      - sensor.dark_sky_icon_3d
+      - sensor.dark_sky_icon_4d
+      - sensor.dark_sky_icon_5d
+      - sensor.dark_sky_nearest_storm_bearing
+      - sensor.dark_sky_nearest_storm_distance
+      - sensor.dark_sky_overnight_low_apparent_temperature_0d
+      - sensor.dark_sky_overnight_low_apparent_temperature_1d
+      - sensor.dark_sky_overnight_low_apparent_temperature_2d
+      - sensor.dark_sky_overnight_low_apparent_temperature_3d
+      - sensor.dark_sky_overnight_low_apparent_temperature_4d
+      - sensor.dark_sky_overnight_low_apparent_temperature_5d
+      - sensor.dark_sky_overnight_low_temperature_0d
+      - sensor.dark_sky_overnight_low_temperature_1d
+      - sensor.dark_sky_overnight_low_temperature_2d
+      - sensor.dark_sky_overnight_low_temperature_3d
+      - sensor.dark_sky_overnight_low_temperature_4d
+      - sensor.dark_sky_overnight_low_temperature_5d
+      - sensor.dark_sky_precip
+      - sensor.dark_sky_precip_0d
+      - sensor.dark_sky_precip_1d
+      - sensor.dark_sky_precip_2d
+      - sensor.dark_sky_precip_3d
+      - sensor.dark_sky_precip_4d
+      - sensor.dark_sky_precip_5d
+      - sensor.dark_sky_precip_accumulation_0d
+      - sensor.dark_sky_precip_accumulation_1d
+      - sensor.dark_sky_precip_accumulation_2d
+      - sensor.dark_sky_precip_accumulation_3d
+      - sensor.dark_sky_precip_accumulation_4d
+      - sensor.dark_sky_precip_accumulation_5d
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_precip_intensity_0d
+      - sensor.dark_sky_precip_intensity_1d
+      - sensor.dark_sky_precip_intensity_2d
+      - sensor.dark_sky_precip_intensity_3d
+      - sensor.dark_sky_precip_intensity_4d
+      - sensor.dark_sky_precip_intensity_5d
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_precip_probability_0d
+      - sensor.dark_sky_precip_probability_1d
+      - sensor.dark_sky_precip_probability_2d
+      - sensor.dark_sky_precip_probability_3d
+      - sensor.dark_sky_precip_probability_4d
+      - sensor.dark_sky_precip_probability_5d
+      - sensor.dark_sky_pressure
+      - sensor.dark_sky_pressure_0d
+      - sensor.dark_sky_pressure_1d
+      - sensor.dark_sky_pressure_2d
+      - sensor.dark_sky_pressure_3d
+      - sensor.dark_sky_pressure_4d
+      - sensor.dark_sky_pressure_5d
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_summary_0d
+      - sensor.dark_sky_summary_1d
+      - sensor.dark_sky_summary_2d
+      - sensor.dark_sky_summary_3d
+      - sensor.dark_sky_summary_4d
+      - sensor.dark_sky_summary_5d
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_uv_index
+      - sensor.dark_sky_uv_index_0d
+      - sensor.dark_sky_uv_index_1d
+      - sensor.dark_sky_uv_index_2d
+      - sensor.dark_sky_uv_index_3d
+      - sensor.dark_sky_uv_index_4d
+      - sensor.dark_sky_uv_index_5d
+      - sensor.dark_sky_visibility
+      - sensor.dark_sky_visibility_0d
+      - sensor.dark_sky_visibility_1d
+      - sensor.dark_sky_visibility_2d
+      - sensor.dark_sky_visibility_3d
+      - sensor.dark_sky_visibility_4d
+      - sensor.dark_sky_visibility_5d
+      - sensor.dark_sky_wind_bearing
+      - sensor.dark_sky_wind_bearing_0d
+      - sensor.dark_sky_wind_bearing_1d
+      - sensor.dark_sky_wind_bearing_2d
+      - sensor.dark_sky_wind_bearing_3d
+      - sensor.dark_sky_wind_bearing_4d
+      - sensor.dark_sky_wind_bearing_5d
+      - sensor.dark_sky_wind_speed
+      - sensor.dark_sky_wind_speed_0d
+      - sensor.dark_sky_wind_speed_1d
+      - sensor.dark_sky_wind_speed_2d
+      - sensor.dark_sky_wind_speed_3d
+      - sensor.dark_sky_wind_speed_4d
+      - sensor.dark_sky_wind_speed_5d
+
+
+# View all events in a logbook
+logbook:
+
+# logger:
+#   default: warning
+#   logs:
+#     homeassistant.components.mqtt: debug
+#     homeassistant.components.device_tracker: debug
+#     homeassistant.components.aarlo: debug
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+pi_hole:
+  host: !secret pihole
+
+sensor:
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'date_time_iso'
+      - 'time_date'
+      - 'time_utc'
+      - 'beat'
+  - platform: google_wifi
+    host: 192.168.86.1
+    scan_interval: 30
+  - platform: darksky
+    api_key: !secret darkskyAPIKey
+    forecast:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+    monitored_conditions:
+      - icon
+      - summary
+      - nearest_storm_distance
+      - nearest_storm_bearing
+      - humidity
+      - temperature
+      - temperature_high
+      - temperature_low
+      - apparent_temperature
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - wind_speed
+      - wind_bearing
+      - precip_type
+      - precip_probability
+      - precip_accumulation
+      - precip_intensity
+      - precip_intensity_max
+      - uv_index
+      - daily_summary
+      - pressure
+      - visibility
+    scan_interval:
+      hours: 1
+  - platform: aarlo
+    monitored_conditions:
+      - total_cameras
+      - battery_level
+      - captured_today
+      - signal_strength
+  - platform: mqtt
+    state_topic: "owntracks/Barrett/pixel"
+    name: "Barrett Phone Battery"
+    unit_of_measurement: "%"
+    value_template: '{{ value_json.battery_level }}'
+    device_class: battery
+  - platform: mqtt
+    state_topic: "owntracks/Brandie/pixel"
+    name: "Brandie Phone Battery"
+    unit_of_measurement: "%"
+    value_template: '{{ value_json.battery_level }}'
+    device_class: battery
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_free
+      - type: memory_use_percent
+      - type: ipv4_address
+        arg: eth0
+      - type: ipv6_address
+        arg: eth0
+      - type: network_in
+        arg: eth0
+      - type: network_out
+        arg: eth0
+      - type: last_boot
+      - type: load_1m
+      - type: load_5m
+      - type: processor_use
+
+      
+
+speedtestdotnet:
+  scan_interval:
+    minutes: 25
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+binary_sensor:
+  - platform: template
+    sensors:
+      trash_day:
+        value_template: >-
+          {{ now().weekday() == 4 }}
+        friendly_name: "Is Today Trash Day?"
+        icon_template: >-
+          {% if is_state("binary_sensor.trash_day", "on") %}
+          mdi:delete-empty
+          {% else %}
+          mdi:emoticon-outline
+          {% endif %}
+  - platform: aarlo
+    monitored_conditions:
+      - motion
+      - sound
+      - ding
+  - platform: ping
+    name: Internet Connection
+    host: 8.8.8.8 #google dns should always be up :)
+    scan_interval: 10
+  - platform: ping
+    name: MQTT Broker
+    host: mqtt.***REMOVED***.com
+    scan_interval: 60
+  # - platform: ping
+  #   name: RF Receiver
+  #   host: 192.168.86.20
+  #   scan_interval: '00:01:00'
+  # - platform: mqtt
+  #   name: Custom Button
+  #   state_topic: "homeassistant/button/1"
+  # - platform: mqtt
+  #   name: RF Receiver
+  #   state_topic: "homeassistant/rfreceiver"
+  #   payload_on: 'online'
+  #   payload_off: 'offline'
+  - platform: mqtt
+    state_topic: "owntracks/Barrett/pixel"
+    name: "Barrett Phone Charging"
+    value_template: "{{ value_json.charging }}"
+    payload_on: 'true'
+    payload_off: 'false'  
+  - platform: mqtt
+    state_topic: "owntracks/Brandie/pixel"
+    name: "Brandie Phone Charging"
+    value_template: "{{ value_json.charging }}"
+    payload_on: 'true'
+    payload_off: 'false'
+
+
+vesync:
+  username: !secret vesync_user
+  password: !secret vesync_password
+
+switch:
+  - platform: command_line
+    switches:
+      pihole_switch:
+        command_on: !secret picommand_on
+        command_off: !secret picommand_off
+        command_state: "curl -X GET 'http://192.168.86.10/admin/api.php?status'"
+        value_template: > 
+          {{ value_json.status == 'enabled' }}
+        friendly_name: Pi Hole Blocking
+
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+
+device_tracker:
+  - platform: nmap_tracker
+    track_new_devices: yes
+    hosts: 
+      - 192.168.86.0/24
+    home_interval: 30
+    interval_seconds: 60
+  - platform: mqtt_json
+    devices:
+      barrett_pixel: owntracks/Barrett/pixel
+      brandie_pixel: owntracks/Brandie/pixel
+
+
+person:
+#   - name: Barrett
+#     id: barrett
+#     device_trackers:
+#       - device_tracker.barrett_pixel
+#       - device_tracker.barrett_pixel_nmap
+#   - name: Brandie
+#     id: brandie
+#     device_trackers:
+#       - device_tracker.brandie_pixel
+#       - device_tracker.brandie_pixel_nmap
+
+
+mqtt:
+  broker: !secret mqtt_broker
+  port: !secret mqtt_port
+  username: homeassistant
+  password: !secret mqtt_password
+
+cover:
+  - platform: mqtt
+    name: Middle Garage
+    command_topic: homeassistant/cover/GarageDoor/set
+    state_topic: homeassistant/cover/GarageDoor/state
+    availability_topic: homeassistant/cover/GarageDoor
+    qos: 0
+    retain: false
+    payload_open: "Garage1 OPEN"
+    payload_close: "Garage1 CLOSE"
+    state_open: "Garage1 OPEN"
+    state_closed: "Garage1 CLOSED"
+    payload_available: "Garages ONLINE"
+    payload_not_available: "Garages OFFLINE"
+  - platform: mqtt
+    name: Near Garage
+    command_topic: homeassistant/cover/GarageDoor/set
+    state_topic: homeassistant/cover/GarageDoor/state
+    availability_topic: homeassistant/cover/GarageDoor
+    qos: 0
+    retain: false
+    payload_open: "Garage3 OPEN"
+    payload_close: "Garage3 CLOSE"
+    state_open: "Garage3 OPEN"
+    state_closed: "Garage3 CLOSED"
+    payload_available: "Garages ONLINE"
+    payload_not_available: "Garages OFFLINE"
+  - platform: mqtt
+    name: Far Garage
+    command_topic: homeassistant/cover/GarageDoor/set
+    state_topic: homeassistant/cover/GarageDoor/state
+    availability_topic: homeassistant/cover/GarageDoor
+    qos: 0
+    retain: false
+    payload_open: "Garage2 OPEN"
+    payload_close: "Garage2 CLOSE"
+    state_open: "Garage2 OPEN"
+    state_closed: "Garage2 CLOSED"
+    payload_available: "Garages ONLINE"
+    payload_not_available: "Garages OFFLINE"
+    
+
+neato:
+  username: !secret neato_user
+  password: !secret neato_password
+
+notify:
+  - platform: joaoapps_join
+    api_key: !secret join_brandie_api_key
+    device_id: !secret join_brandie_device_id
+    device_ids: !secret join_brandie_device_id
+    name: brandie
+  - platform: joaoapps_join
+    api_key: !secret join_barrett_api_key
+    device_id: !secret join_barrett_device_id
+    device_ids: !secret join_barrett_device_id
+    name: barrett
+
+joaoapps_join:
+  - name: barrett_join
+    device_id: group.android
+    api_key: !secret join_barrett_api_key
+  - name: brandie_join
+    device_id: group.android
+    api_key: !secret join_brandie_api_key
+
+
+media_player:
+  # - platform: snapcast
+  #   host: 192.168.86.202
+  - name: spotify_barrett
+    platform: spotify
+    client_id: !secret barrett_spotify_client
+    client_secret: !secret barrett_spotify_secret
+  # - name: Local
+  #   platform: vlc_telnet
+  #   host: localhost
+  #   password: mypassword
+
+timer:
+  middle_garage:
+    duration: '00:05:00'
+  near_garage:
+    duration: '00:05:00'
+  far_garage:
+    duration: '00:05:00'
+  coffee_timer:
+    duration: '00:04:30'
+
+ffmpeg:
+
+aarlo:
+  username: !secret arloUser
+  password: !secret arloPassword
+  refresh_devices_every: 4
+  last_format: '%m-%d %H:%M'
+
+# alarm_control_panel:
+#   - platform: arlo
+
+camera: 
+  - platform: aarlo
+    ffmpeg_arguments: '-pred 1 -q:v 2'
+
+
+ecobee:
+  api_key: !secret ecobeeAPIKey
+
+zwave:
+  usb_path: /dev/ttyUSB0
+ 
+zha:
+  usb_path: /dev/ttyUSB1
+  database_path: /config/zigbee.db
+
+
+#google calendar integration
+google:
+  client_id: !secret googleclient_id
+  client_secret: !secret googleclient_secret
+
+shell_command:
+  start_neato: "/usr/bin/curl -X GET !secret barrettStartNeatoUrl"
+  ring_barrett: "/usr/bin/curl -X GET !secret barrettRingUrl"
+  ring_brandie: "/usr/bin/curl -X GET !secret brandieRingUrl"
+  curl_post: "curl -X POST -d '{{ data }}' {{ url }}"
+  
+input_boolean:
+  bedroom_diffuser_empty:
+    name: Bedroom Diffuser Empty
+    initial: true
+    icon: mdi:spray-bottle
+  front_door_notify_barrett_home:
+    name: Notify Barrett when home
+  front_door_notify_barrett_away:
+    name: Notify Barrett when away
+  christmas_time:
+    name: Christmas Time
+  entertaining_tonight:
+    name: People are coming over tonight
+    
+input_number:
+  globe_light_on_minutes_before_sunset:
+    max: 120
+    min: 0
+  cabinet_nighttime_red:
+    max: 255
+    min: 0
+  cabinet_nighttime_blue:
+    max: 255
+    min: 0
+  cabinet_nighttime_green:
+    max: 255
+    min: 0    
+  cabinet_daytime_red:
+    max: 255
+    min: 0
+  cabinet_daytime_blue:
+    max: 255
+    min: 0
+  cabinet_daytime_green:
+    max: 255
+    min: 0    
+    
+    
+input_datetime:
+  outside_lights_off_time:
+    has_date: false
+    has_time: true
+  front_door_notification_start:
+    has_date: false
+    has_time: true
+  front_door_notification_stop:
+    has_date: false
+    has_time: true
+# input_select:
+#   trash_day:
+#     name: What day does the trash get picked up
+#     options:
+#       - Sunday
+#       - Monday
+#       - Tuesday
+#       - Wednesday
+#       - Thursday
+#       - Friday
+#       - Saturday
+#     initial: Friday
+#     icon: mdi:trash-can
+
+
+group: !include groups.yaml
+automation: !include automations.yaml
+automation old: !include_dir_merge_list automations
+script: !include scripts.yaml
+scene: !include scenes.yaml

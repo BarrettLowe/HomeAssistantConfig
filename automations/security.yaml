@@ -1,0 +1,86 @@
+# - alias: Driveway Movement Notification
+#   id: '123456789'
+#   trigger:
+#     - platform: state
+#       entity_id: cover.middle_garage
+#       to: 'open'
+#     - platform: state
+#       entity_id: cover.near_garage
+#       to: 'open'
+#     - platform: state
+#       entity_id: cover.far_garage
+#       to: 'open'
+#   action:
+#     - service: notify.barrett
+#       data_template:
+#         message: >
+#           {{ trigger.to_state.attributes.friendly_name }} has been opened
+#         title: 'Alert'
+#     - service: script.turn_on
+#       entity_id: script.garage_opened_start_timer
+#       data_template:
+#         variables:
+#           theGarage: "{{ trigger.entity_id.split('.')[-1] }}"
+
+- alias: 'Alarm Driveway At Night'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.aarlo_motion_driveway
+    to: 'on'
+  condition:
+    - condition: time
+      after: '00:00:00'
+      before: '6:00:00'
+  action:
+    # start alarm on movement if alarm activated
+    # and the alarm is not triggered
+    - service: script.turn_on
+      entity_id: script.alarm_driveway
+    - service: notify.barrett
+      data:
+        message: "MOTION DETECTED IN THE DRIVEWAY"
+        title: ALERT
+
+- alias: Notify Barrett when someone is at the front door
+  trigger:
+    platform: state
+    entity_id: binary_sensor.aarlo_motion_front_door
+    from: 'off'
+    to: 'on'
+  condition: 
+    condition: and
+    conditions:
+      - condition: or
+        conditions:
+          - condition: and
+            conditions:
+            - condition: state
+              entity_id: person.barrett
+              state: 'home'
+            - condition: state
+              entity_id: input_boolean.front_door_notify_barrett_home
+              state: 'on'
+          - condition: and
+            conditions:
+              - condition: state
+                entity_id: person.barrett
+                state: 'not_home'
+              - condition: state
+                entity_id: input_boolean.front_door_notify_barrett_away
+                state: 'on'
+      - condition: time
+        after: '07:00:00'
+        before: '21:00:00'
+    #   - condition: or
+    #     conditions:
+    #       - condition: template
+    #         value_template: '{{ (as_timestamp(now()) -(states.input_datetime.front_door_notification_start.timestamp | default(0)) | int > 0) and ((states.input_datetime.front_door_notification_stop.attributes.timestamp  - as_timestamp(now()) | default(0)) | int > 0)}}'
+    #       - condition: template
+    #         value_template: '{{ (as_timestamp(now()) -(states.input_datetime.front_door_notification_start.attributes.timestamp | default(0)) | int > 0) and ((states.input_datetime.front_door_notification_stop.attributes.timestamp  - as_timestamp(now()) | default(0)) | int > 0)}}'
+
+
+  action:
+    - service: notify.barrett
+      data:
+        message: "Someone may be here, motion detected at front door"
+        title: "Heads up!"

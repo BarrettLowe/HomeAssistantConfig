@@ -1,0 +1,63 @@
+# Start vacuum during the week
+- alias: Bi-Weekly Neato Start
+  action:
+    - service: notify.brandie
+      data:
+        message: "Start the neato! Gotta do it manually because of the stupid no-go lines..."
+        title: "HomeAssistant"
+        data:
+          icon: https://scontent-dfw5-1.cdninstagram.com/vp/7ef95447afa80de3c35a63fd6ab05ea2/5B5F68CD/t51.2885-19/s150x150/12547416_823581534417376_2137177637_a.jpg
+    - service: notify.barrett
+      data:
+        message: "Start the neato! Gotta do it manually because of the stupid no-go lines..."
+        title: "HomeAssistant"
+        data:
+          icon: https://scontent-dfw5-1.cdninstagram.com/vp/7ef95447afa80de3c35a63fd6ab05ea2/5B5F68CD/t51.2885-19/s150x150/12547416_823581534417376_2137177637_a.jpg
+  trigger:
+    platform: time
+    at: '10:00:00'
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - thu
+    - sat
+
+# # Start vacuum on the weekend only IF someone is home, otherwise start it when someone gets home
+# - alias: Weekend Neato Start
+#   trigger:
+#     platform: time
+#     at: '11:00:00'
+#   condition:
+#   - condition: time
+#     weekday:
+#     - sun
+#   action:
+#     - service_template: '{% if is_state(''group.all_people'', ''not_home'') %} 
+#       automation.turn_on
+#       {% else %} 
+#       vacuum.start_pause 
+#       {% endif %}
+
+#       '
+#       data_template:
+#         entity_id: '{% if is_state(''group.all_people'', ''not_home'') %} 
+#         automation.start_neato_when_someone_comes_home
+#         {% else %} 
+#         vacuum.vacuum
+#           {% endif %}
+#         '
+
+# - alias: Start Neato when someone comes home
+#   initial_state: false
+#   trigger:
+#   - entity_id: group.all_people
+#     from: not_home
+#     platform: state
+#     to: home
+#   action:
+#   - service: vacuum.start_pause
+#     entity_id: vacuum.vacuum
+#   - service: automation.turn_off
+#     data:
+#       entity_id: automation.start_neato_when_someone_comes_home
