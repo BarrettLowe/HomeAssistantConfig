@@ -1,0 +1,22 @@
+- alias: Notify if Garage Opened
+  trigger:
+    - platform: state
+      entity_id: cover.middle_garage
+      to: 'open'
+    - platform: state
+      entity_id: cover.near_garage
+      to: 'open'
+    - platform: state
+      entity_id: cover.far_garage
+      to: 'open'
+  action:
+    - service: notify.barrett
+      data_template:
+        message: >
+          {{ trigger.to_state.attributes.friendly_name }} has been opened
+        title: 'Alert'
+#     - service: script.turn_on
+#       entity_id: script.garage_opened_start_timer
+#       data_template:
+#         variables:
+#           theGarage: "{{ trigger.entity_id.split('.')[-1] }}"

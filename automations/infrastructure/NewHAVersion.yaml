@@ -1,0 +1,12 @@
+- alias: New HomeAssistant Version Available
+  hide_entity: true
+  trigger:
+    platform: state
+    from: 'off'
+    to: 'on'
+    entity_id: binary_sensor.updater
+  action:
+    - service: notify.barrett
+      data_template:
+        title: 'New Home Assistant Release'
+        message: "Home Assistant  {{ state_attr('binary_sensor.updater', 'newest_version') }}  is now available. Release notes: {{ state_attr('binary_sensor.updater', 'release_notes') }}"

@@ -1,0 +1,16 @@
+# Turn lights on when someone comes home
+- action:
+  - data:
+      entity_id: group.family_room
+    service: homeassistant.turn_on
+  - data:
+      entity_id: group.kitchen
+    service: homeassistant.turn_on
+  alias: Somebody Home
+  condition: []
+  id: '1524425355681'
+  trigger:
+  - entity_id: group.all_people
+    from: not_home
+    platform: state
+    to: home

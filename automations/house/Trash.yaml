@@ -1,0 +1,45 @@
+- alias: Trash Reminder the Night Before
+  trigger:
+    platform: time
+    at: '18:00:00'
+  condition:
+    condition: template
+    value_template: >-
+      '{{ now().weekday() == 3 }}' #TODO: Make this not be the 2nd source of truth
+  action: 
+    service_template: >-
+      {% if is_state("person.barrett", "Wisconsin") %}
+      notify.brandie
+      {% else %}
+      notify.barrett
+      {% endif %}
+    data:
+      message: The trash needs to be taken out tonight, don't forget!
+      title: Don't let it get stinky...
+      
+- alias: Trash Reminder the Morning Of
+  trigger:
+    platform: state
+    entity_id:
+      - binary_sensor.barrett_phone_charging
+      - binary_sensor.brandie_phone_charging
+    from: 'on'
+    to: 'off'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.trash_day
+        state: 'on'
+      - condition: time
+        after: '05:00:00'
+        before: '11:00:00'
+  action:
+    service_template: >-
+      notify.{{ (trigger.entity_id.split('.')[-1]).split('_')[0] }}
+    data:
+      message: "Today is trash day. Don't forget!"
+      title: "Good Morning!"
+      
+      
+      

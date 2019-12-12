@@ -20,7 +20,6 @@
       to: 'on'
 
 - alias: Cancel timer if Garage closed
-  id: '123456789'
   hide_entity: true
   trigger:
     - platform: state
@@ -38,29 +37,6 @@
         entity_id: >
           timer.{{ trigger.entity_id.split('.')[-1] }}
 
-- alias: Notify if Garage Opened
-  id: '123456789'
-  trigger:
-    - platform: state
-      entity_id: cover.middle_garage
-      to: 'open'
-    - platform: state
-      entity_id: cover.near_garage
-      to: 'open'
-    - platform: state
-      entity_id: cover.far_garage
-      to: 'open'
-  action:
-    - service: notify.barrett
-      data_template:
-        message: >
-          {{ trigger.to_state.attributes.friendly_name }} has been opened
-        title: 'Alert'
-#     - service: script.turn_on
-#       entity_id: script.garage_opened_start_timer
-#       data_template:
-#         variables:
-#           theGarage: "{{ trigger.entity_id.split('.')[-1] }}"
 
 # - alias: Garage Timer Stop
 #   id: 'GarageTimerStop'
@@ -161,91 +137,6 @@
     service: notify.brandie
 
 
-
-- alias: "Default Theme after Sunrise"
-  trigger:
-    platform: sun
-    event: sunrise
-    offset: "+00:00:00"
-  action:
-    - service: frontend.set_theme
-      data:
-        name: default
-- alias: "dark Theme after Sunset"
-  trigger:
-    platform: sun
-    event: sunset
-    offset: "+00:00:00"
-  action:
-    - service: frontend.set_theme
-      data:
-        name: slate
-        
-- alias: "Set Theme On Boot"
-  trigger:
-    platform: homeassistant
-    event: start
-  condition:
-    condition: or
-    conditions:
-      - condition: sun
-        after: sunset
-      - condition: sun
-        before: sunrise
-  action:
-    - delay:
-        seconds: 30
-    - service: frontend.set_theme
-      data:
-        name: slate
-
-
-# backups
-- alias: Make snapshot
-  trigger:
-    platform: time
-    at: '3:00:00'
-  condition:
-    condition: time
-    weekday:
-      - mon
-  action:
-    service: hassio.snapshot_full
-    data_template:
-      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
-
-- alias: Upload to S3
-  trigger:
-    platform: time
-    at: '3:30:00'
-  condition:
-    condition: time
-    weekday:
-      - mon
-  action:
-    service: hassio.addon_start
-    data:
-      addon: local_backup_s3
-      
-# update snapshot of a camera 3 seconds after recording begins
-- alias: Camera Snapshot
-  trigger:
-  - entity_id: camera.aarlo_driveway,camera.aarlo_front_door
-    for: 00:00:03
-    from: 'idle'
-    platform: state
-    to: 'recording'
-  - entity_id: camera.aarlo_driveway,camera.aarlo_front_door
-    for: 00:00:03
-    from: 'recently active'
-    platform: state
-    to: 'recording'
-  condition: []
-  action:
-  - data_template:
-      entity_id: "{{ trigger.entity_id }}"
-    service: camera.aarlo_request_snapshot
-    
 - alias: Notify Brandie when Barrett's Phone is about to die
   trigger:
     platform: numeric_state
@@ -287,81 +178,7 @@
     #     value2: "Home Assistant"
 
         
-- alias: Trash Reminder the Night Before
-  trigger:
-    platform: time
-    at: '18:00:00'
-  condition:
-    condition: template
-    value_template: >-
-      '{{ now().weekday() == 3 }}' #TODO: Make this not be the 2nd source of truth
-  action: 
-    service_template: >-
-      {% if is_state("person.barrett", "Wisconsin") %}
-      notify.brandie
-      {% else %}
-      notify.barrett
-      {% endif %}
-    data:
-      message: The trash needs to be taken out tonight, don't forget!
-      title: Don't let it get stinky...
-      
-- alias: Trash Reminder the Morning Of
-  trigger:
-    platform: state
-    entity_id:
-      - binary_sensor.barrett_phone_charging
-      - binary_sensor.brandie_phone_charging
-    from: 'on'
-    to: 'off'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.trash_day
-        state: 'on'
-      - condition: time
-        after: '05:00:00'
-        before: '11:00:00'
-  action:
-    service_template: >-
-      notify.{{ (trigger.entity_id.split('.')[-1]).split('_')[0] }}
-    data:
-      message: "Today is trash day. Don't forget!"
-      title: "Good Morning!"
-      
-      
-- alias: Deep Freeze Off Warning
-  trigger:
-    platform: state
-    entity_id:
-      - switch.deep_freeze
-    from: 'on'
-    to: 'off'
-  action:
-    - service: notify.barrett
-      data:
-        message: The deep freeze has been turned off. Is this right?!"
-        title: WARNING
-    - service: notify.brandie
-      data:
-        message: The deep freeze has been turned off. Is this right?!
-        title: WARNING
 
-- alias: Deep Freeze Broken Warning
-  trigger:
-    platform: numeric_state
-    entity_id:
-      - sensor.deep_freeze_power
-    below: 1
-    for: 00:45:00
-  action:
-    - service: notify.barrett
-      data:
-        message: The deep freeze is drawing about {{ states("sensor.deep_freeze_power") }} watts! That's a little low!
-        title: WARNING
-
-      
 # - id: 'Coffee Timer'
 #   alias: Coffee Timer
 #   trigger:

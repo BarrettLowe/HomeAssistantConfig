@@ -1,0 +1,13 @@
+- alias: Front Landscape Not Responding
+  hide_entity: true
+  trigger:
+    platform: state
+    from: 'home'
+    to: 'not_home'
+    for: '00:10:00'
+    entity_id: device_tracker.front_landscape
+  action:
+    - service: notify.barrett
+      data:
+        title: "Device Offline"
+        message: "Front Landscape lights are offline. Please check into them..."

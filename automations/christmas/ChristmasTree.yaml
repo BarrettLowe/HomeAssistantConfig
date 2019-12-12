@@ -1,0 +1,56 @@
+- alias: Start The Day
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hallway_motion
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.interior
+        state: 'off'
+      - condition: time
+        after: "00:04:30"
+      - condition: sun
+        before: sunrise
+  action:
+    entity_id: switch.christmas_tree
+    service: homeassistant.turn_on
+
+- alias: christmas_tree_movement_on
+  condition:
+    condition: state
+    entity_id: input_boolean.christmas_time
+    state: 'on'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.living_room_motion
+    from: 'off'
+    to: 'on'
+  action: 
+    service: homeassistant.turn_on
+    entity_id: switch.christmas_tree
+    
+- alias: christmas_tree_movement_off
+  condition:
+    condition: state
+    entity_id: input_boolean.christmas_time
+    state: 'on'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.living_room_motion
+    from: 'on'
+    to: 'off'
+    for: '00:10:00'
+  action: 
+    service: homeassistant.turn_off
+    entity_id: switch.christmas_tree
+    
+- alias: christmas_tree_stay_on
+  trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (state_attr('input_datetime.outside_lights_off_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+    service: automation.turn_off
+    entity_id: automation.christmas_tree_movement_off

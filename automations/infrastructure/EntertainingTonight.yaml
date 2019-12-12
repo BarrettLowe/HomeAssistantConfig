@@ -1,0 +1,8 @@
+- alias: Entertaining Tonight
+  trigger: 
+    platform: state
+    entity_id: calendar.entertaining
+    to: 'on'
+  action:
+    service: homeassistant.turn_on
+    entity_id: input_boolean.entertaining_tonight

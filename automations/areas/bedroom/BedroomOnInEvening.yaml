@@ -1,0 +1,28 @@
+# This automation turs on the bedroom lights in the evening when someone enters the hallway
+- alias: Bedroom on in evening
+  condition:
+    condition: and
+    conditions:
+      # if neither phone is plugged in (not in bed)
+      - condition: state
+        entity_id: binary_sensor.barrett_phone_charging
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.brandie_phone_charging
+        state: 'off'
+      #and it's after sunset - 45 minutes
+      - condition: sun
+        after: sunset
+        after_offset: "-00:45:00"
+      #and someone is home
+      - condition: state
+        entity_id: group.all_people
+        state: 'home'
+  trigger: 
+    platform: state
+    entity_id: binary_sensor.hallway_motion
+    from: 'off'
+    to: 'on'
+  action:
+    service: homeassistant.turn_on
+    entity_id: group.bedroom

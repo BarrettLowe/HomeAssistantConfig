@@ -1,0 +1,18 @@
+# update snapshot of a camera 3 seconds after recording begins
+- alias: Camera Snapshot
+  trigger:
+  - entity_id: camera.aarlo_driveway,camera.aarlo_front_door
+    for: 00:00:03
+    from: 'idle'
+    platform: state
+    to: 'recording'
+  - entity_id: camera.aarlo_driveway,camera.aarlo_front_door
+    for: 00:00:03
+    from: 'recently active'
+    platform: state
+    to: 'recording'
+  condition: []
+  action:
+  - data_template:
+      entity_id: "{{ trigger.entity_id }}"
+    service: camera.aarlo_request_snapshot

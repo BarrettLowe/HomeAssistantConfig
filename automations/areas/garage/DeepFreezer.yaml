@@ -1,0 +1,29 @@
+- alias: Deep Freeze Off Warning
+  trigger:
+    platform: state
+    entity_id:
+      - switch.deep_freeze
+    from: 'on'
+    to: 'off'
+  action:
+    - service: notify.barrett
+      data:
+        message: The deep freeze has been turned off. Is this right?!"
+        title: WARNING
+    - service: notify.brandie
+      data:
+        message: The deep freeze has been turned off. Is this right?!
+        title: WARNING
+
+- alias: Deep Freeze Broken Warning
+  trigger:
+    platform: numeric_state
+    entity_id:
+      - sensor.deep_freeze_power
+    below: 1
+    for: 01:00:00
+  action:
+    - service: notify.barrett
+      data:
+        message: The deep freeze is drawing about {{ states("sensor.deep_freeze_power") }} watts! That's a little low!
+        title: WARNING

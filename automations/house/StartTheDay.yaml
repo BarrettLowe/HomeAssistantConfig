@@ -1,0 +1,33 @@
+- alias: Start The Day
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hallway_motion
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: group.interior
+        state: 'off'
+      - condition: time
+        after: "00:04:30"
+      - condition: sun
+        before: sunrise
+  action:
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - light.sink
+          - light.kitchen_lamp
+          - light.smells_shelf
+          - light.bar
+          - light.under_cabinet_lights
+          - light.mantle_lamp
+        transition: 120
+    - delay: '00:02:00'
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - switch.mantle
+          - light.kitchen_desk

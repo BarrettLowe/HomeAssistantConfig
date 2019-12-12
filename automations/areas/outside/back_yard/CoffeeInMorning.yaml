@@ -1,0 +1,19 @@
+- id: '1570973547464'
+  alias: Backyard - Coffee Grounds
+  trigger:
+  - entity_id: binary_sensor.kitchen_door
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - after: sunrise
+        after_offset: -02:00:00
+        condition: sun
+      - before: sunrise
+        condition: sun
+  action:
+  - entity_id: light.east_beds, switch.globe_lights
+    service: homeassistant.turn_on
+

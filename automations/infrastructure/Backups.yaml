@@ -1,0 +1,26 @@
+# backups
+- alias: Make snapshot
+  trigger:
+    platform: time
+    at: '3:00:00'
+  condition:
+    condition: time
+    weekday:
+      - mon
+  action:
+    service: hassio.snapshot_full
+    data_template:
+      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+
+- alias: Upload to S3
+  trigger:
+    platform: time
+    at: '3:30:00'
+  condition:
+    condition: time
+    weekday:
+      - mon
+  action:
+    service: hassio.addon_start
+    data:
+      addon: local_backup_s3

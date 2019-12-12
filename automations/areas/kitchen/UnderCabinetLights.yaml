@@ -1,0 +1,100 @@
+- alias: Under Cabinet Lights Daytime
+  trigger:
+    entity_id: switch.kitchen_crappy
+    platform: state
+  action:
+    - data_template:
+        transition: 3
+        white_value: 0
+        brightness: 255
+        rgb_color:
+          - >-
+              {% if trigger.to_state.state == 'on' %} 
+                {{ states('input_number.cabinet_daytime_red') | int }} 
+              {% else %} 
+                0
+              {% endif %}
+          - >-
+              {% if trigger.to_state.state == 'on' %} 
+                {{ states('input_number.cabinet_daytime_green') | int }} 
+              {% else %} 
+                0 
+              {% endif %}
+          - >-
+              {% if trigger.to_state.state == 'on' %} 
+                {{ states('input_number.cabinet_daytime_blue') | int }} 
+              {% else %} 
+                0 
+              {% endif %}
+      entity_id: light.under_cabinet_lights
+      service_template: >
+        {% if trigger.to_state.state == 'on' %}
+          light.turn_on
+        {% else %} 
+          light.toggle
+        {% endif %}
+  condition:
+    condition: and
+    conditions:
+      - condition: sun
+        after: sunrise
+        after_offset: "-00:30:00"
+      - condition: sun
+        before: sunset
+        before_offset: "-00:30:00"
+    
+- alias: Under Cabinet Lights Nighttime
+  trigger:
+    - entity_id: switch.kitchen_crappy
+      platform: state
+      from: 'on'
+      to: 'off'
+    - entity_id: switch.kitchen_crappy
+      platform: state
+      from: 'off'
+      to: 'on'
+  action:
+    - data_template:
+        transition: > 
+          {% if trigger.to_state.state == 'off' and trigger.from_state.state == 'on' %}
+            5
+          {% else %}
+            1
+          {% endif %}
+        white_value: 0
+        brightness: >
+          {% if trigger.to_state.state == 'on' and trigger.from_state.state == 'off' %} 
+            255
+          {% else %}
+            133
+          {% endif %}
+        rgb_color:
+          - >-
+              {% if trigger.to_state.state == 'on' and trigger.from_state.state == 'off' %} 
+                {{ states('input_number.cabinet_daytime_red') | int }} 
+              {% else %} 
+                {{ states('input_number.cabinet_nighttime_red') | int }} 
+              {% endif %}
+          - >-
+              {% if trigger.to_state.state == 'on' and trigger.from_state.state == 'off' %} 
+                {{ states('input_number.cabinet_daytime_green') | int }} 
+              {% else %} 
+                {{ states('input_number.cabinet_nighttime_green') | int }} 
+              {% endif %}
+          - >-
+              {% if trigger.to_state.state == 'on' and trigger.from_state.state == 'off' %} 
+                {{ states('input_number.cabinet_daytime_blue') | int }} 
+              {% else %} 
+                {{ states('input_number.cabinet_nighttime_blue') | int }} 
+              {% endif %}
+      entity_id: light.under_cabinet_lights
+      service: light.turn_on
+  condition:
+    condition: or
+    conditions:
+      - condition: sun
+        before: sunrise
+        before_offset: "-00:30:00"
+      - condition: sun
+        after: sunset
+        after_offset: "-00:30:00"

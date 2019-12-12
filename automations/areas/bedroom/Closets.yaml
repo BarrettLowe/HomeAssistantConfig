@@ -1,0 +1,47 @@
+- alias: Barretts Closet
+  action:
+    - data_template:
+        entity_id: light.barretts_closet
+        transition: 1
+        brightness: >
+          {% if states('binary_sensor.brandie_phone_charging') == 'on' %}
+          100
+          {% else %}
+          255
+          {% endif %}
+      service_template: >
+        {% if trigger.to_state.state == 'off' and trigger.from_state.state == 'on' %}
+        light.toggle
+        {% else %}
+        light.turn_on
+        {% endif %}
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
+  trigger:
+    entity_id: binary_sensor.barretts_closet_door
+    platform: state
+    
+- alias: Brandies Closet
+  action:
+    - data_template:
+        entity_id: light.brandies_closet
+        transition: 1
+        brightness: >
+          {% if states('binary_sensor.barrett_phone_charging') == 'on' %}
+          100
+          {% else %}
+          255
+          {% endif %}
+      service_template: >
+        {% if trigger.to_state.state == 'off' and trigger.from_state.state == 'on' %}
+        light.toggle
+        {% else %}
+        light.turn_on
+        {% endif %}
+  condition:
+    condition: template
+    value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
+  trigger:
+    entity_id: binary_sensor.brandies_closet_door
+    platform: state
