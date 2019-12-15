@@ -1,4 +1,4 @@
-- alias: Start The Day
+- alias: Start The Day Christmas
   trigger:
     platform: state
     entity_id: binary_sensor.hallway_motion
@@ -8,15 +8,18 @@
     condition: and
     conditions:
       - condition: state
+        entity_id: input_boolean.christmas_time
+        state: 'on'
+      - condition: state
         entity_id: group.interior
         state: 'off'
-      - condition: time
-        after: "00:04:30"
-      - condition: sun
-        before: sunrise
+      - condition: template
+        value_template: "{{ states('sensor.time') >= (state_attr('input_datetime.morning_routine_start_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+      - condition: template
+        value_template: "{{ states('sensor.time') < (state_attr('input_datetime.morning_routine_stop_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
   action:
-    entity_id: switch.christmas_tree
-    service: homeassistant.turn_on
+    - entity_id: switch.christmas_tree
+      service: homeassistant.turn_on
 
 - alias: christmas_tree_movement_on
   condition:
@@ -47,10 +50,36 @@
     service: homeassistant.turn_off
     entity_id: switch.christmas_tree
     
+- alias: Leave the tree on when Brandie gets home
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.christmas_time
+        state: 'on'
+  trigger: 
+    platform: state
+    entity_id: person.brandie
+    to: 'home'
+    from: 'not_home'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: 
+        - switch.christmas_tree
+        - automation.christmas_tree_movement_off
+    
 - alias: christmas_tree_stay_on
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.christmas_time
+        state: 'on'
   trigger:
     platform: template
     value_template: "{{ states('sensor.time') == (state_attr('input_datetime.outside_lights_off_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
   action:
-    service: automation.turn_off
-    entity_id: automation.christmas_tree_movement_off
+    - service: automation.turn_on
+      entity_id: automation.christmas_tree_movement_off
+    - service: homeassistant.turn_off
+      entity_id: switch.christmas_tree

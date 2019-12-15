@@ -1,0 +1,8 @@
+alias: Driveway Off In Morning
+trigger:
+  - event: sunrise
+    platform: sun
+    offset: "00:45:00"
+action:
+  service: homeassistant.turn_off
+  entity_id: light.driveway

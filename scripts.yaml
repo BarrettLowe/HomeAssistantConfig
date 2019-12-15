@@ -45,17 +45,26 @@ all_lights_off:
         entity_id: 
           - automation.under_cabinet_lights_daytime
           - automation.under_cabinet_lights_nighttime
-    - service: homeassistant.turn_on
-      entity_id: automation.christmas_tree_movement_off
 
-all_lights_away:
-  alias: Lights In Away State
+morning_routine:
+  alias: Morning Routine
   sequence:
-    - service: homeassistant.turn_off
+    - service: homeassistant.turn_on
       data:
-        entity_id: 
-          - group.interior
-          - group.back_yard
+        entity_id:
+          - light.sink
+          - light.kitchen_lamp
+          - light.smells_shelf
+          - light.bar
+          - light.under_cabinet_lights
+          - light.mantle_lamp
+        transition: 120
+    - delay: '00:02:00'
+    - service: homeassistant.turn_on
+      data:
+        entity_id:
+          - switch.mantle
+          - light.kitchen_desk
 
 fireplace:
   alias: Fireplace
@@ -126,9 +135,9 @@ alarm_driveway:
           entity_id: light.driveway
           brightness: 255
           rgb_color:
-           - 200
-           - 200
-           - 150
+            - 255
+            - 204
+            - 114
           transition: 0.1
             
        

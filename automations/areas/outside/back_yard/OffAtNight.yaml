@@ -1,0 +1,7 @@
+- alias: Nighttime lights off
+  trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (state_attr('input_datetime.outside_lights_off_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+    - service: homeassistant.turn_off
+      entity_id: group.back_yard

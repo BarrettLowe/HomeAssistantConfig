@@ -1,0 +1,27 @@
+- alias: coffee_in_morning
+  trigger:
+    platform: state
+    entity_id: binary_sensor.living_room_motion
+    to: 'on'
+    from: 'off'
+  condition:
+    condition: and
+    conditions:
+      - condition: template
+        value_template: "{{ states('sensor.time') >= (state_attr('input_datetime.morning_routine_start_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+      - condition: template
+        value_template: "{{ states('sensor.time') < (state_attr('input_datetime.morning_routine_stop_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: binary_sensor.barrett_phone_charging
+            state: 'off'
+          - condition: state
+            entity_id: binary_sensor.brandie_phone_charging
+            state: 'off'
+  action:
+    service: homeassistant.turn_on
+    entity_id:
+      - light.dog_lamp
+      - light.couch_lamp
+      - light.piano_lamp

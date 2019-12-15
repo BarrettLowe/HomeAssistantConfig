@@ -1,0 +1,10 @@
+alias: Backyard on when Coming Home
+trigger: 
+  platform: state
+  entity_id: group.all_people
+  from: 'not_home'
+  to: 'home'
+condition:
+  condition: sun
+  after: sunset
+  after_offset: "-00:45:00"

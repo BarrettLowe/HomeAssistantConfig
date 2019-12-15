@@ -5,14 +5,14 @@
     offset: "-00:45:00"
   condition: []
   action:
-    - entity_id: group.front_yard, group.back_yard
+    - entity_id: group.front_yard
       service: homeassistant.turn_on
     - data:
         entity_id: light.driveway
         rgb_color:
           - 255
-          - 255
-          - 125
+          - 204
+          - 114
         brightness: 255
       service: homeassistant.turn_on
     - condition: state
@@ -27,7 +27,7 @@
     value_template: "{{ states('sensor.time') == (state_attr('input_datetime.outside_lights_off_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
   action:
     - service: homeassistant.turn_off
-      entity_id: group.front_yard, group.back_yard
+      entity_id: group.front_yard
     - condition: state
       entity_id: input_boolean.christmas_time
       state: 'on'

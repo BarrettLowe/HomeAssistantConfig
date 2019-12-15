@@ -18,6 +18,9 @@
       - condition: state
         entity_id: group.all_people
         state: 'home'
+      - condition: state
+        entity_id: group.bedroom
+        state: 'off'
   trigger: 
     platform: state
     entity_id: binary_sensor.hallway_motion

@@ -10,10 +10,10 @@
       - condition: state
         entity_id: group.interior
         state: 'off'
-      - condition: time
-        after: "00:04:30"
-      - condition: sun
-        before: sunrise
+      - condition: template
+        value_template: "{{ states('sensor.time') >= (state_attr('input_datetime.morning_routine_start_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+      - condition: template
+        value_template: "{{ states('sensor.time') < (state_attr('input_datetime.morning_routine_stop_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
   action:
     - service: homeassistant.turn_on
       data:

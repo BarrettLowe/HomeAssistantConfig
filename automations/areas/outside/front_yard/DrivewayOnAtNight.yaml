@@ -1,0 +1,8 @@
+- alias: Driveway On At Night
+  trigger:
+  - event: sunset
+    platform: sun
+    offset: "-00:45:00"
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.driveway

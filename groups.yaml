@@ -67,7 +67,7 @@ dining_room:
   icon: mdi:silverware
   entities:
     - light.dog_lamp
-    - light.wemo_dimmer
+    - light.chandelier
 
 living_room:
   name: Living Room

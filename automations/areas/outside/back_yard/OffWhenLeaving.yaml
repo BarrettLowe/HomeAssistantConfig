@@ -1,0 +1,9 @@
+alias: Backyard off When Leaving
+trigger:
+  - entity_id: group.all_people
+    from: home
+    platform: state
+    to: not_home
+service: homeassistant.turn_off
+data:
+  entity_id: group.back_yard
