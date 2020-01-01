@@ -102,6 +102,7 @@ brandie_sleeps:
         - light.brandies_side
         - switch.jewelry_lamp
         - light.dresser
+        - group.hallway
     - service: light.turn_on
       data:
         entity_id: light.barretts_side

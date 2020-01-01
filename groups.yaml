@@ -24,6 +24,7 @@ interior:
     - group.living_room
     - group.office
     - light.entry
+    - group.hallway
   
 ## ROOMS
 family_room:
@@ -113,4 +114,11 @@ front_yard:
     - light.porch_landscape
     - light.bedroom_landscape
     - light.east_oak
+    
+hallway:
+  name: Hallway
+  view: yes
+  entities:
+    - light.hallway_south
+    - light.hallway_north
 ## END ROOMS
