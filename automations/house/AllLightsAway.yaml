@@ -1,15 +1,13 @@
-# # Turn lights off when everyone leaves
-# - action:
-#   - service: homeassistant.turn_off
-#     data:
-#       entity_id: 
-#         - group.interior
-#         - group.back_yard
-#   alias: Nobody Home
-#   condition: []
-#   id: '1524424713525'
-#   trigger:
-#   - entity_id: group.all_people
-#     from: home
-#     platform: state
-#     to: not_home
+# Turn lights off when everyone leaves
+- action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id: 
+        - group.interior
+        - group.back_yard
+  alias: Nobody Home
+  condition: []
+  trigger:
+  - entity_id: group.all_people
+    platform: state
+    to: not_home

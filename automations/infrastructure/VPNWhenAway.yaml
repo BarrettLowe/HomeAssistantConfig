@@ -1,0 +1,39 @@
+# - alias: VPNOnWhenAway
+#   trigger:
+#     platform: state
+#     entity_id: person.barrett, person.brandie
+#     to: not_home
+#     for:
+#       minutes: 2
+#   condition: 
+#     condition: and
+#     conditions:
+#       - condition: template
+#         value_template: "{{ not is_state('person.barrett', 'home') }}"
+#       - condition: template
+#         value_template: "{{ not is_state('person.brandie', 'home') }}"
+#   action:
+#     data:
+#       addon: core_wireguard
+#     service: hassio.addon_start
+
+# - alias: VPNOffWhenHome
+#   trigger:
+#     platform: state
+#     entity_id: person.barrett, person.brandie
+#     to: home
+#     for:
+#       minutes: 5
+#   condition:
+#     condition: and
+#     conditions:
+#       - condition: state
+#         entity_id: person.barrett
+#         state: home
+#       - condition: state
+#         entity_id: person.brandie
+#         state: home
+#   action:
+#     data:
+#       addon: core_wireguard
+#     service: hassio.addon_stop

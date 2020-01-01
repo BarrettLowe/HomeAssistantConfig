@@ -1,5 +1,5 @@
 - id: '1570973547464'
-  alias: Backyard - Coffee Grounds
+  alias: Backyard Morning On
   trigger:
   - entity_id: binary_sensor.kitchen_door
     from: 'off'
@@ -14,6 +14,6 @@
       - before: sunrise
         condition: sun
   action:
-  - entity_id: light.east_beds, switch.globe_lights
+  - entity_id: switch.globe_lights, light.east_beds, light.southeast_corner_bed, light.garden_behind_pool, light.fig_and_sun_deck
     service: homeassistant.turn_on
 

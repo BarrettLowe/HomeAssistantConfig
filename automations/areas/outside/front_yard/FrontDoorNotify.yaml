@@ -1,3 +1,30 @@
+- alias: Front door notification disabled when open
+  trigger: 
+    platform: state
+    entity_id: binary_sensor.front_door
+    from: 'off'
+    to: 'on'
+  action:
+    service: homeassistant.turn_off
+    entity_id: 
+      - automation.notify_barrett_when_someone_is_at_the_front_door
+      # - automation.notify_brandie_when_someone_is_at_the_front_door
+      
+- alias: Front door notification enable after close
+  trigger: 
+    platform: state
+    entity_id: binary_sensor.front_door
+    from: 'on'
+    to: 'off'
+    for:
+      minutes: 1
+  action:
+    service: homeassistant.turn_on
+    entity_id: 
+      - automation.notify_barrett_when_someone_is_at_the_front_door
+      # - automation.notify_brandie_when_someone_is_at_the_front_door
+
+  
 - alias: Notify Barrett when someone is at the front door
   trigger:
     platform: state
@@ -34,8 +61,6 @@
     #         value_template: '{{ (as_timestamp(now()) -(states.input_datetime.front_door_notification_start.timestamp | default(0)) | int > 0) and ((states.input_datetime.front_door_notification_stop.attributes.timestamp  - as_timestamp(now()) | default(0)) | int > 0)}}'
     #       - condition: template
     #         value_template: '{{ (as_timestamp(now()) -(states.input_datetime.front_door_notification_start.attributes.timestamp | default(0)) | int > 0) and ((states.input_datetime.front_door_notification_stop.attributes.timestamp  - as_timestamp(now()) | default(0)) | int > 0)}}'
-
-
   action:
     - service: notify.barrett
       data:
