@@ -4,8 +4,8 @@
         entity_id: light.barretts_closet
         transition: 1
         brightness: >
-          {% if states('binary_sensor.brandie_phone_charging') == 'on' %}
-          100
+          {% if states('binary_sensor.brandie_in_bed') == 'on' %}
+          50
           {% else %}
           255
           {% endif %}
@@ -28,8 +28,8 @@
         entity_id: light.brandies_closet
         transition: 1
         brightness: >
-          {% if states('binary_sensor.barrett_phone_charging') == 'on' %}
-          100
+          {% if states('binary_sensor.barrett_in_bed') == 'on' %}
+          50
           {% else %}
           255
           {% endif %}

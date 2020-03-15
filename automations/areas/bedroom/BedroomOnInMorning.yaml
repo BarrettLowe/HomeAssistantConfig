@@ -1,16 +1,25 @@
 # This automation turs on the bedroom lights in the evening when someone enters the hallway
-- alias: Bedroom on in evening
+- alias: Bedroom on in morning
   condition:
     condition: and
     conditions:
-      # if neither phone is plugged in (not in bed)
-      - condition: state
-        entity_id: binary_sensor.barrett_phone_charging
-        state: 'off'
-      - condition: state
-        entity_id: binary_sensor.brandie_phone_charging
-        state: 'off'
-      #and it's after sunset - 45 minutes
+    # do not trigger if Barrett isn't home
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: binary_sensor.barrett_phone_charging
+            state: 'off'
+          - condition: state
+            entity_id: person.barrett
+            state: 'not_home'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: binary_sensor.brandie_phone_charging
+            state: 'off'
+          - condition: state
+            entity_id: person.brandie
+            state: 'not_home'
       - condition: time
         before: "10:00:00"
       #and someone is home

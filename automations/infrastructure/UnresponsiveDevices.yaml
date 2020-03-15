@@ -1,13 +1,12 @@
-- alias: Front Landscape Not Responding
-  hide_entity: true
+- alias: Landscape Not Responding
   trigger:
     platform: state
     from: 'home'
     to: 'not_home'
     for: '00:10:00'
-    entity_id: device_tracker.front_landscape
+    entity_id: device_tracker.front_landscape, device_tracker.back_landscape
   action:
     - service: notify.barrett
-      data:
+      data_template:
         title: "Device Offline"
-        message: "Front Landscape lights are offline. Please check into them..."
+        message: "{{ trigger.entity_id.split('.')[-1] }} is offline. Please check into it..."

@@ -83,3 +83,20 @@
       entity_id: automation.christmas_tree_movement_off
     - service: homeassistant.turn_off
       entity_id: switch.christmas_tree
+      
+- alias: Christmas Tree Off When Away
+  action:
+    - service: homeassistant.turn_off
+      data:
+        entity_id: 
+          - switch.christmas_tree
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.christmas_time
+        state: 'on'
+  trigger:
+  - entity_id: group.all_people
+    platform: state
+    to: not_home

@@ -1,5 +1,4 @@
 - alias: New HomeAssistant Version Available
-  hide_entity: true
   trigger:
     platform: state
     from: 'off'

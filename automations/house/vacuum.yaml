@@ -1,18 +1,8 @@
 # Start vacuum during the week
 - alias: Bi-Weekly Neato Start
   action:
-    - service: notify.brandie
-      data:
-        message: "Start the neato! Gotta do it manually because of the stupid no-go lines..."
-        title: "HomeAssistant"
-        data:
-          icon: https://scontent-dfw5-1.cdninstagram.com/vp/7ef95447afa80de3c35a63fd6ab05ea2/5B5F68CD/t51.2885-19/s150x150/12547416_823581534417376_2137177637_a.jpg
-    - service: notify.barrett
-      data:
-        message: "Start the neato! Gotta do it manually because of the stupid no-go lines..."
-        title: "HomeAssistant"
-        data:
-          icon: https://scontent-dfw5-1.cdninstagram.com/vp/7ef95447afa80de3c35a63fd6ab05ea2/5B5F68CD/t51.2885-19/s150x150/12547416_823581534417376_2137177637_a.jpg
+    - service: script.turn_on
+      entity_id: script.start_neato
   trigger:
     platform: time
     at: '10:00:00'
@@ -22,7 +12,46 @@
     - mon
     - thu
     - sat
-
+    
+- alias: Remind about vacuum in morning
+  trigger:
+    platform: state
+    entity_id:
+      - binary_sensor.barrett_phone_charging
+      - binary_sensor.brandie_phone_charging
+    to: 'off'
+    from: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        weekday:
+        - mon
+        - thu
+        - sat
+      - condition: time
+        before: "10:00:00"
+  action:
+    - service_template: notify.{{trigger.entity_id.split('.')[1].split('_')[0]}}
+      data_template:
+        message: "Good Morning {{trigger.entity_id.split('.')[1].split('_')[0].capitalize()}}! The Neato is scheduled to run WITH no-go lines. Please make sure everything is picked up by 10am! \n- HomeAssistant"
+        title: "HomeAssistant"
+        
+- alias: Dust Bin Reminder
+  trigger:
+    platform: state
+    entity_id:
+      - vacuum.bnbs_neato
+    from: 'Cleaning'
+    to: 'Docked'
+  action:
+    service: notify.mobile_app_pixel_3
+    data:
+      title: Neato Reminder
+      message: Vacuum has become docked, please empty the dust bin!
+  
+        
+        
 # # Start vacuum on the weekend only IF someone is home, otherwise start it when someone gets home
 # - alias: Weekend Neato Start
 #   trigger:

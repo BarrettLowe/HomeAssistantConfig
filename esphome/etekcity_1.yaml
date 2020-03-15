@@ -1,0 +1,96 @@
+esphome:
+  name: etekcity_1
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+  ssid: !secret WifiSSID
+  password: !secret WifiPass
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Etekcity 1 Fallback Hotspot"
+    password: "Iz6LMPORTGcE"
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "***REMOVED***"
+
+ota:
+  password: "***REMOVED***"
+  
+web_server:
+  port: 80
+
+sensor:
+  - platform: hlw8012
+    sel_pin: 16
+    cf_pin: 13
+    cf1_pin: 12
+    current:
+      name: "HLW8012 Current"
+    voltage:
+      name: "HLW8012 Voltage"
+    power:
+      name: "HLW8012 Power"
+    update_interval: 60s
+    initial_mode: VOLTAGE
+    change_mode_every: 4294967295
+    voltage_divider: 1907.0
+  
+switch:
+  - platform: gpio
+    pin: 4
+    id: relay
+    restore_mode: ALWAYS_OFF
+   # This is the actual rely control. Not setting the "name:" keeps it hidden
+
+  - platform: template
+    name: "Switched Load"
+    id: switched_load
+    turn_on_action:
+      - switch.turn_on: relay
+      - switch.template.publish:
+          id: switched_load
+          state: ON
+    turn_off_action:
+      - switch.turn_off: relay
+      - switch.template.publish:
+          id: switched_load
+          state: OFF
+    lambda: |-
+      if (id(switched_load).state) {
+        return true;
+      } else {
+        return false;
+      }
+    
+    # This is the HASS switch to control the relay setup above
+binary_sensor:
+  - platform: gpio
+    id: capacitive_switch
+    pin: 14
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 100ms
+    on_press:
+      then:
+        - switch.toggle: switched_load
+
+light:
+  - platform: monochromatic
+    name: "Front Indicator LED"
+    id: indicator
+    output: front_led
+    restore_mode: ALWAYS_OFF
+    default_transition_length: 500ms
+
+output:
+  - platform: esp8266_pwm
+    id: front_led
+    pin: 5

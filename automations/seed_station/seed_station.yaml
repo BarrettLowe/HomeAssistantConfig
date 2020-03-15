@@ -1,0 +1,14 @@
+- alias: Seed Station Off
+  trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (state_attr('input_datetime.seed_station_off_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.christmas_tree
+- alias: Seed Station On
+  trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (state_attr('input_datetime.seed_station_on_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.christmas_tree

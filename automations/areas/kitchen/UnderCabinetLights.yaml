@@ -1,4 +1,4 @@
-- alias: Under Cabinet Lights Daytime
+- alias: Under Cabinet Lights Morning
   trigger:
     entity_id: switch.kitchen_crappy
     platform: state
@@ -39,6 +39,51 @@
       - condition: sun
         after: sunrise
         after_offset: "-00:30:00"
+      - condition: sun
+        before: sunrise
+        before_offset: "02:00:00"
+
+- alias: Under Cabinet Lights Daytime
+  trigger:
+    entity_id: switch.kitchen_crappy
+    platform: state
+  action:
+    - data_template:
+        transition: 3
+        white_value: 0
+        brightness: 200
+        rgb_color:
+          - >-
+              {% if trigger.to_state.state == 'on' %} 
+                {{ states('input_number.cabinet_daytime_red') | int }} 
+              {% else %} 
+                0
+              {% endif %}
+          - >-
+              {% if trigger.to_state.state == 'on' %} 
+                {{ states('input_number.cabinet_daytime_green') | int }} 
+              {% else %} 
+                0 
+              {% endif %}
+          - >-
+              {% if trigger.to_state.state == 'on' %} 
+                {{ states('input_number.cabinet_daytime_blue') | int }} 
+              {% else %} 
+                0 
+              {% endif %}
+      entity_id: light.under_cabinet_lights
+      service_template: >
+        {% if trigger.to_state.state == 'on' %}
+          light.turn_on
+        {% else %} 
+          light.toggle
+        {% endif %}
+  condition:
+    condition: and
+    conditions:
+      - condition: sun
+        after: sunrise
+        after_offset: "02:00:00"
       - condition: sun
         before: sunset
         before_offset: "-00:30:00"

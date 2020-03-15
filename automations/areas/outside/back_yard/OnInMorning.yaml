@@ -8,12 +8,11 @@
   condition:
     condition: and
     conditions:
-      - after: sunrise
-        after_offset: -02:00:00
-        condition: sun
+      - after: '05:00:00'
+        condition: time
       - before: sunrise
         condition: sun
   action:
-  - entity_id: switch.globe_lights, light.east_beds, light.southeast_corner_bed, light.garden_behind_pool, light.fig_and_sun_deck
+  - entity_id: light.globe_lights, light.east_beds, light.southeast_corner_bed, light.garden_behind_pool, light.fig_and_sun_deck
     service: homeassistant.turn_on
 

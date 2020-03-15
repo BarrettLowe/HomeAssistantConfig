@@ -20,7 +20,6 @@
       to: 'on'
 
 - alias: Cancel timer if Garage closed
-  hide_entity: true
   trigger:
     - platform: state
       entity_id: cover.middle_garage

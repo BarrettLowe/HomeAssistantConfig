@@ -46,9 +46,28 @@ all_lights_off:
           - automation.under_cabinet_lights_daytime
           - automation.under_cabinet_lights_nighttime
 
+lights_off_arm_home:
+  alias: Lights off and Arm Security
+  sequence:
+    - service: script.turn_on
+      entity_id: script.all_lights_off
+    - condition: state
+      entity_id: alarm_control_panel.***REMOVED***_alarm_control_panel
+      state: disarmed
+    - service: alarm_control_panel.alarm_arm_home
+      entity_id: alarm_control_panel.***REMOVED***_alarm_control_panel
+
 morning_routine:
   alias: Morning Routine
   sequence:
+    - service: light.turn_on
+      entity_id: light.under_cabinet_lights
+      data_template:
+        rgb_color:
+          - "{{ states('input_number.cabinet_morning_red') | int }}" 
+          - "{{ states('input_number.cabinet_morning_green') | int }}" 
+          - "{{ states('input_number.cabinet_morning_blue') | int }}" 
+        brightness: '{{ state_attr("light.under_cabinet_lights","brightness") }}'
     - service: homeassistant.turn_on
       data:
         entity_id:
@@ -89,9 +108,20 @@ find_brandies_phone:
     - service: shell_command.ring_brandie
     
 start_neato:
-  alias: Start Neato from Barretts Phone
+  alias: Start Neato
   sequence:
-    - service: shell_command.start_neato
+    - service: neato.custom_cleaning
+      data_template:
+        entity_id: vacuum.bnbs_neato
+        mode: >
+          {% if is_state("person.barrett", "Wisconsin") %}
+            1 
+          {% else %}
+            2
+          {% endif %}
+        navigation: 1
+        category: 4
+        
     
 brandie_sleeps:
   alias: Brandie Sleeps

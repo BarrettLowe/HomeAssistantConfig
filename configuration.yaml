@@ -63,10 +63,10 @@ updater:
 # Discover some devices automatically
 discovery:
 
-tuya:
-  username: !secret tuyaUsername
-  password: !secret tuyaPassword
-  country_code: 1
+# tuya:
+#   username: !secret tuyaUsername
+#   password: !secret tuyaPassword
+#   country_code: 1
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -84,7 +84,7 @@ logbook:
 # logger:
 #   default: warning
 #   logs:
-#     homeassistant.components.mqtt: debug
+    # homeassistant.components.mqtt: debug
 #     homeassistant.components.device_tracker: debug
 #     homeassistant.components.aarlo: debug
 
@@ -161,8 +161,8 @@ binary_sensor:
   - platform: template
     sensors:
       trash_day:
-        value_template: >-
-          {{ now().weekday() == 4 }}
+        value_template: >
+          "{{ now().weekday() == 4 }}"
         friendly_name: "Is Today Trash Day?"
         icon_template: >-
           {% if is_state("binary_sensor.trash_day", "on") %}
@@ -170,6 +170,13 @@ binary_sensor:
           {% else %}
           mdi:emoticon-outline
           {% endif %}
+      barrett_in_bed:
+        value_template: >-
+          "{{ states('barrett_phone_charging') == 'on' and states('person.barrett') == 'home' }}"
+      brandie_in_bed:
+        value_template: >-
+          "{{ states('brandie_phone_charging') == 'on' and states('person.brandie') == 'home' }}"
+
   - platform: aarlo
     monitored_conditions:
       - motion
@@ -209,9 +216,9 @@ binary_sensor:
     payload_off: 'false'
 
 
-vesync:
-  username: !secret vesync_user
-  password: !secret vesync_password
+# vesync:
+#   username: !secret vesync_user
+#   password: !secret vesync_password
 
 switch:
   - platform: command_line
@@ -241,6 +248,28 @@ device_tracker:
       barrett_pixel: owntracks/Barrett/pixel
       brandie_pixel: owntracks/Brandie/pixel
 
+fan:
+  - platform: mqtt
+    name: "Fan Office"
+    availability_topic: "homeassistant/tasmota/office_light_and_fan/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    state_topic: "homeassistant/tasmota/office_light_and_fan/stat/POWER2"
+    command_topic: "homeassistant/tasmota/office_light_and_fan/cmnd/POWER2"
+    payload_on: "ON"
+    payload_off: "OFF"
+    speed_state_topic: "homeassistant/tasmota/office_light_and_fan/stat/FAN_SPEED"
+    speed_value_template: "{% if value_json is defined and value_json.Speed is defined %}speed={{ value_json.Speed }}{% endif %}"
+    speed_command_topic: "homeassistant/tasmota/office_light_and_fan/cmnd/Event"
+    payload_low_speed: "speed=0"
+    payload_medium_speed: "speed=1"
+    payload_high_speed: "speed=2"
+    qos: 1
+    speeds:
+      - low
+      - medium
+      - high
+
 
 person:
 #   - name: Barrett
@@ -255,11 +284,11 @@ person:
 #       - device_tracker.brandie_pixel_nmap
 
 
-mqtt:
-  broker: !secret mqtt_broker
-  port: !secret mqtt_port
-  username: homeassistant
-  password: !secret mqtt_password
+# mqtt:
+#   broker: !secret mqtt_broker
+#   port: !secret mqtt_port
+#   username: homeassistant
+#   password: !secret mqtt_password
 
 cover:
   - platform: mqtt
@@ -328,21 +357,20 @@ joaoapps_join:
     api_key: !secret join_brandie_api_key
 
 # xboxone:
+spotify:
+  client_id: !secret barrett_spotify_client
+  client_secret: !secret barrett_spotify_secret
 
 media_player:
   # - platform: snapcast
   #   host: 192.168.86.202
-  - name: spotify_barrett
-    platform: spotify
-    client_id: !secret barrett_spotify_client
-    client_secret: !secret barrett_spotify_secret
-  - name: Xbox
-    platform: xboxone
-    device: FD00EF64AEF7927A
-  - name: Hugh Jass
-    platform: vizio
-    host: 192.168.86.211
-    access_token: Zvejx98jul
+  # - name: Xbox
+  #   platform: xboxone
+  #   device: FD00EF64AEF7927A
+  # - name: Hugh Jass
+  #   platform: vizio
+  #   host: 192.168.86.211
+  #   access_token: Zvejx98jul
   # - name: Local
   #   platform: vlc_telnet
   #   host: localhost
@@ -384,15 +412,20 @@ zha:
   usb_path: /dev/ttyUSB1
   database_path: /config/zigbee.db
   
-# calendar:
+calendar:
 #   - platform: todoist
 #     token: ea15be5c63c7ee4fe2036e4de72285f53f351af1
+  - platform: caldav
+    username: barrett
+    password: !secret nextcloudPassword
+    url: https://nextcloud.***REMOVED***.xyz/remote.php/dav
 
 
 #google calendar integration
-google:
-  client_id: !secret googleclient_id
-  client_secret: !secret googleclient_secret
+# google:
+#   client_id: !secret googleclient_id
+#   client_secret: !secret googleclient_secret
+
 
 shell_command:
   start_neato: "/usr/bin/curl -X GET !secret barrettStartNeatoUrl"
@@ -413,6 +446,8 @@ input_boolean:
     name: Christmas Time
   entertaining_tonight:
     name: People are coming over tonight
+  seed_station_enabled:
+    name: Enable the seed station lights
     
 input_number:
   globe_light_on_minutes_before_sunset:
@@ -436,6 +471,15 @@ input_number:
   cabinet_daytime_green:
     max: 255
     min: 0    
+  cabinet_morning_red:
+    max: 255
+    min: 0
+  cabinet_morning_blue:
+    max: 255
+    min: 0
+  cabinet_morning_green:
+    max: 255
+    min: 0    
     
     
 input_datetime:
@@ -452,6 +496,12 @@ input_datetime:
     has_date: false
     has_time: true
   morning_routine_stop_time:
+    has_date: false
+    has_time: true
+  seed_station_on_time:
+    has_date: false
+    has_time: true
+  seed_station_off_time:
     has_date: false
     has_time: true
 # input_select:

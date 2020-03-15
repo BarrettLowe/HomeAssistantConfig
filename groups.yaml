@@ -25,11 +25,11 @@ interior:
     - group.office
     - light.entry
     - group.hallway
+    - group.nursery
   
 ## ROOMS
 family_room:
   name: Family Room
-  view: yes
   icon: mdi:television-classic
   entities:
     - switch.fireplace_lamp
@@ -43,7 +43,6 @@ family_room:
 
 bedroom:
   name: Bedroom
-  view: yes
   icon: mdi:bed-empty
   entities:
     - light.barretts_side
@@ -53,7 +52,6 @@ bedroom:
 
 kitchen:
   name: Kitchen
-  view: yes
   icon: mdi:pot-mix
   entities:
     - light.sink
@@ -64,7 +62,6 @@ kitchen:
 
 dining_room:
   name: Dining Room
-  view: yes
   icon: mdi:silverware
   entities:
     - light.dog_lamp
@@ -73,16 +70,13 @@ dining_room:
 living_room:
   name: Living Room
   icon: mdi:account-multiple
-  view: yes
   entities:
     - light.couch_lamp
-    - switch.christmas_tree
     - light.piano_lamp
 
 office:
   name: Office
   icon: mdi:desktop-mac
-  view: yes
   entities:
     - light.engineering_lamp
     - light.brandies_desk
@@ -90,16 +84,14 @@ office:
 
 movie_room:
   name: Movie Room
-  view: yes
   entities:
     - switch.futon
 
 back_yard:
   name: Backyard
   icon: mdi:tree
-  view: yes
   entities:
-    - switch.globe_lights
+    - light.globe_lights
     - switch.tree
     - light.east_beds
     - light.southeast_corner_bed
@@ -108,7 +100,6 @@ back_yard:
     
 front_yard:
   name: Front Yard
-  view: yes
   entities:
     - light.garage_landscape
     - light.porch_landscape
@@ -117,8 +108,13 @@ front_yard:
     
 hallway:
   name: Hallway
-  view: yes
   entities:
     - light.hallway_south
     - light.hallway_north
+  
+nursery:
+  name: Nursery
+  entities:
+    - light.nursery_dresser
+    - light.rocking_chair
 ## END ROOMS

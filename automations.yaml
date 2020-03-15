@@ -1,0 +1,15 @@
+- id: '1583965765800'
+  alias: Test Automation
+  description: ''
+  trigger:
+  - device_id: ec0d04ac016f4e1d86981a47b78ff99b
+    domain: zha
+    platform: device
+    subtype: button_1
+    type: remote_button_long_release
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.chromecast
+      message: I Love You
+    service: tts.google_say
