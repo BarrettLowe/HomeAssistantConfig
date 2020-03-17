@@ -13,6 +13,8 @@ esphome:
 wifi:
   ssid: !secret WifiSSID
   password: !secret WifiPass
+  
+api:
 
 # Enable logging
 logger:
@@ -40,83 +42,43 @@ sensor:
         id: "ic1Volts"
         accuracy_decimals: 1
       current:
-        name: "CT1 Amps"
-        id: "ct1Amps"
-        accuracy_decimals: 3
+        name: "Pool Amps"
+        id: "poolAmps"
+        accuracy_decimals: 2
+      power:
+        name: "Pool Power"
+        id: "poolPower"
 # Voltage using a 12VAC power transformer
       gain_voltage: 7063
 # Current calibration using a 100A/50ma SCT-013-000
       gain_ct: ${ctTune}
     phase_b:
       current:
-        name: "CT2 Amps"
-        id: "ct2Amps"
-      gain_voltage: 7063
-      gain_ct: ${ctTune}
-    phase_c:
-      current:
-        name: "CT3 Amps"
-        id: "ct3Amps"
+        name: "Air Conditioner Amps"
+        id: "acAmps"
+      power:
+        name: "Air Conditioner Power"
+        id: "acPower"
       gain_voltage: 7063
       gain_ct: ${ctTune}
     frequency:
       name: "Freq"
     line_frequency: 60Hz
     gain_pga: 1X
-    update_interval: ${update_time}
-  - platform: atm90e32
-    cs_pin: 4
-    phase_a:
-      voltage:
-        name: "Volts B"
-        id: "ic2Volts"
-        accuracy_decimals: 1
-      current:
-        name: "CT4 Amps"
-        id: "ct4Amps"
-        accuracy_decimals: 3
-      gain_voltage: 7063
-      gain_ct: ${ctTune}
-    phase_b:
-      current:
-        name: "CT5 Amps"
-        id: "ct5Amps"
-        accuracy_decimals: 3
-      gain_voltage: 7063
-      gain_ct: ${ctTune}
-    phase_c:
-      current:
-        name: "CT6 Amps"
-        id: "ct6Amps"
-        accuracy_decimals: 3
-      gain_voltage: 7063
-      gain_ct: ${ctTune}
-    line_frequency: 60Hz
-    gain_pga: 1X
-    update_interval: ${update_time}
-  - platform: template
-    name: ${disp_name} Total Amps
-    id: "totalAmps"
-    lambda: return id(ct1Amps).state + id(ct2Amps).state;
-    accuracy_decimals: 2
-    unit_of_measurement: A
-    update_interval: ${update_time}  
-    icon: "mdi:flash-circle"
-  # - platform: template
-  #   name: ${disp_name} Total Watts
-  #   id: "totalWatts"
-  #   lambda: return id(ct1Watts).state + id(ct2Watts).state;
-  #   accuracy_decimals: 0
-  #   unit_of_measurement: W
-  #   icon: "mdi:flash-circle"
-  #   update_interval: ${update_time}
+    update_interval: $update_time
+  - platform: total_daily_energy
+    name: Pool Total kWh
+    power_id: poolPower
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
+  - platform: total_daily_energy
+    name: AC Total kWh
+    power_id: acPower
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: kWh
 
-  # - platform: total_daily_energy
-  #   name: ${disp_name} Total kWh
-  #   power_id: totalWatts
-  #   filters:
-  #     - multiply: 0.001
-  #   unit_of_measurement: kWh
     
 time:
   - platform: sntp

@@ -146,6 +146,22 @@ sensor:
       - type: load_1m
       - type: load_5m
       - type: processor_use
+  - platform: template
+    sensors:
+      pool_monthly_energy_cost:
+        friendly_name: "Monthly Pool Cost"
+        value_template: "{{ '%.2f'|format(states('sensor.pool_energy_week')|float * 0.121) }}"
+        unit_of_measurement: dollars
+        icon_template: mdi:currency-usd
+  - platform: template
+    sensors:
+      ac_monthly_energy_cost:
+        friendly_name: "Monthly Pool Cost"
+        value_template: "{{ '%.2f'|format(states('sensor.air_conditioner_energy_week')|float * 0.121) }}"
+        unit_of_measurement: dollars
+        icon_template: mdi:currency-usd
+
+
 
       
 
@@ -517,6 +533,24 @@ input_datetime:
 #       - Saturday
 #     initial: Friday
 #     icon: mdi:trash-can
+
+utility_meter:
+  pool_energy:
+    source: sensor.pool_total_kwh
+    cycle: monthly
+    offset:
+      days: 12
+    tariffs:
+      - week
+      - weekend
+  air_conditioner_energy:
+    source: sensor.ac_total_kwh
+    cycle: monthly
+    offset:
+      days: 12
+    tariffs:
+      - week
+      - weekend
 
 
 group: !include groups.yaml

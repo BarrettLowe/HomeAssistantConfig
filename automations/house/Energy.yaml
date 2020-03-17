@@ -1,0 +1,31 @@
+- alias: Start Weekend Energy
+  trigger:
+    - platform: time
+      at: '20:00:00'
+  condition:
+    condition: time
+    weekday:
+      - fri
+  action:
+    - service: utility_meter.select_tariff
+      data:
+        entity_id: 
+          - utility_meter.pool_energy
+          - utility_meter.air_conditioner_energy
+        tariff: 'weekend'
+
+- alias: Start Week Energy
+  trigger:
+    - platform: time
+      at: '00:00:00'
+  condition:
+    condition: time
+    weekday:
+      - mon
+  action:
+    - service: utility_meter.select_tariff
+      data:
+        entity_id: 
+          - utility_meter.pool_energy
+          - utility_meter.air_conditioner_energy
+        tariff: 'week'

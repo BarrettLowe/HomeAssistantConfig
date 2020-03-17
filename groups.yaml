@@ -117,4 +117,6 @@ nursery:
   entities:
     - light.nursery_dresser
     - light.rocking_chair
+    - light.nursery_sconces
+    - light.futon_light
 ## END ROOMS
