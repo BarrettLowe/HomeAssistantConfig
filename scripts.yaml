@@ -142,26 +142,22 @@ brandie_sleeps:
 alarm_driveway:
     alias: Alarm driveway
     sequence:
-      - alias: Alarm Driveway Start
-        service: homeassistant.turn_on
+      - service: homeassistant.turn_on
         data:
           entity_id: light.driveway
-      - alias: Run Flasher
-        service: homeassistant.turn_on
+      - service: homeassistant.turn_on
         data:
           entity_id: script.flash_driveway_popo
 
       - delay:
           # time interval for alarm sound and light flashing
           seconds: 60
-      - alias: Alarm Driveway Stop
-        service: homeassistant.turn_off
+      - service: homeassistant.turn_off
         data:
           entity_id: 
            - script.flash_driveway_popo
            - script.flash_driveway_loop
-      - alias: Stop Flashing
-        service: homeassistant.turn_on
+      - service: homeassistant.turn_on
         data:
           entity_id: light.driveway
           brightness: 255
@@ -178,8 +174,7 @@ alarm_driveway:
 flash_driveway_popo:
     alias: Flash Driveway Po-Po
     sequence:
-      - alias: Light Driveway Red
-        service: light.turn_on
+      - service: light.turn_on
         data:
           entity_id: light.driveway
           rgb_color:
@@ -187,8 +182,7 @@ flash_driveway_popo:
             - 0
             - 0
           transition: 0.1
-      - alias: Light Driveway White
-        service: light.turn_on
+      - service: light.turn_on
         data:
           entity_id: light.driveway
           rgb_color:
@@ -196,8 +190,7 @@ flash_driveway_popo:
             - 255
             - 255
           transition: 0.1
-      - alias: Light Driveway Blue
-        service: light.turn_on
+      - service: light.turn_on
         data:
           entity_id: light.driveway
           rgb_color:
@@ -205,8 +198,7 @@ flash_driveway_popo:
             - 0
             - 255
           transition: 0.1
-      - alias: Light Driveway White2
-        service: light.turn_on
+      - service: light.turn_on
         data:
           entity_id: light.driveway
           rgb_color:
@@ -214,8 +206,7 @@ flash_driveway_popo:
             - 255
             - 255
           transition: 0.1
-      - alias: Run Loop Script
-        service: script.turn_on
+      - service: script.turn_on
         data:
           entity_id: script.flash_driveway_loop
 
