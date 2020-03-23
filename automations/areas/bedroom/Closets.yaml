@@ -4,17 +4,16 @@
         entity_id: light.barretts_closet
         transition: 1
         brightness: >
-          {% if states('binary_sensor.brandie_in_bed') == 'on' %}
-          50
+          {% if trigger.to_state.state == 'on' and trigger.from_state.state == 'off' %}
+            {% if states('binary_sensor.brandie_in_bed') == 'on' %}
+            50
+            {% else %}
+            255
+            {% endif %}
           {% else %}
-          255
+          0
           {% endif %}
-      service_template: >
-        {% if trigger.to_state.state == 'off' and trigger.from_state.state == 'on' %}
-        light.toggle
-        {% else %}
-        light.turn_on
-        {% endif %}
+      service: light.turn_on
   condition:
     condition: template
     value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
@@ -24,21 +23,20 @@
     
 - alias: Brandies Closet
   action:
-    - data_template:
+    - data_template: 
         entity_id: light.brandies_closet
         transition: 1
         brightness: >
-          {% if states('binary_sensor.barrett_in_bed') == 'on' %}
-          50
+          {% if trigger.to_state.state == 'on' and trigger.from_state.state == 'off' %}
+            {% if states('binary_sensor.barrett_in_bed') == 'on' %}
+            50
+            {% else %}
+            255
+            {% endif %}
           {% else %}
-          255
+          0
           {% endif %}
-      service_template: >
-        {% if trigger.to_state.state == 'off' and trigger.from_state.state == 'on' %}
-        light.toggle
-        {% else %}
-        light.turn_on
-        {% endif %}
+      service: light.turn_on
   condition:
     condition: template
     value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"

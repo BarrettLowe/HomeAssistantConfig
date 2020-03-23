@@ -196,11 +196,11 @@ binary_sensor:
           mdi:emoticon-outline
           {% endif %}
       barrett_in_bed:
-        value_template: >-
-          "{{ states('barrett_phone_charging') == 'on' and states('person.barrett') == 'home' }}"
+        value_template: >
+          {{ states('binary_sensor.barrett_phone_charging') == 'on' and states('person.barrett') == 'home' }}
       brandie_in_bed:
-        value_template: >-
-          "{{ states('brandie_phone_charging') == 'on' and states('person.brandie') == 'home' }}"
+        value_template: >
+          {{ states('binary_sensor.brandie_phone_charging') == 'on' and states('person.brandie') == 'home' }}
   - platform: ffmpeg_noise
     input: !secret nursery_cam_url
     extra_arguments: -filter:a highpass=f=300,lowpass=f=2500,volume=volume=2 -codec:a libmp3lame -ar 16000
