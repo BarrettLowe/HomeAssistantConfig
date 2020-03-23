@@ -1,5 +1,7 @@
 homeassistant:
   customize: !include customize.yaml
+  whitelist_external_dirs:
+    - /config/www
 
 system_health:
 
@@ -48,8 +50,15 @@ shopping_list:
 ifttt:
   key: gmYDlPOe-6l8Z4ra6GgplsChRRthv5ixSNJ7V5eVHOJ
   
-# lovelace:
-#   mode: yaml
+lovelace:
+  mode: storage
+  dashboards:
+    lovelace-tablet:
+      mode: yaml
+      filename: tablet-ui.yaml
+      title: Family Room Dashboard
+      icon: mdi:account-group
+      show_in_sidebar: true
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -192,6 +201,14 @@ binary_sensor:
       brandie_in_bed:
         value_template: >-
           "{{ states('brandie_phone_charging') == 'on' and states('person.brandie') == 'home' }}"
+  - platform: ffmpeg_noise
+    input: !secret nursery_cam_url
+    extra_arguments: -filter:a highpass=f=300,lowpass=f=2500,volume=volume=2 -codec:a libmp3lame -ar 16000
+    initial_state: false
+    duration: 2
+    reset: 10
+    peak: -20
+    name: Nursery Noise
 
   - platform: aarlo
     monitored_conditions:
@@ -416,6 +433,13 @@ aarlo:
 camera: 
   - platform: aarlo
     ffmpeg_arguments: '-pred 1 -q:v 2'
+  - platform: ffmpeg
+    input: rtsp_transport udp -i !secret nursery_cam_url
+    name: Nursery Cam
+  # - platform: generic
+  #   still_image_url: "/config/www/nursery_snapshot.jpg"
+  #   stream_source: !secret nursery_cam_url
+  #   name: Nursery Camera
 
 
 ecobee:
