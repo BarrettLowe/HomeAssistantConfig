@@ -90,6 +90,25 @@ history:
 # View all events in a logbook
 logbook:
 
+# influxdb:
+#   host: a0d7b954-influxdb
+#   port: 8086
+#   database: homeassistant
+#   username: homeassistant
+#   password: !secret influxpass
+#   max_retries: 3
+#   default_measurement: state
+#   exclude:
+#     domains:
+#       - automation
+#       - group
+#       - input_boolean
+#       - input_datetime
+#       - input_number
+#       - script
+#       - sun
+#       - zone
+
 # logger:
 #   default: warning
 #   logs:
@@ -165,7 +184,7 @@ sensor:
   - platform: template
     sensors:
       ac_monthly_energy_cost:
-        friendly_name: "Monthly Pool Cost"
+        friendly_name: "Monthly A/C Cost"
         value_template: "{{ '%.2f'|format(states('sensor.air_conditioner_energy_week')|float * 0.121) }}"
         unit_of_measurement: dollars
         icon_template: mdi:currency-usd
@@ -442,8 +461,12 @@ camera:
   #   name: Nursery Camera
 
 
-ecobee:
-  api_key: !secret ecobeeAPIKey
+#ecobee:
+#  api_key: !secret ecobeeAPIKey
+
+weather:
+  - platform: nws
+    api_key: !secret nws_api_key
 
 zwave:
   usb_path: /dev/ttyUSB0

@@ -1,0 +1,25 @@
+- alias: Evening Lighting
+  trigger: 
+    platform: time
+    at: '00:21:00'
+  condition:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: person.barrett
+          state: home
+        - condition: state
+          entity_id: person.brandie
+          state: home
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: >-
+          {% for device in states.light %}
+          {% if device.state == 'on' and device.entity_id != 'light.undercabinet_lights' %}
+          - {{ device.entity_id }}
+          {% endif %}
+          {% endfor %}
+        brightness_step_pct: -50
+        transition: 5
+        color_temp: 440 # Amber Tone

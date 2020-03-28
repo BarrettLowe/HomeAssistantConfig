@@ -67,23 +67,35 @@ morning_routine:
           - "{{ states('input_number.cabinet_morning_red') | int }}" 
           - "{{ states('input_number.cabinet_morning_green') | int }}" 
           - "{{ states('input_number.cabinet_morning_blue') | int }}" 
-        brightness: '{{ state_attr("light.under_cabinet_lights","brightness") }}'
-    - service: homeassistant.turn_on
+        brightness: 255
+        transition: 120
+    - service: light.turn_on
       data:
         entity_id:
           - light.sink
           - light.kitchen_lamp
           - light.smells_shelf
           - light.bar
-          - light.under_cabinet_lights
           - light.mantle_lamp
-        transition: 120
-    - delay: '00:02:00'
-    - service: homeassistant.turn_on
-      data:
-        entity_id:
-          - switch.mantle
           - light.kitchen_desk
+        transition: 120
+        brightness: 255
+        color_temp: 330 # Whiteish tone
+    - delay: '00:02:00'
+
+report_weather:
+  alias: Report Weather
+  sequence:
+    - service: notify.alexa_media
+      data_template:
+        message: >-
+          Good Morning. Todays forcast is {{ state_attr("weather.kfws", "forecast")[0].detailed_description }}.
+          Have a great day!
+        data:
+          type: tts
+        target: 
+          - kitchen
+
 
 fireplace:
   alias: Fireplace
@@ -264,3 +276,15 @@ start_bedroom_diffuser:
     - service: homeassistant.turn_on
       entity_id: input_boolean.bedroom_diffuser_empty
     
+prep_kitchen_for_night:
+  alias: Prep Kitchen for Night
+  sequence:
+    - service: light.turn_on
+      entity_id: 
+        - light.kitchen_desk
+        - light.kitchen_lamp
+        - light.sink
+      data:
+        brightness_pct: 50
+    - service: switch.turn_off
+      entity_id: switch.kitchen_crappy
