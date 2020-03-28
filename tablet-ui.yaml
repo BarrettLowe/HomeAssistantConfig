@@ -1,6 +1,5 @@
 title: "Family Room Dashboard"
 views:
-  - title: Overview
   - badges: []
     cards:
       - card:
