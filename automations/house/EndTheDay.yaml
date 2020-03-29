@@ -12,14 +12,8 @@
           entity_id: person.brandie
           state: home
   action:
-    - service: light.turn_on
-      data_template:
-        entity_id: >-
-          {% for device in states.light %}
-          {% if device.state == 'on' and device.entity_id != 'light.undercabinet_lights' %}
-          - {{ device.entity_id }}
-          {% endif %}
-          {% endfor %}
-        brightness_step_pct: -50
-        transition: 5
+    - service: python_script.reduce_all_lights_by_pct
+      data:
+        transition: 10
         color_temp: 440 # Amber Tone
+        pct: 50
