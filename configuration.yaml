@@ -11,12 +11,11 @@ recorder:
   exclude:
     domains:
       - updater
+      - script
     entities:
-      - script.flash_kitchen_stop
-      - script.flash_kitchen_loop
-      - script.flash_driveway_popo
-      - script.flash_driveway_loop
+      - sun.sun
 
+history:
   
   
 # Enables the frontend
@@ -80,11 +79,7 @@ discovery:
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
-# Enables support for tracking state changes over time
-history:
-  exclude:
-    entities:
-      - sun.sun
+
 
 
 # View all events in a logbook
