@@ -44,10 +44,10 @@ alexa:
         - binary_sensor
         - cover
         
-shopping_list:
+# shopping_list:
 
-ifttt:
-  key: gmYDlPOe-6l8Z4ra6GgplsChRRthv5ixSNJ7V5eVHOJ
+# ifttt:
+#   key: gmYDlPOe-6l8Z4ra6GgplsChRRthv5ixSNJ7V5eVHOJ
   
 lovelace:
   mode: storage
