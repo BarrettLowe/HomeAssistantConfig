@@ -78,9 +78,7 @@ office:
   name: Office
   icon: mdi:desktop-mac
   entities:
-    - light.engineering_lamp
     - light.brandies_desk
-    - light.high_bookshelf
     - light.office_overhead_light
 
 movie_room:
