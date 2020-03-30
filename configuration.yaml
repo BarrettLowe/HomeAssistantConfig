@@ -50,20 +50,15 @@ alexa:
 #   key: gmYDlPOe-6l8Z4ra6GgplsChRRthv5ixSNJ7V5eVHOJ
   
 lovelace:
-  mode: storage
-  dashboards:
-    lovelace-irrigation:
-      mode: yaml
-      filename: irrigation-ui.yaml
-      title: Irrigation
-      icon: mdi:sprinkler
-      show_in_sidebar: true
-    lovelace-tablet:
-      mode: yaml
-      filename: tablet-ui.yaml
-      title: Family Room Dashboard
-      icon: mdi:account-group
-      show_in_sidebar: true
+  mode: yaml
+  dashboards: !include dashboards.yaml
+  resources:
+    - url: /hacsfiles/lovelace-card-templater/lovelace-card-templater.js
+      type: module
+    - url: /hacsfiles/rgb-light-card/card.js
+      type: module
+
+
 
 # Checks for available updates
 # Note: This component will send some information about your system to

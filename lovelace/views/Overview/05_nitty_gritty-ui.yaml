@@ -1,0 +1,145 @@
+- badges: []
+  cards:
+    - entities:
+        - entity: sensor.load_1m
+        - entity: sensor.load_5m
+        - entity: sensor.disk_use_percent
+      type: glance
+    - cards:
+        - entity: sensor.load_5m
+          graph: line
+          hours_to_show: 6
+          type: sensor
+        - entity: sensor.load_1m
+          graph: line
+          hours_to_show: 6
+          type: sensor
+      type: horizontal-stack
+    - cards:
+        - columns: 3
+          entities:
+            - binary_sensor.internet_connection
+            - sensor.network_in_eth0
+            - sensor.network_out_eth0
+            - entity: sensor.speedtest_ping
+            - entity: sensor.speedtest_download
+            - entity: sensor.speedtest_upload
+            - entity: sensor.google_wifi_uptime
+              name: Router Uptime
+            - entity: sensor.google_wifi_last_restart
+              name: Router Last Restart
+            - entity: sensor.google_wifi_local_ip
+              name: External IP
+          title: Network Stats
+          type: glance
+        - entities:
+            - sensor.ipv4_address_eth0
+            - sensor.ipv6_address_eth0
+            - sensor.google_wifi_status
+            - binary_sensor.internet_connection
+            - binary_sensor.custom_button
+            - binary_sensor.mqtt_broker
+          type: entities
+      type: vertical-stack
+    - entities:
+        - entity: device_tracker.security_controller
+          name: Doors/Motion
+        - entity: device_tracker.front_landscape_controller
+          name: Front Landscape
+        - entity: device_tracker.back_landscape_controller
+        - entity: device_tracker.humidifier
+          name: Diffuser
+      title: Devices
+      type: glance
+    - entity: sensor.deep_freeze_power
+      max: 150
+      min: 0
+      name: Deep Freeze Power
+      severity:
+        green: 15
+        red: 0
+        yellow: 1
+      theme: default
+      type: gauge
+    - entities:
+        - entity: input_number.cabinet_nighttime_red
+          name: Red
+        - entity: input_number.cabinet_nighttime_green
+          name: Green
+        - entity: input_number.cabinet_nighttime_blue
+          name: Blue
+      show_header_toggle: false
+      title: Night Time Cabinet Color
+      type: entities
+    - entities:
+        - entity: input_number.cabinet_daytime_red
+          name: Red
+        - entity: input_number.cabinet_daytime_green
+          name: Green
+        - entity: input_number.cabinet_daytime_blue
+          name: Blue
+      show_header_toggle: false
+      title: Day Time Cabinet Color
+      type: entities
+    - entities:
+        - entity: input_boolean.christmas_time
+        - entity: input_boolean.entertaining_tonight
+      show_header_toggle: false
+      title: Options
+      type: entities
+    - entities:
+        - entity: input_datetime.morning_routine_start_time
+        - entity: input_datetime.morning_routine_stop_time
+        - entity: input_datetime.outside_lights_off_time
+        - entity: input_number.globe_light_on_minutes_before_sunset
+      show_header_toggle: false
+      title: Time Options
+      type: entities
+    - entities:
+        - entity: input_number.cabinet_morning_red
+        - entity: input_number.cabinet_morning_green
+        - entity: input_number.cabinet_morning_blue
+      title: Morning Cabinet Color
+      type: entities
+    - entities:
+        - entity: input_datetime.seed_station_on_time
+          icon: 'mdi:weather-sunset-up'
+          name: On Time
+        - entity: input_datetime.seed_station_off_time
+          icon: 'mdi:weather-sunset-down'
+          name: Off Time
+        - entity: switch.christmas_tree
+          icon: 'mdi:sprout-outline'
+          name: Seed Station
+        - label: 'To turn on/off automations, use switches below:'
+          type: section
+        - entity: automation.seed_station_on
+          icon: 'mdi:lightbulb-on'
+          name: On In Morning
+        - entity: automation.seed_station_off
+          icon: 'mdi:lightbulb-off'
+          name: Off At Night
+      show_header_toggle: false
+      title: Seed Station
+      type: entities
+    - entities:
+        - entity: person.barrett
+        - entity: binary_sensor.barrett_in_bed
+        - entity: binary_sensor.barrett_phone_charging
+        - entity: device_tracker.barrett_pixel
+        - entity: device_tracker.barrett_pixel_nmap
+        - entity: sensor.barrett_phone_battery
+      show_header_toggle: false
+      title: Barrett - Status
+      type: entities
+    - entities:
+        - entity: person.brandie
+        - entity: binary_sensor.brandie_in_bed
+        - entity: binary_sensor.brandie_phone_charging
+        - entity: device_tracker.brandie_pixel
+        - entity: device_tracker.brandie_pixel_nmap
+        - entity: sensor.brandie_phone_battery
+      show_header_toggle: false
+      title: Brandie - Status
+      type: entities
+  title: Nitty Gritty

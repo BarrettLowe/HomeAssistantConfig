@@ -1,0 +1,11 @@
+lovelace-irrigation: # Needs to contain a hyphen (-)
+    mode: yaml
+    filename: lovelace-irrigation.yaml
+    title: Irrigation
+    icon: mdi:sprinkler
+    show_in_sidebar: true
+lovelace-tablet:
+    mode: yaml
+    title: Family Room Dashboard
+    show_in_sidebar: true
+    filename: lovelace-tablet.yaml

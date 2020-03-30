@@ -1,0 +1,5 @@
+mode: yaml
+filename: '/config/lovelace/views/main-ui.yaml'
+title: Overview
+show_in_sidebar: true
+icon: mdi:home

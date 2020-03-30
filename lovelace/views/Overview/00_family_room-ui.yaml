@@ -1,0 +1,88 @@
+- badges: []
+  cards:
+    - entity: group.family_room
+      hold_action:
+        action: turn_off
+      icon: 'mdi:lightbulb'
+      name: Family Room
+      show_icon: true
+      show_name: true
+      tap_action:
+        action: toggle
+      theme: Backend-selected
+      type: entity-button
+    - entities:
+        - entity: light.bar
+        - entity: light.tv_lamp
+        - entity: light.recessed_lights
+        - entity: switch.fireplace_lamp
+        - entity: switch.game_table
+        - entity: light.smells_shelf
+      title: Light
+      type: entities
+    - cards:
+        - detail: 2
+          entity: sensor.lil_bee_temperature
+          graph: line
+          hours_to_show: 24
+          name: Family Room
+          type: sensor
+          unit: degrees
+        - entities:
+            - entity: climate.thermostat
+              name: Change Temperature
+          show_state: false
+          type: glance
+      type: horizontal-stack
+    - entities:
+        - entity: automation.start_the_day
+          hold_action: none
+          icon: 'mdi:weather-sunset-up'
+          name: Morning Routine
+          tap_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.morning_routine
+        - entity: script.fireplace
+          hold_action: none
+          icon: 'mdi:fireplace'
+          name: Relax By The Fire
+          tap_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.fireplace
+        - entity: script.all_lights_off
+          hold_action: none
+          icon: 'mdi:lightbulb-off'
+          tap_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.all_lights_off
+      show_state: false
+      type: glance
+    - entities:
+        - entity: group.kitchen
+        - entity: group.office
+        - entity: group.living_room
+        - entity: group.dining_room
+        - entity: group.bedroom
+        - entity: group.back_yard
+        - entity: group.front_yard
+      show_header_toggle: false
+      title: Other Areas
+      type: entities
+    - cards:
+        - entity: media_player.vizio_smartcast
+          type: media-control
+        - entity: media_player.xbox
+          type: media-control
+      title: Media
+      type: vertical-stack
+    - entity: media_player.chromecast
+      type: media-control
+  icon: 'mdi:television-classic'
+  path: family_room
+  title: Family Room

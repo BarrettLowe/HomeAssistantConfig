@@ -1,0 +1,48 @@
+- badges: []
+  cards:
+    - entities:
+        - entity: sensor.pool_amps
+        - entity: sensor.pool_power
+        - entity: sensor.air_conditioner_amps
+          name: A/C Amps
+        - entity: sensor.air_conditioner_power
+          name: A/C Power
+      title: Current Stats
+      type: glance
+    - cards:
+        - entity: sensor.pool_total_kwh
+          name: Pool Power (Today)
+          type: sensor
+        - entity: sensor.ac_total_kwh
+          name: A/C Power (Today)
+          type: sensor
+      type: horizontal-stack
+    - cards:
+        - cards:
+            - entity: sensor.pool_energy_week
+              name: Pool Energy (Paid)
+              type: sensor
+            - entity: sensor.air_conditioner_energy_week
+              name: A/C Energy (Paid)
+              type: sensor
+          type: horizontal-stack
+        - cards:
+            - entity: sensor.pool_energy_weekend
+              name: Pool Energy (Free)
+              type: sensor
+            - entity: sensor.air_conditioner_energy_weekend
+              name: A/C Energy (Free)
+              type: sensor
+          type: horizontal-stack
+        - cards:
+            - entity: sensor.pool_monthly_energy_cost
+              name: Pool Energy Cost
+              type: sensor
+            - entity: sensor.ac_monthly_energy_cost
+              name: A/C Energy Cost
+              type: sensor
+          type: horizontal-stack
+      type: vertical-stack
+  icon: 'mdi:flash-circle'
+  path: energy
+  title: Energy

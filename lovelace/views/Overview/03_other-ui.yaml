@@ -1,0 +1,205 @@
+- badges: []
+  cards:
+    - entity: alarm_control_panel.***REMOVED***_alarm_control_panel
+      name: SimpliSafe
+      states:
+        - arm_home
+        - arm_away
+      type: alarm-panel
+    - entity: weather.kfws
+      type: weather-forecast
+    - entities:
+        - entity: group.kitchen
+        - entity: group.family_room
+        - entity: group.bedroom
+        - entity: group.office
+        - entity: group.dining_room
+        - entity: group.living_room
+        - entity: group.back_yard
+        - entity: group.front_yard
+      title: Groups
+      type: entities
+    - cards:
+        - entity: climate.thermostat
+          name: Ecobee
+          type: thermostat
+        - entities:
+            - entity: sensor.lil_bee_temperature
+            - entity: binary_sensor.lil_bee_occupancy
+          title: Family Room
+          type: glance
+        - entities:
+            - entity: sensor.office_temperature
+            - entity: sensor.office_humidity
+          title: Office
+          type: glance
+      type: vertical-stack
+    - columns: 2
+      entities:
+        - entity: sensor.aarlo_battery_level_front_door
+        - entity: switch.pihole_switch
+        - entity: binary_sensor.internet_connection
+        - entity: sensor.speedtest_download
+      show_icon: true
+      show_name: true
+      show_state: true
+      title: Information
+      type: glance
+    - entities:
+        - entity: vacuum.bnbs_neato
+          hold_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.start_neato
+      title: Vacuum
+      type: glance
+    - hold_action:
+        action: none
+      image: /config/www/nursery_cam_snap.jpg
+      tap_action:
+        action: none
+      type: picture
+    - entity: input_number.irrigation_zone1_duration
+      tap_action:
+        action: call-service
+        service: browser_mod.popup
+        service_data:
+          card:
+            template: popup_irrigation
+            type: 'custom:decluttering-card'
+          deviceID:
+            - this
+          title: Irrigation Controller
+      type: button
+  title: Main
+
+
+
+- badges: []
+  cards:
+    - entities:
+        - entity: sensor.aarlo_captured_today_driveway
+          icon: 'mdi:car'
+          name: Driveway Events Last Night
+        - entity: sensor.aarlo_captured_today_front_door
+          icon: 'mdi:door'
+          name: Front Door Events Last Night
+      type: entities
+    - cards:
+        - entity: camera.aarlo_driveway
+          name: Driveway
+          show:
+            - motion
+            - snapshot
+            - battery_level
+            - captured_today
+          type: 'custom:aarlo-glance'
+        - entity: camera.aarlo_front_door
+          name: Front Door
+          show:
+            - motion
+            - snapshot
+            - battery_level
+            - captured_today
+          type: 'custom:aarlo-glance'
+      type: vertical-stack
+    - entity: weather.the_lowe_s_home
+      type: weather-forecast
+  icon: 'mdi:weather-sunny'
+  path: morning
+  title: Morning Report
+- badges: []
+  cards:
+    - entities:
+        - entity: binary_sensor.aarlo_motion_driveway
+        - entity: binary_sensor.aarlo_motion_front_door
+        - entity: binary_sensor.hallway_motion
+        - entity: binary_sensor.living_room_motion
+        - entity: binary_sensor.kitchen_door
+        - entity: binary_sensor.front_door
+      title: Sensors
+      type: entities
+    - entities:
+        - entity: input_boolean.front_door_notify_barrett_away
+        - entity: input_boolean.front_door_notify_barrett_home
+      show_header_toggle: false
+      title: Front Door Notifications
+      type: entities
+  icon: 'mdi:lock'
+  path: doors-motion
+  title: Doors/Motion
+- badges: []
+  cards:
+    - entities:
+        - entity: group.bedroom
+        - entity: group.family_room
+        - entity: group.dining_room
+        - entity: group.living_room
+        - entity: group.kitchen
+      show_header_toggle: false
+      title: Groups
+      type: entities
+    - entity: script.all_lights_off
+      hold_action:
+        action: more-info
+      show_icon: false
+      show_name: true
+      tap_action:
+        action: toggle
+      type: entity-button
+    - entity: script.brandie_sleeps
+      hold_action:
+        action: more-info
+      show_icon: false
+      show_name: true
+      tap_action:
+        action: toggle
+      type: entity-button
+    - entity: alarm_control_panel.***REMOVED***
+      states:
+        - arm_home
+        - arm_away
+      type: alarm-panel
+    - card:
+        entities:
+          - input_boolean.bedroom_diffuser_empty
+        type: entities
+      conditions:
+        - entity: input_boolean.bedroom_diffuser_empty
+          state: 'on'
+      type: conditional
+  panel: false
+  path: brandie
+  title: Brandie
+- badges: []
+  cards:
+    - card:
+        show_header_toggle: false
+        show_state: false
+        tap_action: homeassistant.toggle
+        title: Lights that are ON
+        type: Glance
+      filter:
+        exclude:
+          - entity_id: light.driveway
+        include:
+          - domain: light
+            options:
+              tap_action:
+                action: toggle
+            state: 'on'
+          - entity_id: '*switch.*lights'
+            options:
+              tap_action:
+                action: toggle
+            state: 'on'
+          - entity_id: '*switch.*lamp'
+            options:
+              tap_action:
+                action: toggle
+            state: 'on'
+      type: 'custom:monster-card'
+  panel: false
+  path: whats-on
+  title: What's On?

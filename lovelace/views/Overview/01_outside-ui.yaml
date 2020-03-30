@@ -1,0 +1,36 @@
+- badges: []
+  cards:
+    - entities:
+        - entity: light.globe_lights
+        - entity: switch.tree_light
+        - entity: light.garden_behind_pool
+        - entity: light.southeast_corner_bed
+        - entity: light.fig_and_sun_deck
+        - entity: light.east_beds
+      title: Back Yard
+      type: entities
+    - entities:
+        - entity: input_number.globe_light_on_minutes_before_sunset
+          name: Patio Off Min. Before Sunset
+        - entity: input_datetime.outside_lights_off_time
+      show_header_toggle: false
+      title: Settings
+      type: entities
+    - entities:
+        - entity: light.bedroom_landscape
+        - entity: light.garage_landscape
+        - entity: light.porch_landscape
+        - entity: light.east_oak
+      title: Front Yard
+      type: entities
+    - entity: light.driveway
+      name: Driveway
+      type: light
+    - entities:
+        - entity: cover.far_garage
+        - entity: cover.middle_garage
+        - entity: cover.near_garage
+      title: Garage
+      type: glance
+  path: outside
+  title: Outside
