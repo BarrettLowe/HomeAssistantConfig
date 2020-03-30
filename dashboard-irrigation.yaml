@@ -1,0 +1,4 @@
+title: Irrigation
+icon: mdi:sprinkler
+views: !include_dir_list lovelace/views/Irrigation
+decluttering_templates: !include_dir_named lovelace/templates/

@@ -1,0 +1,2 @@
+title: "Family Room Dashboard"
+views: !include_dir_merge_list lovelace/views/Tablet

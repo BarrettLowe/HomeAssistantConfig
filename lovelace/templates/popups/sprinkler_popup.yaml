@@ -1,0 +1,17 @@
+card:
+  type: vertical-stack
+  cards:
+    - type: custom:decluttering-card
+      template: irrigation_zone_view
+      variables:
+        - name: "🌱 Drip System"
+        - zone_number: 1
+
+    - type: glance
+      entities:
+        - entity: binary_sensor.irrigation_controller_status
+          name: Status
+        - entity: sensor.irrigation_controller_uptime
+          name: Uptime
+        - entity: sensor.irrigation_controller_wifi_signal
+          name: WiFi Signal

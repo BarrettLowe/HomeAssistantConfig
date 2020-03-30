@@ -1,0 +1,46 @@
+title: Sprinkler Schedule
+path: schedule
+icon: mdi:sprinkler
+cards:
+  - type: custom:decluttering-card
+    template: button2_row3
+    variables:
+      - entity1: ""
+      - icon1: mdi:sprinkler-variant
+      - name1: Irrigate
+      - tap_action1:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Irrigation Controller
+            card:
+              type: custom:decluttering-card
+              template: sprinkler_popup
+            deviceID:
+              - this
+      - entity2: ""
+      - icon2: mdi:hot-tub
+      - name2: Other
+      - tap_action2:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Other Devices
+            card:
+              type: custom:decluttering-card
+              template: popup_other
+            deviceID:
+              - this
+      - entity3: ""
+      - icon3: mdi:heart-pulse
+      - name3: Responsibilities
+      - tap_action3:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: Family Responsibilities
+            card:
+              type: custom:decluttering-card
+              template: popup_responsibilities
+            deviceID:
+              - this

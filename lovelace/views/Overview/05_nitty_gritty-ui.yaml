@@ -142,4 +142,8 @@
       show_header_toggle: false
       title: Brandie - Status
       type: entities
+    - type: custom:decluttering-card
+      template: my_first_template
+      variables:
+        icon: "fire"
   title: Nitty Gritty

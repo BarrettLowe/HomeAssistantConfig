@@ -1,4 +1,15 @@
 key: lovelace
 title: The Lowe's Home
 version: 1
+decluttering_templates:
+  - my_first_template:     # This is the name of a template
+    default:
+      - icon: fire
+    card:
+      type: entities
+      entities: 
+        - light.futon_light
+
 views: !include_dir_merge_list  lovelace/views/Overview
+# decluttering_templates: !include_dir_named lovelace/templates
+

@@ -1,0 +1,130 @@
+- badges: []
+  cards:
+    - card:
+        entities:
+          - entity: switch.kitchen_crappy
+          - entity: light.kitchen_desk
+          - entity: light.kitchen_lamp
+          - entity: light.sink
+          - entity: light.under_cabinet_lights
+          - colors:
+              - brightness: 150
+                rgb_color:
+                  - string_template: '{{ states("input_number.cabinet_nighttime_red") | int }}'
+                  - string_template: >-
+                      {{ states("input_number.cabinet_nighttime_green") | int
+                      }}
+                  - string_template: >-
+                      {{ states("input_number.cabinet_nighttime_blue") | int
+                      }}
+                transition: 1
+              - brightness: 255
+                rgb_color:
+                  - string_template: '{{ states("input_number.cabinet_daytime_red") | int }}'
+                  - string_template: '{{ states("input_number.cabinet_daytime_green") | int }}'
+                  - string_template: '{{ states("input_number.cabinet_daytime_blue") | int }}'
+                transition: 1
+              - brightness: 150
+                rgb_color:
+                  - string_template: '{{ states("input_number.cabinet_morning_red") | int }}'
+                  - string_template: '{{ states("input_number.cabinet_morning_green") | int }}'
+                  - string_template: '{{ states("input_number.cabinet_morning_blue") | int }}'
+                transition: 1
+              - brightness: 150
+                rgb_color:
+                  - 70
+                  - 200
+                  - 150
+              - brightness: 100
+                rgb_color:
+                  - 90
+                  - 0
+                  - 255
+            entity: light.under_cabinet_lights
+            justify: around
+            type: 'custom:rgb-light-card'
+          - entity: binary_sensor.kitchen_door
+          - entity: binary_sensor.pantry_door
+        title: Kitchen
+        type: entities
+      entities:
+        - group.kitchen
+      type: 'custom:card-templater'
+    - entities:
+        - entity: sensor.lil_bee_temperature
+        - entity: light.bar
+        - entity: light.recessed_lights
+        - entity: switch.fireplace_lamp
+        - entity: light.tv_lamp
+        - entity: light.smells_shelf
+        - entity: switch.game_table
+        - entity: light.mantle_lamp
+        - entity: switch.mantle
+      title: Family Room
+      type: entities
+    - entities:
+        - entity: light.barretts_side
+        - entity: light.brandies_side
+        - entity: switch.jewelry_lamp
+        - entity: binary_sensor.barretts_closet_door
+        - entity: binary_sensor.brandies_closet_door
+        - entity: script.start_bedroom_diffuser
+        - entity: light.dresser
+        - entity: binary_sensor.hallway_motion
+      title: Bedroom
+      type: entities
+    - entities:
+        - entity: light.brandies_desk
+        - entity: sensor.office_humidity
+        - entity: sensor.office_temperature
+        - entity: switch.office_overhead_light
+        - entity: fan.fan_office
+      title: Office
+      type: entities
+    - entities:
+        - entity: light.bedroom_landscape
+        - entity: light.porch_landscape
+        - entity: light.garage_landscape
+        - entity: sensor.front_landscape_wifi_signal
+        - entity: device_tracker.front_landscape_controller
+      title: Front Yard
+      type: entities
+    - entities:
+        - entity: light.nursery_dresser
+        - entity: light.rocking_chair
+        - entity: light.nursery_sconces
+        - entity: light.futon_light
+        - entity: fan.nursery
+      title: Nursery
+      type: entities
+    - entities:
+        - entity: light.chandelier
+        - entity: light.dog_lamp
+        - entity: light.couch_lamp
+        - entity: light.entry
+        - entity: binary_sensor.living_room_motion
+        - entity: light.piano_lamp
+        - entity: switch.christmas_tree
+      title: Dining/Living Rooms
+      type: entities
+    - entities:
+        - entity: light.globe_lights
+        - entity: switch.tree_light
+        - entity: light.east_beds
+        - entity: light.fig_and_sun_deck
+        - entity: light.garden_behind_pool
+        - entity: light.southeast_corner_bed
+        - entity: sensor.back_landscape_wifi_signal
+      title: Back Yard
+      type: entities
+    - entities:
+        - entity: light.hallway_north
+          name: North (Bedroom)
+        - entity: light.hallway_south
+          name: South (Office)
+      title: Hallway
+      type: entities
+  icon: ''
+  panel: false
+  path: rooms
+  title: Rooms
