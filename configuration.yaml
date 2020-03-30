@@ -52,6 +52,12 @@ alexa:
 lovelace:
   mode: storage
   dashboards:
+    lovelace-irrigation:
+      mode: yaml
+      filename: irrigation-ui.yaml
+      title: Irrigation
+      icon: mdi:sprinkler
+      show_in_sidebar: true
     lovelace-tablet:
       mode: yaml
       filename: tablet-ui.yaml
@@ -593,6 +599,8 @@ utility_meter:
     tariffs:
       - week
       - weekend
+
+python_script:
 
 
 group: !include groups.yaml
