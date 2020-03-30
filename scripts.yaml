@@ -67,7 +67,7 @@ morning_routine:
           - "{{ states('input_number.cabinet_morning_red') | int }}" 
           - "{{ states('input_number.cabinet_morning_green') | int }}" 
           - "{{ states('input_number.cabinet_morning_blue') | int }}" 
-        brightness: 255
+        brightness: 100
         transition: 120
     - service: light.turn_on
       data:
@@ -82,10 +82,6 @@ morning_routine:
         brightness: 255
         color_temp: 330 # Whiteish tone
     - delay: '00:02:00'
-
-report_weather:
-  alias: Report Weather
-  sequence:
     - service: notify.alexa_media
       data_template:
         message: >-
