@@ -79,7 +79,7 @@ office:
   icon: mdi:desktop-mac
   entities:
     - light.brandies_desk
-    - light.office_overhead_light
+    - switch.office_overhead_light
 
 movie_room:
   name: Movie Room
