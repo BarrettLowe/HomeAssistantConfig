@@ -17,19 +17,5 @@
       - condition: template
         value_template: "{{ states('binary_sensor.barrett_in_bed') == 'off' or states('binary_sensor.brandie_in_bed') == 'off' }} "
   action:
-    - service: homeassistant.turn_on
-      data:
-        entity_id:
-          - light.sink
-          - light.kitchen_lamp
-          - light.smells_shelf
-          - light.bar
-          - light.under_cabinet_lights
-          - light.mantle_lamp
-        transition: 120
-    - delay: '00:02:00'
-    - service: homeassistant.turn_on
-      data:
-        entity_id:
-          - switch.mantle
-          - light.kitchen_desk
+    - service: script.turn_on
+      entity_id: script.morning_routine

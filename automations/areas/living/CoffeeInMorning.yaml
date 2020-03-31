@@ -25,3 +25,5 @@
       - light.dog_lamp
       - light.couch_lamp
       - light.piano_lamp
+    data:
+      brightness: 200
