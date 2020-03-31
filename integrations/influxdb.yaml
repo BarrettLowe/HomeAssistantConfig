@@ -1,0 +1,18 @@
+influxdb:
+  port: 8086
+  host: localhost
+  username: homeassistant
+  password: !secret influxpass
+  database: homeassistant
+  default_measurement: state
+  include:
+    domains:
+      - sensor
+      - binary_sensor
+      - climate
+      - cover
+      - light
+      - switch
+      - person
+      - vacuum
+      - utility_meter
