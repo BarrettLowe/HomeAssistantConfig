@@ -36,7 +36,6 @@
       type: horizontal-stack
     - entities:
         - entity: automation.start_the_day
-          hold_action: none
           icon: 'mdi:weather-sunset-up'
           name: Morning Routine
           tap_action:
@@ -45,7 +44,6 @@
             service_data:
               entity_id: script.morning_routine
         - entity: script.fireplace
-          hold_action: none
           icon: 'mdi:fireplace'
           name: Relax By The Fire
           tap_action:
@@ -54,7 +52,6 @@
             service_data:
               entity_id: script.fireplace
         - entity: script.all_lights_off
-          hold_action: none
           icon: 'mdi:lightbulb-off'
           tap_action:
             action: call-service
