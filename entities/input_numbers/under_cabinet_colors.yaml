@@ -1,0 +1,27 @@
+cabinet_nighttime_red:
+  max: 255
+  min: 0
+cabinet_nighttime_blue:
+  max: 255
+  min: 0
+cabinet_nighttime_green:
+  max: 255
+  min: 0    
+cabinet_daytime_red:
+  max: 255
+  min: 0
+cabinet_daytime_blue:
+  max: 255
+  min: 0
+cabinet_daytime_green:
+  max: 255
+  min: 0    
+cabinet_morning_red:
+  max: 255
+  min: 0
+cabinet_morning_blue:
+  max: 255
+  min: 0
+cabinet_morning_green:
+  max: 255
+  min: 0

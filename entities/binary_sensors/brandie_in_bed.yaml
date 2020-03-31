@@ -1,0 +1,5 @@
+platform: template
+sensors:
+  brandie_in_bed:
+    value_template: >
+      {{ states('binary_sensor.brandie_phone_charging') == 'on' and states('person.brandie') == 'home' }}

@@ -1,0 +1,4 @@
+front_door_notify_barrett_home:
+  name: Notify Barrett when home
+front_door_notify_barrett_away:
+  name: Notify Barrett when away

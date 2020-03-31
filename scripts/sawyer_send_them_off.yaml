@@ -1,0 +1,15 @@
+alias: SendThemOff
+sequence:
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.hugh_jass
+  - delay: '00:00:5'
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.hugh_jass
+      volume_level: .5
+  - delay: '00:00:5'
+  - service: tts.google_say
+    entity_id: media_player.hugh_jass
+    data:
+      message: 'Alexa, play send them off by bastille'

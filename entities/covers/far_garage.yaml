@@ -1,0 +1,13 @@
+platform: mqtt
+name: Far Garage
+command_topic: homeassistant/cover/GarageDoor/set
+state_topic: homeassistant/cover/GarageDoor/state
+availability_topic: homeassistant/cover/GarageDoor
+qos: 0
+retain: false
+payload_open: "Garage2 OPEN"
+payload_close: "Garage2 CLOSE"
+state_open: "Garage2 OPEN"
+state_closed: "Garage2 CLOSED"
+payload_available: "Garages ONLINE"
+payload_not_available: "Garages OFFLINE"

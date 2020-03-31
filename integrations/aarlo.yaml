@@ -1,0 +1,5 @@
+aarlo:
+  username: !secret arloUser
+  password: !secret arloPassword
+  refresh_devices_every: 4
+  last_format: '%m-%d %H:%M'

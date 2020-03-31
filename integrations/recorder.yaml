@@ -1,0 +1,7 @@
+recorder:
+  exclude:
+    domains:
+      - updater
+      - script
+    entities:
+      - sun.sun

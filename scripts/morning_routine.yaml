@@ -1,0 +1,33 @@
+alias: Morning Routine
+sequence:
+  - service: light.turn_on
+    entity_id: light.under_cabinet_lights
+    data_template:
+      rgb_color:
+        - "{{ states('input_number.cabinet_morning_red') | int }}" 
+        - "{{ states('input_number.cabinet_morning_green') | int }}" 
+        - "{{ states('input_number.cabinet_morning_blue') | int }}" 
+      brightness: 100
+      transition: 120
+  - service: light.turn_on
+    data:
+      entity_id:
+        - light.sink
+        - light.kitchen_lamp
+        - light.smells_shelf
+        - light.bar
+        - light.mantle_lamp
+        - light.kitchen_desk
+      transition: 120
+      brightness: 255
+      color_temp: 330 # Whiteish tone
+  - delay: '00:02:00'
+  - service: notify.alexa_media
+    data_template:
+      message: >-
+        Good Morning. Todays forcast is {{ state_attr("weather.kfws", "forecast")[0].detailed_description }}.
+        Have a great day!
+      data:
+        type: tts
+      target: 
+        - kitchen

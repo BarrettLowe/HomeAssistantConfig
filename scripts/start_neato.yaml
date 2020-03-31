@@ -1,0 +1,13 @@
+alias: Start Neato
+sequence:
+  - service: neato.custom_cleaning
+    data_template:
+      entity_id: vacuum.bnbs_neato
+      mode: >
+        {% if is_state("person.barrett", "Wisconsin") %}
+          1 
+        {% else %}
+          2
+        {% endif %}
+      navigation: 1
+      category: 4

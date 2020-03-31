@@ -1,0 +1,6 @@
+morning_routine_start_time:
+  has_date: false
+  has_time: true
+morning_routine_stop_time:
+  has_date: false
+  has_time: true

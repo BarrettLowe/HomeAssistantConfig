@@ -1,0 +1,4 @@
+platform: caldav
+username: barrett
+password: !secret nextcloudPassword
+url: https://nextcloud.***REMOVED***.xyz/remote.php/dav

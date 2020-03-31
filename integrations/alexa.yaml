@@ -1,0 +1,7 @@
+alexa:
+  smart_home:
+    filter:
+      exclude_domains:
+        - automation
+        - binary_sensor
+        - cover

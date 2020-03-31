@@ -1,0 +1,8 @@
+platform: ffmpeg_noise
+input: !secret nursery_cam_url
+extra_arguments: -filter:a highpass=f=300,lowpass=f=2500,volume=volume=2 -codec:a libmp3lame -ar 16000
+initial_state: false
+duration: 2
+reset: 10
+peak: -20
+name: Nursery Noise

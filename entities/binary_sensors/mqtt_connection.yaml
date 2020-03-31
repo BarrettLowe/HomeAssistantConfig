@@ -1,0 +1,4 @@
+platform: ping
+name: MQTT Broker
+host: mqtt.***REMOVED***.com
+scan_interval: 60

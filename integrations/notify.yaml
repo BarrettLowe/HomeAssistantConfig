@@ -1,0 +1,11 @@
+notify:
+  - platform: joaoapps_join
+    api_key: !secret join_brandie_api_key
+    device_id: !secret join_brandie_device_id
+    device_ids: !secret join_brandie_device_id
+    name: brandie
+  - platform: joaoapps_join
+    api_key: !secret join_barrett_api_key
+    device_id: !secret join_barrett_device_id
+    device_ids: !secret join_barrett_device_id
+    name: barrett

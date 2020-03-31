@@ -1,0 +1,6 @@
+alias: Garage Countdown Script
+sequence:
+  - service: timer.start
+    data_template:
+      entity_id: >
+        timer.{{ theGarage }}

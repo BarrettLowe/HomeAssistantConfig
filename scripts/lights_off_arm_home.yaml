@@ -1,0 +1,9 @@
+alias: Lights off and Arm Security
+sequence:
+  - service: script.turn_on
+    entity_id: script.all_lights_off
+  - condition: state
+    entity_id: alarm_control_panel.***REMOVED***_alarm_control_panel
+    state: disarmed
+  - service: alarm_control_panel.alarm_arm_home
+    entity_id: alarm_control_panel.***REMOVED***_alarm_control_panel

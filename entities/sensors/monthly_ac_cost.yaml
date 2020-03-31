@@ -1,0 +1,7 @@
+platform: template
+sensors:
+  ac_monthly_energy_cost:
+    friendly_name: "Monthly A/C Cost"
+    value_template: "{{ '%.2f'|format(states('sensor.air_conditioner_energy_week')|float * 0.121) }}"
+    unit_of_measurement: dollars
+    icon_template: mdi:currency-usd

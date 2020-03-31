@@ -1,0 +1,4 @@
+platform: ping
+name: Internet Connection
+host: 8.8.8.8 #google dns should always be up :)
+scan_interval: 10

@@ -1,0 +1,10 @@
+alias: Fireplace
+sequence:
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - group.kitchen
+        - group.back_yard
+  - service: homeassistant.turn_on
+    data:
+      entity_id: switch.fireplace_lamp

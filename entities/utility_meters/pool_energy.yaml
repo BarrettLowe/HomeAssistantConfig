@@ -1,0 +1,7 @@
+source: sensor.pool_total_kwh
+cycle: monthly
+offset:
+  days: 12
+tariffs:
+  - week
+  - weekend

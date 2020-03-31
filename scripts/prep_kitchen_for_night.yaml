@@ -1,0 +1,11 @@
+alias: Prep Kitchen for Night
+sequence:
+  - service: light.turn_on
+    entity_id: 
+      - light.kitchen_desk
+      - light.kitchen_lamp
+      - light.sink
+    data:
+      brightness_pct: 50
+  - service: switch.turn_off
+    entity_id: switch.kitchen_crappy

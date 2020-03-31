@@ -1,0 +1,18 @@
+alias: All Lights Off (Night time when sleeping)
+sequence:
+  - service: homeassistant.turn_off
+    data:
+      entity_id: 
+        - automation.under_cabinet_lights_daytime
+        - automation.under_cabinet_lights_nighttime
+  - service: homeassistant.turn_off
+    data:
+      entity_id: 
+        - group.interior
+        - group.back_yard
+        - light.bedroom_landscape
+  - service: homeassistant.turn_on
+    data:
+      entity_id: 
+        - automation.under_cabinet_lights_daytime
+        - automation.under_cabinet_lights_nighttime

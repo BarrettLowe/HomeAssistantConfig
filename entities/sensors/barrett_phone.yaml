@@ -1,0 +1,6 @@
+platform: mqtt
+state_topic: "owntracks/Barrett/pixel"
+name: "Barrett Phone Battery"
+unit_of_measurement: "%"
+value_template: '{{ value_json.battery_level }}'
+device_class: battery

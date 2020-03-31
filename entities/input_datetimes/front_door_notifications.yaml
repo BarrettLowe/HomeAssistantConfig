@@ -1,0 +1,6 @@
+front_door_notification_start:
+  has_date: false
+  has_time: true
+front_door_notification_stop:
+  has_date: false
+  has_time: true

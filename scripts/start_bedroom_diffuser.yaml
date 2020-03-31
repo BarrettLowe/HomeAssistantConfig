@@ -1,0 +1,8 @@
+alias: Start Bedroom Diffuser
+sequence:
+  - service: homeassistant.turn_on
+    entity_id: switch.bedroom_diffuser
+  - delay:
+      hours: 3
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.bedroom_diffuser_empty

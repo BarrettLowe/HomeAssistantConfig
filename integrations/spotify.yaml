@@ -1,0 +1,3 @@
+spotify:
+  client_id: !secret barrett_spotify_client
+  client_secret: !secret barrett_spotify_secret

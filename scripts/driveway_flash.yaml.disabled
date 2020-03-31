@@ -1,0 +1,114 @@
+alarm_driveway:
+    alias: Alarm driveway
+    sequence:
+      - service: homeassistant.turn_on
+        data:
+          entity_id: light.driveway
+      - service: homeassistant.turn_on
+        data:
+          entity_id: script.flash_driveway_popo
+
+      - delay:
+          # time interval for alarm sound and light flashing
+          seconds: 60
+      - service: homeassistant.turn_off
+        data:
+          entity_id: 
+           - script.flash_driveway_popo
+           - script.flash_driveway_loop
+      - service: homeassistant.turn_on
+        data:
+          entity_id: light.driveway
+          brightness: 255
+          rgb_color:
+            - 255
+            - 204
+            - 114
+          transition: 0.1
+            
+       
+
+
+
+flash_driveway_popo:
+    alias: Flash Driveway Po-Po
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id: light.driveway
+          rgb_color:
+            - 255
+            - 0
+            - 0
+          transition: 0.1
+      - service: light.turn_on
+        data:
+          entity_id: light.driveway
+          rgb_color:
+            - 255
+            - 255
+            - 255
+          transition: 0.1
+      - service: light.turn_on
+        data:
+          entity_id: light.driveway
+          rgb_color:
+            - 0
+            - 0
+            - 255
+          transition: 0.1
+      - service: light.turn_on
+        data:
+          entity_id: light.driveway
+          rgb_color:
+            - 255
+            - 255
+            - 255
+          transition: 0.1
+      - service: script.turn_on
+        data:
+          entity_id: script.flash_driveway_loop
+
+flash_driveway_loop:
+    alias: Flash_loop
+    sequence:
+      - condition: state
+        entity_id: script.alarm_driveway
+        state: 'on'
+      - wait_template: "{{ is_state('script.flash_driveway_popo', 'off') }}"
+        timeout: '00:00:01'
+        continue_on_timeout: 'false'
+      - service: script.turn_on
+        data:
+          entity_id: script.flash_driveway_popo
+
+flash_kitchen:
+  alias: Flash Kitchen
+  sequence:
+    - service: homeassistant.turn_on
+      data:
+        transition: 0.1
+        entity_id: group.office
+    - delay: 0.5
+    - service: homeassistant.turn_off
+      data:
+        transition: 0.1
+        entity_id: group.office
+    - service: script.turn_on
+      entity_id: script.flash_kitchen_loop
+      
+
+flash_kitchen_loop:
+  alias: loop to start flashing again
+  sequence:
+    - delay: 0.5
+    - service: script.turn_on
+      entity_id: script.flash_kitchen
+      
+flash_kitchen_stop:
+  alias: stop flashing kitchen
+  sequence:
+    - service: script.turn_off
+      entity_id: script.flash_kitchen
+    - service: script.turn_off
+      entity_id: script.flash_kitchen_loop

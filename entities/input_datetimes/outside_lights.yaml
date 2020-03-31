@@ -1,0 +1,3 @@
+outside_lights_off_time:
+  has_date: false
+  has_time: true

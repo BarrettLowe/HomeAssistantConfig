@@ -1,0 +1,11 @@
+device_tracker:
+  - platform: nmap_tracker
+    track_new_devices: yes
+    hosts: 
+      - 192.168.86.0/24
+    home_interval: 30
+    interval_seconds: 60
+  - platform: mqtt_json
+    devices:
+      barrett_pixel: owntracks/Barrett/pixel
+      brandie_pixel: owntracks/Brandie/pixel

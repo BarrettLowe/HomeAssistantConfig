@@ -1,0 +1,6 @@
+platform: aarlo
+monitored_conditions:
+  - total_cameras
+  - battery_level
+  - captured_today
+  - signal_strength
