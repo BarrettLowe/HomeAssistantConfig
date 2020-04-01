@@ -1,3 +1,4 @@
 platform: ffmpeg
-input: rtsp_transport udp -i !secret nursery_cam_url
+input: !secret nursery_cam_url
+extra_arguments: -rtsp_transport udp
 name: Nursery Cam

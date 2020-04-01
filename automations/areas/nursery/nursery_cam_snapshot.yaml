@@ -1,0 +1,9 @@
+- alias: Nusery Interval Snapshot
+  trigger: 
+    platform: time_pattern
+    minutes: "*"
+  action:
+    service: camera.snapshot
+    entity_id: camera.nursery_cam
+    data:
+      filename: "/config/www/nursery_snapshot.jpg"

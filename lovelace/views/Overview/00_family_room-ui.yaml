@@ -80,6 +80,12 @@
       type: vertical-stack
     - entity: media_player.chromecast
       type: media-control
+    - type: picture-glance
+      entity: camera.nursery_cam
+      entities: 
+        - camera.nursery_cam
+      image: /local/nursery_snapshot.jpg
+      show_state: false
   icon: 'mdi:television-classic'
   path: family_room
   title: Family Room
