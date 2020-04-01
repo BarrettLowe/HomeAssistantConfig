@@ -1,4 +1,5 @@
 alias: Start Bedroom Diffuser
+icon: mdi:spray
 sequence:
   - service: homeassistant.turn_on
     entity_id: switch.bedroom_diffuser

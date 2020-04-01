@@ -1,4 +1,4 @@
 bedroom_diffuser_empty:
   name: Diffuser Empty
   initial: true
-  icon: mdi:spray-bottle
+  icon: mdi:water-off

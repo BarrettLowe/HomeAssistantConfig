@@ -1,4 +1,5 @@
 alias: Morning Routine
+icon: mdi:weather-sunset-up
 sequence:
   - service: light.turn_on
     entity_id: light.under_cabinet_lights

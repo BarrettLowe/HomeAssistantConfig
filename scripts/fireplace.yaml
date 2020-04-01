@@ -1,4 +1,5 @@
 alias: Fireplace
+icon: mdi:fireplace
 sequence:
   - service: homeassistant.turn_off
     data:

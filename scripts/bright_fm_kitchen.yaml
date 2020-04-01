@@ -1,4 +1,5 @@
 alias: Bright Family Room and Kitchen
+icon: mdi:lightbulb-multiple
 sequence:
   - service: light.turn_on
     entity_id: group.family_room, group.kitchen

@@ -107,12 +107,14 @@ front_yard:
     
 hallway:
   name: Hallway
+  icon: mdi:vector-rectangle
   entities:
     - light.hallway_south
     - light.hallway_north
   
 nursery:
   name: Nursery
+  icon: mdi:baby-carriage
   entities:
     - light.nursery_dresser
     - light.rocking_chair
