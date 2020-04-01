@@ -1,0 +1,8 @@
+alias: Bright Family Room and Kitchen
+sequence:
+  - service: light.turn_on
+    entity_id: group.family_room, group.kitchen
+    data:
+      brightness: 255
+  - service: switch.turn_on
+    entity_id: group.family_room, group.kitchen
