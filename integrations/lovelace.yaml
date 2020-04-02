@@ -23,4 +23,6 @@ lovelace:
       type: module
     - url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
       type: module
+    - url: /hacsfiles/calendar-card/calendar-card.js
+      type: module
   dashboards: !include ../dashboards.yaml

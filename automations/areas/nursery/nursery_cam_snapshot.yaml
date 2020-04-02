@@ -1,4 +1,4 @@
-- alias: Nusery Interval Snapshot
+- alias: Nursery Interval Snapshot
   trigger: 
     platform: time_pattern
     minutes: "*"
