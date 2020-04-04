@@ -12,6 +12,8 @@
           entity_id: person.brandie
           state: home
   action:
+    - service: light.turn_off
+      entity_id: switch.kitchen_crappy
     - service: python_script.reduce_all_lights_by_pct
       data:
         transition: 10

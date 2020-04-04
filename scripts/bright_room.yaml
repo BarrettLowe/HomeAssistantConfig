@@ -1,0 +1,14 @@
+alias: Bright Room
+icon: mdi:lightbulb-multiple
+fields:
+  room:
+    description: The group (room) to manipulate
+    example: bedroom
+sequence:
+  - service: light.turn_on
+    data_template:
+      entity_id: group.{{ room }}
+      brightness: 255
+  - service: switch.turn_on
+    data_template:
+      entity_id: group.{{ room }}
