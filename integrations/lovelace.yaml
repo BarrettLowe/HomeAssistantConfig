@@ -25,4 +25,6 @@ lovelace:
       type: module
     - url: /hacsfiles/calendar-card/calendar-card.js
       type: module
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: module
   dashboards: !include ../dashboards.yaml
