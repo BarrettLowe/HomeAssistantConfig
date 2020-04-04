@@ -24,20 +24,12 @@
             - entity: sensor.speedtest_ping
             - entity: sensor.speedtest_download
             - entity: sensor.speedtest_upload
-            - entity: sensor.google_wifi_uptime
-              name: Router Uptime
-            - entity: sensor.google_wifi_last_restart
-              name: Router Last Restart
-            - entity: sensor.google_wifi_local_ip
-              name: External IP
           title: Network Stats
           type: glance
         - entities:
             - sensor.ipv4_address_eth0
             - sensor.ipv6_address_eth0
-            - sensor.google_wifi_status
             - binary_sensor.internet_connection
-            - binary_sensor.custom_button
             - binary_sensor.mqtt_broker
           type: entities
       type: vertical-stack
