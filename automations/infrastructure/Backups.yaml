@@ -15,7 +15,7 @@
 - alias: Upload to S3
   trigger:
     platform: time
-    at: '3:30:00'
+    at: '4:00:00'
   condition:
     condition: time
     weekday:
