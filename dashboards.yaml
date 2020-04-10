@@ -4,8 +4,9 @@ lovelace-irrigation: # Needs to contain a hyphen (-)
     title: Irrigation
     icon: mdi:sprinkler
     show_in_sidebar: true
-lovelace-tablet:
+lovelace-music:
     mode: yaml
-    title: Family Room Dashboard
+    title: Music
     show_in_sidebar: true
-    filename: dashboard-tablet.yaml
+    filename: dashboard-music.yaml
+    icon: mdi:music-note

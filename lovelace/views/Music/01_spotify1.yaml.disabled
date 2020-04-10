@@ -1,0 +1,14 @@
+- badges: []
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: iframe 
+          url: https://***REMOVED***/hassio/ingress/40817795_mopidy
+          style: |
+            #root {
+              height: calc(100vh - 48.5px);
+              padding-top: 0 !important;
+            }
+  panel: true
+  title: Stream 1
+  icon: mdi:playlist-music

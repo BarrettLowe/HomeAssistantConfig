@@ -1,0 +1,3 @@
+platform: snapcast
+host: !secret snapcastHostIPAddr
+port: 1705

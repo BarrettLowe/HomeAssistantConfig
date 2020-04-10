@@ -27,3 +27,6 @@ binary_sensor.bedroom_diffuser:
   icon: mdi:air-purifier
 scene.evening_post_dinner:
   icon: mdi:weather-sunset-down
+media_player.mpd:
+  friendly_name: Home Assistant Music
+  icon: mdi:spotify

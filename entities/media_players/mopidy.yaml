@@ -1,0 +1,3 @@
+platform: mpd
+host: 40817795-mopidy
+port: 6600
