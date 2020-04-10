@@ -108,7 +108,7 @@ front_yard:
     
 hallway:
   name: Hallway
-  icon: mdi:vector-rectangle
+  icon: mdi:alpha-h-box
   entities:
     - light.hallway_south
     - light.hallway_north
