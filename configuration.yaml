@@ -3,4 +3,10 @@ homeassistant:
   whitelist_external_dirs:
     - /config/www
   packages: !include_dir_named integrations
-
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+       - 192.168.86.58
+      trusted_users:
+        192.168.86.58: ae0e3ad42fb8415cb2fcabed1efb65f5

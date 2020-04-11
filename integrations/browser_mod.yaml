@@ -1,1 +1,9 @@
 browser_mod:
+  prefix: browser_
+  devices:
+    c34cf22e-bf7ff1be:
+      name: TV_Browser
+      disable:
+        - media_player
+  disable:
+    - all

@@ -17,20 +17,9 @@
           - type: custom:mini-media-player
             entity: media_player.spotify_barrett_lowe
             artwork: cover
-          # - type: custom:mini-media-player
-          #   entity: media_player.snapcast_client_2
-          #   hide:
-          #     power: true
-          #     icon: true
-          #     # source: true
-          #   speaker_group:
-          #     platform: snapcast
-          #     show_group_count: true
-          #     entities:
-          #       - entity_id: media_player.snapcast_client_2
-          #         # name: Client 2
-          #       - entity_id: media_player.snapcast_client_3
-          #         # name: Client 3
+        - type: entities
+          entities:
+            
         - type: vertical-stack
           cards:
             - type: custom:mini-media-player
