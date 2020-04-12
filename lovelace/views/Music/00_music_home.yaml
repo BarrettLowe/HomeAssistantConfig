@@ -1,39 +1,88 @@
 - badges: []
-  cards:
-    - type: horizontal-stack
+
+  cards: 
+    - type: vertical-stack
       cards: 
-        - type: vertical-stack
-          cards: 
-          - type: custom:mini-media-player
-            entity: media_player.mpd
-            hide:
-              source: true
-            tap_action:
-              action: navigate
-              navigation_path: /hassio/ingress/40817795_mopidy
-            artwork: cover
-          - type: media-control
+      - type: custom:text-divider-row
+        text: Sources
+      - type: custom:fold-entity-row
+        head: 
+          entity: media_player.mpd
+          type: custom:mini-media-player
+          hide:
+            source: true
+            power: true
+            progress: true
+          group: true
+          tap_action:
+            action: navigate
+            navigation_path: /hassio/ingress/40817795_mopidy
+        entities: 
+          - type: custom:decluttering-card
+            template: source_speakers
+            variables:
+              - source_name: HomeAssistantUI
+        open: false
+      - type: custom:fold-entity-row
+        head: 
+          entity: media_player.spotify_barrett_lowe
+          type: custom:mini-media-player
+          hide:
+            source: true
+            power: true
+            progress: true
+          group: true
+        entities: 
+          - type: custom:decluttering-card
+            template: source_speakers
+            variables:
+              - source_name: SpotifyBEL
+        open: false
+      # - type: custom:mini-media-player
+      #   entity: media_player.mpd
+      #   hide:
+      #     source: true
+      #   tap_action:
+      #     action: navigate
+      #     navigation_path: /hassio/ingress/40817795_mopidy
+      #   artwork: cover
+      # - type: media-control
+      #   entity: media_player.vizio_smartcast
+      # - type: custom:mini-media-player
+      #   entity: media_player.spotify_barrett_lowe
+      #   artwork: cover
+
+    - type: vertical-stack
+      cards:
+        - type: custom:text-divider-row
+          text: Speakers
+        - type: custom:mini-media-player
+          entity: media_player.snapcast_tv
+          tap_action:
+            action: more-info
             entity: media_player.vizio_smartcast
-          - type: custom:mini-media-player
-            entity: media_player.spotify_barrett_lowe
-            artwork: cover
-        - type: entities
-          entities:
-            
-        - type: vertical-stack
-          cards:
-            - type: custom:mini-media-player
-              entity: media_player.snapcast_client_3
-              hide:
-                controls: true
-              group: true
-            - type: custom:mini-media-player
-              entity: media_player.snapcast_tv
-              hide:
-                controls: true
-              group: true
+          hide:
+            controls: true
+        - type: custom:mini-media-player
+          entity: media_player.snapcast_client_3
+          hide:
+            controls: true
+
+      open: true
+    # - type: vertical-stack
+    #   cards:
+    #     - type: custom:mini-media-player
+    #       entity: media_player.snapcast_client_3
+    #       hide:
+    #         controls: true
+    #       group: true
+    #     - type: custom:mini-media-player
+    #       entity: media_player.snapcast_tv
+    #       hide:
+    #         controls: true
+    #       group: true
 
 
-  panel: true
+  # panel: true
   title: Jam Selection
   icon: mdi:music-note

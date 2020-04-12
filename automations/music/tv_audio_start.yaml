@@ -2,7 +2,6 @@
   trigger:
     platform: state
     entity_id: media_player.snapcast_tv
-    to: playing
   condition:
     condition: template
     value_template: >
@@ -17,6 +16,7 @@
   trigger:
     platform: state
     entity_id: media_player.mpd
+    to: playing
   condition:
     condition: template
     value_template: >

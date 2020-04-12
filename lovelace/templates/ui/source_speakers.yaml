@@ -1,0 +1,26 @@
+---
+default:
+  source_name: Speakers
+
+card:
+  type: vertical-stack
+  cards:
+    # - type: custom:decluttering-card
+    #   template: heading
+    #   variables:
+    #     - heading: "[[source_name]]"
+    - type: horizontal-stack
+      cards:
+        - type: custom:decluttering-card
+          template: speaker_select
+          variables:
+            - speaker_name: TV
+            - entity: snapcast_tv
+            - source: "[[source_name]]"
+            - more_info_entity: media_player.vizio_smartcast
+        - type: custom:decluttering-card
+          template: speaker_select
+          variables:
+            - speaker_name: Other
+            - entity: snapcast_client_3
+            - source: "[[source_name]]"

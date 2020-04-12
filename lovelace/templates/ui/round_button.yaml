@@ -15,7 +15,7 @@ default:
         color: red
 
 card:
-  type: custom:button-entity-row
+  type: custom:paper-buttons-row
   buttons:
     - entity: "[[entity]]"
       name: "[[label]]"

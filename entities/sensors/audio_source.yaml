@@ -1,0 +1,10 @@
+platform: template
+sensors:
+  snapcast_tv_source:
+    friendly_name: Snapcast TV Audio Source
+    value_template: "{{ state_attr('media_player.snapcast_tv', 'source') }}"
+    icon_template: mdi:headphones
+  snapcast_client_3_source:
+    friendly_name: Snapcast Client 3 Audio Source
+    value_template: "{{ state_attr('media_player.snapcast_client_3','source') }}"
+    icon_template: mdi:headphones

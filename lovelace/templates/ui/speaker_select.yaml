@@ -1,0 +1,45 @@
+---
+default:
+  - entity: ""
+  - speaker_name: UnknownSpeaker
+  - style:
+      background: lightgray
+      border-radius: 9999px
+  - source: Nothing
+  - more_info_entity: ""
+
+card:
+  # type: custom:card-templater
+  # card:
+  type: custom:paper-buttons-row
+  buttons:
+    - entity: "sensor.[[entity]]_source"
+      name: "[[speaker_name]]"
+      icon: mdi:speaker-off
+      state_icons:
+        "[[source]]": "mdi:speaker"
+      style: "[[style]]"
+      state_styles:
+        "[[source]]":
+          text:
+            font-weight: bold
+          icon:
+            color: var(--paper-item-icon-active-color)
+      #   "HomeAssistantUI":
+      #     text:
+      #       font-weight: bold
+      #   "SpotifyBEL":
+      #     text:
+      #       color: purple
+      #   "SpotifyBLL":
+      #     text:
+      #       color: pink
+      tap_action: 
+        action: call-service
+        service: script.toggle_audio_source
+        service_data:
+          speakers: "media_player.[[entity]]"
+          source: "[[source]]"
+      hold_action:
+        action: more-info
+        entity: "[[more_info_entity]]"

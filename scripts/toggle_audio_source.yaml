@@ -1,0 +1,14 @@
+# inputs are:
+#   speakers: the output audio entity_id
+#   source: the source to toggle between
+alias: Toggle Audio Source
+sequence:
+  service: media_player.select_source
+  data_template: 
+    entity_id: '{{speakers}}'
+    source: >-
+      {% if not is_state_attr(speakers,"source",source) %}
+      {{source}}
+      {% else %}
+      Nothing
+      {% endif %}
