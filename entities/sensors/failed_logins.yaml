@@ -1,3 +1,0 @@
-name: Failed Logins
-platform: command_line
-command: "grep -c 'Login attempt' /home/hass/.homeassistant/home-assistant.log"

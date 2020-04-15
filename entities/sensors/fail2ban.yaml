@@ -1,0 +1,6 @@
+platform: fail2ban
+jails:
+  - nginx-badbots
+  - nginx-botsearch
+  - homeassistant
+file_path: /share/fail2ban/fail2ban.log

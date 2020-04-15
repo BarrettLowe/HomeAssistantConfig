@@ -1,5 +1,5 @@
 http:
   base_url: https://***REMOVED***
   use_x_forwarded_for: true
-  trusted_proxies: 172.30.33.1
+  trusted_proxies: 172.30.33.3
   login_attempts_threshold: 3
