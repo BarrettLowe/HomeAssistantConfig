@@ -26,3 +26,4 @@ ip_bans.yaml
 esphome/irrigation_controller/partitions.csv
 .xbox-token.json
 themes/grey_night/grey_night.yaml
+home_rpis_id_rsa
