@@ -1,4 +1,4 @@
 platform: ping
 name: MQTT Broker
-host: mqtt.***REMOVED***.com
+host: !secret mqtt_broker
 scan_interval: 60
