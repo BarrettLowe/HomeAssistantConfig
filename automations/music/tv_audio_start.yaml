@@ -1,27 +1,28 @@
-- alias: tv_on_with_audio_select
+- alias: tv_on_for_music
   trigger:
     platform: state
-    entity_id: media_player.snapcast_tv
+    entity_id: binary_sensor.music_through_tv
+    to: "on"
+    from: "off"
   condition:
     condition: template
     value_template: >
-      {{ trigger.to_state.attributes.source != 
-      trigger.from_state.attributes.source and
-      is_state("media_player.vizio_smartcast","off") }}
+      {{ is_state("media_player.vizio_smartcast","off") }}
   action:
     - service: script.turn_on
       entity_id: script.tv_on_for_music
 
-- alias: tv_on_with_mpd_start
+- alias: tv_off_after_music
   trigger:
     platform: state
-    entity_id: media_player.mpd
-    to: playing
+    entity_id: binary_sensor.music_through_tv
+    to: "off"
+    for: 01:00:00
   condition:
     condition: template
-    value_template: >
-      {{  is_state_attr("media_player.snapcast_tv","source","HomeAssistantUI") and 
-      is_state("media_player.vizio_smartcast","off") }}
+    value_template: >-
+      {{  is_state("media_player.vizio_smartcast","on") and 
+      is_state_attr("media_player.vizio_smartcast","source","HDMI-2") }}
   action:
-    - service: script.turn_on
-      entity_id: script.tv_on_for_music
+    - service: media_player.turn_off
+      entity_id: media_player.vizio_smartcast

@@ -7,8 +7,8 @@ sequence:
   data_template: 
     entity_id: '{{speakers}}'
     source: >-
-      {% if not is_state_attr(speakers,"source",source) %}
-      {{source}}
+      {% if not is_state_attr(speakers,"source",audio_source) %}
+      {{audio_source}}
       {% else %}
       Nothing
       {% endif %}

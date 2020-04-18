@@ -38,19 +38,21 @@
             variables:
               - source_name: SpotifyBEL
         open: false
-      # - type: custom:mini-media-player
-      #   entity: media_player.mpd
-      #   hide:
-      #     source: true
-      #   tap_action:
-      #     action: navigate
-      #     navigation_path: /hassio/ingress/40817795_mopidy
-      #   artwork: cover
-      # - type: media-control
-      #   entity: media_player.vizio_smartcast
-      # - type: custom:mini-media-player
-      #   entity: media_player.spotify_barrett_lowe
-      #   artwork: cover
+      - type: custom:fold-entity-row
+        head: 
+          entity: media_player.spotify_brandie_lowe
+          type: custom:mini-media-player
+          hide:
+            source: true
+            power: true
+            progress: true
+          group: true
+        entities: 
+          - type: custom:decluttering-card
+            template: source_speakers
+            variables:
+              - source_name: SpotifyBLL
+        open: false
 
     - type: vertical-stack
       cards:
@@ -64,7 +66,15 @@
           hide:
             controls: true
         - type: custom:mini-media-player
-          entity: media_player.snapcast_client_3
+          entity: media_player.snapcast_backyard
+          hide:
+            controls: true
+        - type: custom:mini-media-player
+          entity: media_player.snapcast_shop
+          hide:
+            controls: true
+        - type: custom:mini-media-player
+          entity: media_player.snapcast_kitchen
           hide:
             controls: true
 

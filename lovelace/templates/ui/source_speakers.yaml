@@ -21,6 +21,18 @@ card:
         - type: custom:decluttering-card
           template: speaker_select
           variables:
-            - speaker_name: Other
-            - entity: snapcast_client_3
+            - speaker_name: Backyard
+            - entity: snapcast_backyard
+            - source: "[[source_name]]"
+        - type: custom:decluttering-card
+          template: speaker_select
+          variables:
+            - speaker_name: Kitchen
+            - entity: snapcast_kitchen
+            - source: "[[source_name]]"
+        - type: custom:decluttering-card
+          template: speaker_select
+          variables:
+            - speaker_name: Shop
+            - entity: snapcast_shop
             - source: "[[source_name]]"

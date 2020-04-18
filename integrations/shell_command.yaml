@@ -3,3 +3,4 @@ shell_command:
   ring_barrett: "/usr/bin/curl -X GET !secret barrettRingUrl"
   ring_brandie: "/usr/bin/curl -X GET !secret brandieRingUrl"
   curl_post: "curl -X POST -d '{{ data }}' {{ url }}"
+  reset_tv_view: !secret resetTVCmd
