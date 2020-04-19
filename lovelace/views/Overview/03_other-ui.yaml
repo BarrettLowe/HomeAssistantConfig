@@ -1,6 +1,6 @@
 - badges: []
   cards:
-    - entity: alarm_control_panel.***REMOVED***_alarm_control_panel
+    - entity: !secret alarmEntity
       name: SimpliSafe
       states:
         - arm_home
