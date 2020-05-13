@@ -1,0 +1,43 @@
+# - alias: Nursery Button 1
+#   description: ''
+#   trigger:
+#   - device_id: 976f08d6a2444b11bbf0d34766d2c3b6
+#     domain: zha
+#     platform: device
+#     subtype: button_1
+#     type: remote_button_short_press
+#   condition: []
+#   action:
+#   - service: script.turn_on
+#     data:
+#       entity_id: script.nap_time
+#       service: script.turn_on
+
+# - alias: Nursery Button 2
+#   description: ''
+#   trigger:
+#   - device_id: 976f08d6a2444b11bbf0d34766d2c3b6
+#     domain: zha
+#     platform: device
+#     subtype: button_2
+#     type: remote_button_short_press
+#   condition: []
+#   action:
+#   - service: script.turn_on
+#     data:
+#       entity_id: script.bright_room
+#       variables:
+#         room: nursery
+
+# - alias: Nursery Button 3
+#   description: ''
+#   trigger:
+#   - device_id: 976f08d6a2444b11bbf0d34766d2c3b6
+#     domain: zha
+#     platform: device
+#     subtype: button_3
+#     type: remote_button_short_press
+#   condition: []
+#   action:
+#   - service: light.toggle
+#     entity_id: light.globe_lights
