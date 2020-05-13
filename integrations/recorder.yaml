@@ -7,3 +7,4 @@ recorder:
       - device_tracker
     entities:
       - sun.sun
+      - automation.nursery_interval_snapshot
