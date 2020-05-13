@@ -1,7 +1,9 @@
 recorder:
+  db_url: !secret mariadb_url
   exclude:
     domains:
       - updater
       - script
+      - device_tracker
     entities:
       - sun.sun
