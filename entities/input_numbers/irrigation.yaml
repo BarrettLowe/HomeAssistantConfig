@@ -1,7 +1,0 @@
-irrigation_zone1_duration:
-  name: Duration in Minutes
-  icon: mdi:timer-sand
-  min: 0
-  max: 60
-  step: 1
-  unit_of_measurement: "minutes"
