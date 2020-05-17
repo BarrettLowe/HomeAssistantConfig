@@ -74,17 +74,11 @@
     - cards:
         - entity: media_player.vizio_smartcast
           type: media-control
-        - entity: media_player.xbox
-          type: media-control
         - entity: media_player.mpd
           type: media-control
-        - entity: media_player.snapcast_rpi
-          name: snap_client
-          type: media-control
+
       title: Media
       type: vertical-stack
-    - entity: media_player.chromecast
-      type: media-control
     - type: picture-glance
       entity: camera.nursery_cam
       entities: 

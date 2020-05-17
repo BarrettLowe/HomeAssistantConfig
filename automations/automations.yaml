@@ -19,51 +19,7 @@
       from: 'off'
       to: 'on'
 
-- alias: Cancel timer if Garage closed
-  trigger:
-    - platform: state
-      entity_id: cover.middle_garage
-      to: 'closed'
-    - platform: state
-      entity_id: cover.near_garage
-      to: 'closed'
-    - platform: state
-      entity_id: cover.far_garage
-      to: 'closed'
-  action:
-    - service: timer.cancel
-      data_template: 
-        entity_id: >
-          timer.{{ trigger.entity_id.split('.')[-1] }}
 
-
-# - alias: Garage Timer Stop
-#   id: 'GarageTimerStop'
-#   hide_entity: true
-#   trigger:
-#   - platform: event
-#     event_type: timer.finished
-#   action:
-#   - service: notify.barrett
-#     data_template:
-#       message: >
-#         {{ trigger.event.data.entity_id.split('.')[-1] }} has been open for too long
-#       title: ALERT
-#       data:
-#         icon: https://goo.gl/xeetdy
-#   - service: notify.brandie
-#     data_template:
-#       message: >
-#         {{ trigger.event.data.entity_id.split('.')[-1] }} has been open for too long
-#       title: ALERT
-#       data:
-#         icon: https://goo.gl/xeetdy
-#   - service: notify.brandie
-#     data:
-#       message: A garage has been open for too long
-#       title: ALERT
-#       data:
-#         icon: https://goo.gl/xeetdy
 
 - alias: Coffee Timer Expired
   trigger:

@@ -3,20 +3,19 @@
     - platform: state
       entity_id: cover.middle_garage
       to: 'open'
+      for: 00:05:00
     - platform: state
       entity_id: cover.near_garage
       to: 'open'
+      for: 00:05:00
     - platform: state
       entity_id: cover.far_garage
       to: 'open'
+      for: 00:05:00
   action:
     - service: notify.barrett
       data_template:
         message: >
-          {{ trigger.to_state.attributes.friendly_name }} has been opened
+          {{ trigger.to_state.attributes.friendly_name }} has been opened for 5 minutes
         title: 'Alert'
-#     - service: script.turn_on
-#       entity_id: script.garage_opened_start_timer
-#       data_template:
-#         variables:
-#           theGarage: "{{ trigger.entity_id.split('.')[-1] }}"
+
