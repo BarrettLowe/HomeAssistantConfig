@@ -1,0 +1,35 @@
+- alias: Snapclient Volume on Start
+  trigger:
+    - platform: state
+      entity_id: media_player.snapcast_backyard, media_player.snapcast_kitchen, media_player.snapcast_shop, media_player.snapcast_tv
+      from: 'off'
+      to: 'on'
+  action:
+    - service: media_player.volume_set
+      data_template:
+        entity_id: "{{ trigger.entity_id }}"
+        volume_level: 0.5
+
+- alias: Snapcast Kitchen Latency
+  trigger:
+    - platform: state
+      entity_id: media_player.snapcast_kitchen
+      from:  "off"
+      to:  "on"
+  action:
+    service: snapcast.set_latency
+    data:
+      entity_id: media_player.snapcast_kitchen
+      latency: 320
+
+- alias: Snapcast Kitchen On
+  trigger: 
+
+- alias: Snapclient Volume Reset
+  trigger:
+    - platform: time
+      at: 00:00:00
+  action:
+    service: media_player.volume_set
+    data:
+      entity_id: media_player.snapcast_backyard, media_player.snapcast_kitchen, media_player.snapcast_shop, media_player.snapcast_tv
