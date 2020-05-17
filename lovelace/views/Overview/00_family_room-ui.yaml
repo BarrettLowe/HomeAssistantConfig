@@ -15,8 +15,8 @@
         - entity: light.bar
         - entity: light.tv_lamp
         - entity: light.recessed_lights
-        - entity: switch.fireplace_lamp
-        - entity: switch.game_table
+        - entity: light.fireplace_lamp
+        - entity: light.game_table_lamp
         - entity: light.smells_shelf
       title: Light
       type: entities

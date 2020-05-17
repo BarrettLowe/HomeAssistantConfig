@@ -8,4 +8,4 @@ sequence:
         - group.back_yard
   - service: homeassistant.turn_on
     data:
-      entity_id: switch.fireplace_lamp
+      entity_id: light.fireplace_lamp

@@ -54,10 +54,10 @@
         - entity: sensor.lil_bee_temperature
         - entity: light.bar
         - entity: light.recessed_lights
-        - entity: switch.fireplace_lamp
+        - entity: light.fireplace_lamp
         - entity: light.tv_lamp
         - entity: light.smells_shelf
-        - entity: switch.game_table
+        - entity: light.game_table_lamp
         - entity: light.mantle_lamp
         - entity: switch.mantle
       title: Family Room

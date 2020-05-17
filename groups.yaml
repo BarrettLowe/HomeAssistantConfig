@@ -33,8 +33,8 @@ family_room:
   name: Family Room
   icon: mdi:television-classic
   entities:
-    - switch.fireplace_lamp
-    - switch.game_table
+    - light.fireplace_lamp
+    - light.game_table_lamp
     - light.bar
     - light.tv_lamp
     - light.recessed_lights
@@ -105,6 +105,7 @@ front_yard:
     - light.porch_landscape
     - light.bedroom_landscape
     - light.east_oak
+    - light.front_porch
     
 hallway:
   name: Hallway
