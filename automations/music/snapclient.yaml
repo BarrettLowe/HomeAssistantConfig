@@ -20,7 +20,7 @@
     service: snapcast.set_latency
     data:
       entity_id: media_player.snapcast_kitchen
-      latency: 320
+      latency: 325
 
 - alias: Snapcast Kitchen On
   trigger: 
