@@ -1,0 +1,80 @@
+# Start vacuum during the week
+- alias: Vacuum Family Room and Kitchen
+  action:
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.roborock
+      command: 'zoned_cleanup'
+      params:
+        'zone_ids': ['Family Room','Kitchen']
+  trigger:
+    platform: time
+    at: '08:00:00'
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - wed
+    - fri
+
+- alias: Vacuum Bedroom and Hallway
+  action:
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.roborock
+      command: 'zoned_cleanup'
+      params:
+        'zone_ids': ['Bedroom','Hall']
+  trigger:
+    platform: time
+    at: '08:00:00'
+  condition:
+  - condition: time
+    weekday:
+    - tue
+
+- alias: Vacuum Living and Dining Rooms
+  action:
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.roborock
+      command: 'zoned_cleanup'
+      params:
+        'zone_ids': ['Living Room','Dining Room']
+  trigger:
+    platform: time
+    at: '08:00:00'
+  condition:
+  - condition: time
+    weekday:
+    - thu
+
+- alias: Vacuum Office and Guest Bath
+  action:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock
+        command: 'zoned_cleanup'
+        params:
+          'zone_ids': ['Office','Guest Bath']
+  trigger:
+    platform: time
+    at: '12:00:00'
+  condition:
+  - condition: time
+    weekday:
+    - wed
+
+- alias: Vacuum To Trashcan
+  action:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock
+        command: 'go_to'
+        params:
+          'spot_id': 'Trashcan'
+  trigger:
+    - platform: state
+      entity_id: vacuum.roborock
+      from: Cleaning
+      to: "Returning to dock"
