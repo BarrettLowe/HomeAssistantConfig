@@ -21,7 +21,7 @@ sequence:
         - light.kitchen_desk
       transition: 120
       brightness: 255
-      color_temp: 310 # Whiteish tone
+      color_temp: 325 # Whiteish tone
   - delay: '00:02:00'
   - service: notify.alexa_media
     data_template:
