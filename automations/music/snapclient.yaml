@@ -22,8 +22,6 @@
       entity_id: media_player.snapcast_kitchen
       latency: 325
 
-- alias: Snapcast Kitchen On
-  trigger: 
 
 - alias: Snapclient Volume Reset
   trigger:
