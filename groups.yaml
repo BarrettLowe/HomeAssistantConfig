@@ -23,8 +23,7 @@ interior:
     - group.kitchen
     - group.living_room
     - group.office
-    - light.entry
-    - light.laundry
+    - light.y
     - group.hallway
     - group.nursery
   
@@ -74,6 +73,8 @@ living_room:
   entities:
     - light.couch_lamp
     - light.piano_lamp
+    - light.entry
+
 
 office:
   name: Office
