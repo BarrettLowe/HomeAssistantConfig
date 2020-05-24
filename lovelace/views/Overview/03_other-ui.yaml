@@ -45,15 +45,6 @@
       show_state: true
       title: Information
       type: glance
-    - entities:
-        - entity: vacuum.bnbs_neato
-          hold_action:
-            action: call-service
-            service: script.turn_on
-            service_data:
-              entity_id: script.start_neato
-      title: Vacuum
-      type: glance
     - hold_action:
         action: none
       image: /config/www/nursery_cam_snap.jpg

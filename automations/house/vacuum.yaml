@@ -1,12 +1,11 @@
 # Start vacuum during the week
 - alias: Vacuum Family Room and Kitchen
   action:
-  - service: vacuum.send_command
-    data:
-      entity_id: vacuum.roborock
-      command: 'zoned_cleanup'
-      params:
-        'zone_ids': ['Family Room','Kitchen']
+    - service: python_script.vacuum_zones
+      data:
+        zones:
+          - "Family Room"
+          - "Kitchen"
   trigger:
     platform: time
     at: '08:00:00'
@@ -19,12 +18,12 @@
 
 - alias: Vacuum Bedroom and Hallway
   action:
-  - service: vacuum.send_command
-    data:
-      entity_id: vacuum.roborock
-      command: 'zoned_cleanup'
-      params:
-        'zone_ids': ['Bedroom','Hall']
+    - service: python_script.vacuum_zones
+      data:
+        zones:
+          - "Bedroom"
+          - "Hall"
+
   trigger:
     platform: time
     at: '08:00:00'
@@ -35,12 +34,11 @@
 
 - alias: Vacuum Living and Dining Rooms
   action:
-  - service: vacuum.send_command
-    data:
-      entity_id: vacuum.roborock
-      command: 'zoned_cleanup'
-      params:
-        'zone_ids': ['Living Room','Dining Room']
+    - service: python_script.vacuum_zones
+      data:
+        zones:
+          - "Living Room"
+          - "Dining Room"
   trigger:
     platform: time
     at: '08:00:00'
@@ -51,12 +49,11 @@
 
 - alias: Vacuum Office and Guest Bath
   action:
-    - service: vacuum.send_command
+    - service: python_script.vacuum_zones
       data:
-        entity_id: vacuum.roborock
-        command: 'zoned_cleanup'
-        params:
-          'zone_ids': ['Office','Guest Bath']
+        zones:
+          - "Office"
+          - "Guest Bath"
   trigger:
     platform: time
     at: '12:00:00'
@@ -66,15 +63,51 @@
     - wed
 
 - alias: Vacuum To Trashcan
+  initial_state: false
   action:
+    - delay: '00:00:02'
+    - service: vacuum.pause
+      entity_id: vacuum.roborock
+    - delay: '00:00:02'
     - service: vacuum.send_command
       data:
         entity_id: vacuum.roborock
         command: 'go_to'
         params:
           'spot_id': 'Trashcan'
+    - service: automation.turn_off
+      entity_id: automation.vacuum_to_trashcan
   trigger:
     - platform: state
       entity_id: vacuum.roborock
-      from: Cleaning
-      to: "Returning to dock"
+      to: returning
+
+- alias: Vacuum Started Notifications
+  trigger:
+    - platform: state
+      entity_id: vacuum.roborock
+      from: docked
+  action:
+    - service: notify.everyone
+      data:
+        title: Vacuum Running
+        message: 'Tap "view" to access it'
+        data:
+          actions:
+            - action: URI
+              title: View
+              uri: '/lovelace/vacuum'
+          tag: vacuum
+          sticky: true
+
+- alias: Vacuum Ended Notifications
+  trigger:
+    - platform: state
+      entity_id: vacuum.roborock
+      to: docked
+  action:
+    - service: notify.everyone
+      data:
+        message: clear_notification
+        data:
+          tag: vacuum

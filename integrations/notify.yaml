@@ -9,3 +9,8 @@ notify:
     device_id: !secret join_barrett_device_id
     device_ids: !secret join_barrett_device_id
     name: barrett
+  - platform: group
+    name: Everyone
+    services:
+      - service: mobile_app_barrett
+      - service: mobile_app_brandie
