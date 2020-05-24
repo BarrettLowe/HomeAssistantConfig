@@ -63,7 +63,7 @@
     - wed
 
 - alias: Vacuum To Trashcan
-  initial_state: false
+  # initial_state: false
   action:
     - delay: '00:00:02'
     - service: vacuum.pause
