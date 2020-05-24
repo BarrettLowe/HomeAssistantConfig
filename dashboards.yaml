@@ -1,9 +1,3 @@
-lovelace-irrigation: # Needs to contain a hyphen (-)
-    mode: yaml
-    filename: dashboard-irrigation.yaml
-    title: Irrigation
-    icon: mdi:sprinkler
-    show_in_sidebar: true
 lovelace-music:
     mode: yaml
     title: Music
