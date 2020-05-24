@@ -1,0 +1,3 @@
+alias: Nursery Button 1 Hold
+sequence: 
+  - service: script.nursery_dark

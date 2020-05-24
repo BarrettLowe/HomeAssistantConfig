@@ -1,43 +1,103 @@
-# - alias: Nursery Button 1
-#   description: ''
-#   trigger:
-#   - device_id: 976f08d6a2444b11bbf0d34766d2c3b6
-#     domain: zha
-#     platform: device
-#     subtype: button_1
-#     type: remote_button_short_press
-#   condition: []
-#   action:
-#   - service: script.turn_on
-#     data:
-#       entity_id: script.nap_time
-#       service: script.turn_on
+- alias: Nursery Button 1 Hold
+  description: ''
+  trigger:
+  - device_id: 01fc85454daa467fb573a084af664b6a
+    domain: zha
+    platform: device
+    subtype: button_1
+    type: remote_button_long_press
+  condition: []
+  action:
+  - data: {}
+    service: script.nursery_button_1_hold
+- alias: Nursery Button 2 Hold
+  description: ''
+  trigger:
+  - device_id: 01fc85454daa467fb573a084af664b6a
+    domain: zha
+    platform: device
+    subtype: button_2
+    type: remote_button_long_press
+  condition: []
+  action:
+  - data: {}
+    service: script.nursery_button_2_hold
 
-# - alias: Nursery Button 2
-#   description: ''
-#   trigger:
-#   - device_id: 976f08d6a2444b11bbf0d34766d2c3b6
-#     domain: zha
-#     platform: device
-#     subtype: button_2
-#     type: remote_button_short_press
-#   condition: []
-#   action:
-#   - service: script.turn_on
-#     data:
-#       entity_id: script.bright_room
-#       variables:
-#         room: nursery
+- alias: Nursery Button 3 Hold
+  description: ''
+  trigger:
+  - device_id: 01fc85454daa467fb573a084af664b6a
+    domain: zha
+    platform: device
+    subtype: button_3
+    type: remote_button_long_press
+  condition: []
+  action:
+  - data: {}
+    service: script.nursery_button_3_hold
 
-# - alias: Nursery Button 3
-#   description: ''
-#   trigger:
-#   - device_id: 976f08d6a2444b11bbf0d34766d2c3b6
-#     domain: zha
-#     platform: device
-#     subtype: button_3
-#     type: remote_button_short_press
-#   condition: []
-#   action:
-#   - service: light.toggle
-#     entity_id: light.globe_lights
+- alias: Nursery Button 4 Hold
+  description: ''
+  trigger:
+  - device_id: 01fc85454daa467fb573a084af664b6a
+    domain: zha
+    platform: device
+    subtype: button_4
+    type: remote_button_long_press
+  condition: []
+  action:
+  - data: {}
+    service: script.nursery_button_4_hold
+
+
+- alias: Nursery Button 1 Press
+  description: ''
+  trigger:
+  - device_id: 01fc85454daa467fb573a084af664b6a
+    domain: zha
+    platform: device
+    subtype: button_1
+    type: remote_button_short_press
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.recessed_lights
+    service: script.nursery_button_1_press
+- alias: Nursery Button 2 Press
+  description: ''
+  trigger:
+  - device_id: 01fc85454daa467fb573a084af664b6a
+    domain: zha
+    platform: device
+    subtype: button_2
+    type: remote_button_short_press
+  condition: []
+  action:
+  - data: {}
+    entity_id: light.mantle_lamp
+    service: script.nursery_button_2_press
+- alias: Nursery Button 3 Press
+  description: ''
+  trigger:
+  - device_id: 01fc85454daa467fb573a084af664b6a
+    domain: zha
+    platform: device
+    subtype: button_3
+    type: remote_button_short_press
+  condition: []
+  action:
+  - data: {}
+    entity_id: script.nursery_button_3_press
+    service: script.nursery_button_3_press
+- alias: Nursery Button 4 Press
+  description: ''
+  trigger:
+  - device_id: 01fc85454daa467fb573a084af664b6a
+    domain: zha
+    platform: device
+    subtype: button_4
+    type: remote_button_short_press
+  condition: []
+  action:
+  - data: {}
+    service: script.nursery_button_4_press

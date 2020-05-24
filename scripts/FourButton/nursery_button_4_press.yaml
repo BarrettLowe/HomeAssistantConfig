@@ -1,0 +1,5 @@
+alias: Nursery Button 4
+ Press
+sequence: 
+  - delay: "00:01:00"
+  - service: script.all_lights_off

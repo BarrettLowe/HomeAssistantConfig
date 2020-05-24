@@ -1,0 +1,3 @@
+alias: Nursery Button 3 Hold
+sequence: 
+  - service: script.summon_barrett

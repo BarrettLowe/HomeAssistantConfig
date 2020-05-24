@@ -8,7 +8,12 @@ sequence:
   - service: light.turn_on
     data_template:
       entity_id: group.{{ room }}
-      brightness: 255
   - service: switch.turn_on
     data_template:
       entity_id: group.{{ room }}
+# This is stupid but there seems to be a bug for some zigbee bulbs
+# where you must turn on before assigning brightness
+  - service: light.turn_on
+    data_template:
+      entity_id: group.{{ room }}
+      brightness: 255

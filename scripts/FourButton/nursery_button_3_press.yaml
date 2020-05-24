@@ -1,0 +1,4 @@
+alias: Nursery Button 3
+ Press
+sequence: 
+  - delay: "00:00:01"

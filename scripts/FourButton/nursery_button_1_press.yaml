@@ -1,0 +1,11 @@
+alias: Nursery Button 1 Press
+sequence: 
+  - service: script.turn_on
+    entity_id: script.bright_room
+    data:
+      variables:
+        room: nursery
+  - service: light.turn_on
+    entity_id: group.nursery
+    data:
+      color_temp: 370
