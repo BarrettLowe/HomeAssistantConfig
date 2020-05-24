@@ -30,6 +30,7 @@
         - entity: cover.far_garage
         - entity: cover.middle_garage
         - entity: cover.near_garage
+        - entity: binary_sensor.garage_motion
       title: Garage
       type: glance
   path: outside
