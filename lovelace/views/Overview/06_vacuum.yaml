@@ -61,6 +61,19 @@
                       - Guest Bath
                 styles:
                   card:
+                    - height: 75px          
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                name: Nursery
+                tap_action:
+                  action: call-service
+                  service: python_script.vacuum_zones
+                  service_data:
+                    zones:
+                      - Nursery
+                styles:
+                  card:
                     - height: 75px
     - type: picture-entity
       entity: camera.roborock_map
