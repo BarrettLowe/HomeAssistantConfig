@@ -1,6 +1,7 @@
+# Simple light notification.
+
 max_brightness = data.get("max_brightness") or 255
 entity_id = data.get("entity_id")
-level = data.get("level")
 
 oldAttrs = {'entity_id': entity_id}
 notifyAttrs = {'entity_id': entity_id}
@@ -12,6 +13,7 @@ if not state.domain == 'light':
 attrs = state.attributes
 prevState = state.state
 
+# Copy attributes for restoring the light
 for a in ['brightness','rgb_color','color_temp']:
     try:
         oldAttrs[a] = attrs[a]
@@ -62,6 +64,5 @@ if notifyTransition:
 hass.services.call('light','turn_'+notifyState, notifyAttrs)
 
 time.sleep(1.0)
-
 
 hass.services.call('light','turn_'+prevState, oldAttrs)

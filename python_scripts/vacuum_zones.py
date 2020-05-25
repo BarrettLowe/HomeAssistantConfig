@@ -1,3 +1,6 @@
+# This is just a simple python script to help with sending the vacuum to 
+# different zones. Call this script with as many zones as desired.
+
 zones = data.get("zones")
 
 try:
