@@ -36,3 +36,9 @@ card:
             - speaker_name: Shop
             - entity: snapcast_shop
             - source: "[[source_name]]"
+        - type: custom:decluttering-card
+          template: speaker_select
+          variables:
+            - speaker_name: Nursery
+            - entity: snapcast_nursery
+            - source: "[[source_name]]"

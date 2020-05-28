@@ -16,3 +16,8 @@ sensors:
     friendly_name: Snapcast Shop Audio Source
     value_template: "{{ state_attr('media_player.snapcast_shop','source') }}"
     icon_template: mdi:headphones
+
+  snapcast_nursery_source:
+    friendly_name: Snapcast Nursery Audio Source
+    value_template: "{{ state_attr('media_player.snapcast_nursery','source') }}"
+    icon_template: mdi:headphones

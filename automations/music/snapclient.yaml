@@ -31,3 +31,4 @@
     service: media_player.volume_set
     data:
       entity_id: media_player.snapcast_backyard, media_player.snapcast_kitchen, media_player.snapcast_shop, media_player.snapcast_tv
+      volume_level: 0.5

@@ -4,3 +4,9 @@ lovelace-music:
     show_in_sidebar: true
     filename: dashboard-music.yaml
     icon: mdi:music-note
+
+lovelace-hidden:
+  mode: yaml
+  title: Hidden Things
+  show_in_sidebar: false
+  filename: dashboard-hidden.yaml

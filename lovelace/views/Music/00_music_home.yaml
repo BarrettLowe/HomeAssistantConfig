@@ -77,6 +77,10 @@
           entity: media_player.snapcast_kitchen
           hide:
             controls: true
+        - type: custom:mini-media-player
+          entity: media_player.snapcast_nursery
+          hide:
+            controls: true
 
       open: true
     # - type: vertical-stack
@@ -91,6 +95,18 @@
     #       hide:
     #         controls: true
     #       group: true
+    - type: custom:mini-media-player
+      entity: media_player.snapcast_backyard
+      hide:
+        power: true
+        icon: true
+        source: true
+      speaker_group:
+        platform: snapcast
+        show_group_count: true
+        entities:
+          - entity_id: media_player.snapcast_kitchen
+            name: Kitchen
 
 
   # panel: true
