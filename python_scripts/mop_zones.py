@@ -13,6 +13,6 @@ try:
 
     hass.services.call("vacuum","send_command", service_data, False)
     hass.services.call("automation","turn_on", {"entity_id":"automation.vacuum_to_trashcan"})
-    hass.services.call("vacuum","set_fan_speed", {"entity_id": "vacuum.roborock", "fan_speed":60})
+    hass.services.call("vacuum","set_fan_speed", {"entity_id": "vacuum.roborock", "fan_speed":105})
 except Exception as e:
     logger.error(e)

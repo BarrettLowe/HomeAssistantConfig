@@ -4,77 +4,97 @@
   cards:
     - type: vertical-stack
       cards:
-      - type: custom:xiaomi-vacuum-card
-        entity: vacuum.roborock
-        vendor: valetudo
-        image: false
-      - type: vertical-stack
-        cards:
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                name: Family and Kitchen
-                tap_action:
-                  action: call-service
-                  service: python_script.vacuum_zones
-                  service_data:
-                    zones:
-                      - Family Room
-                      - Kitchen
-                styles:
-                  card:
-                    - height: 75px
-              - type: custom:button-card
-                name: Bedroom and Hall
-                tap_action:
-                  action: call-service
-                  service: python_script.vacuum_zones
-                  service_data:
-                    zones:
-                      - Bedroom
-                      - Hall
-                styles:
-                  card:
-                    - height: 75px
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                name: Living and Dining
-                tap_action:
-                  action: call-service
-                  service: python_script.vacuum_zones
-                  service_data:
-                    zones:
-                      - Living Room
-                      - Dining Room
-                styles:
-                  card:
-                    - height: 75px
-              - type: custom:button-card
-                name: Office and Guest Bath
-                tap_action:
-                  action: call-service
-                  service: python_script.vacuum_zones
-                  service_data:
-                    zones:
-                      - Office
-                      - Guest Bath
-                styles:
-                  card:
-                    - height: 75px          
-          - type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                name: Nursery
-                tap_action:
-                  action: call-service
-                  service: python_script.vacuum_zones
-                  service_data:
-                    zones:
-                      - Nursery
-                styles:
-                  card:
-                    - height: 75px
+        - type: custom:xiaomi-vacuum-card
+          entity: vacuum.roborock
+          vendor: valetudo
+          image: false
+        - type: vertical-stack
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  name: Family and Kitchen
+                  tap_action:
+                    action: call-service
+                    service: python_script.vacuum_zones
+                    service_data:
+                      zones:
+                        - Family Room
+                        - Kitchen
+                  styles:
+                    card:
+                      - height: 75px
+                - type: custom:button-card
+                  name: Bedroom and Hall
+                  tap_action:
+                    action: call-service
+                    service: python_script.vacuum_zones
+                    service_data:
+                      zones:
+                        - Bedroom
+                        - Hall
+                  styles:
+                    card:
+                      - height: 75px
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  name: Living and Dining
+                  tap_action:
+                    action: call-service
+                    service: python_script.vacuum_zones
+                    service_data:
+                      zones:
+                        - Living Room
+                        - Dining Room
+                  styles:
+                    card:
+                      - height: 75px
+                - type: custom:button-card
+                  name: Office and Guest Bath
+                  tap_action:
+                    action: call-service
+                    service: python_script.vacuum_zones
+                    service_data:
+                      zones:
+                        - Office
+                        - Guest Bath
+                  styles:
+                    card:
+                      - height: 75px
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  name: Nursery
+                  tap_action:
+                    action: call-service
+                    service: python_script.vacuum_zones
+                    service_data:
+                      zones:
+                        - Nursery
+                  styles:
+                    card:
+                      - height: 75px
+            - type: horizontal-stack
+              cards:
+                - type: custom:button-card
+                  name: Mop Kitchen
+                  tap_action:
+                    action: call-service
+                    service: python_script.mop_zones
+                    service_data:
+                      zones:
+                        - Mop Kitchen
+                - type: custom:button-card
+                  name: Mop Family Room
+                  tap_action:
+                    action: call-service
+                    service: python_script.mop_zones
+                    service_data:
+                      zones:
+                        - Mop Family Room
+
+
     - type: picture-entity
       entity: camera.roborock_map
       camera_view: live
