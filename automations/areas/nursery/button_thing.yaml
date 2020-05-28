@@ -1,7 +1,7 @@
 - alias: Nursery Button 1 Hold
   description: ''
   trigger:
-  - device_id: 01fc85454daa467fb573a084af664b6a
+  - device_id: 7b61b4e7a5a143aba0f231ebec9c2d3e
     domain: zha
     platform: device
     subtype: button_1
@@ -13,7 +13,7 @@
 - alias: Nursery Button 2 Hold
   description: ''
   trigger:
-  - device_id: 01fc85454daa467fb573a084af664b6a
+  - device_id: 7b61b4e7a5a143aba0f231ebec9c2d3e
     domain: zha
     platform: device
     subtype: button_2
@@ -26,7 +26,7 @@
 - alias: Nursery Button 3 Hold
   description: ''
   trigger:
-  - device_id: 01fc85454daa467fb573a084af664b6a
+  - device_id: 7b61b4e7a5a143aba0f231ebec9c2d3e
     domain: zha
     platform: device
     subtype: button_3
@@ -39,7 +39,7 @@
 - alias: Nursery Button 4 Hold
   description: ''
   trigger:
-  - device_id: 01fc85454daa467fb573a084af664b6a
+  - device_id: 7b61b4e7a5a143aba0f231ebec9c2d3e
     domain: zha
     platform: device
     subtype: button_4
@@ -53,7 +53,7 @@
 - alias: Nursery Button 1 Press
   description: ''
   trigger:
-  - device_id: 01fc85454daa467fb573a084af664b6a
+  - device_id: 7b61b4e7a5a143aba0f231ebec9c2d3e
     domain: zha
     platform: device
     subtype: button_1
@@ -66,7 +66,7 @@
 - alias: Nursery Button 2 Press
   description: ''
   trigger:
-  - device_id: 01fc85454daa467fb573a084af664b6a
+  - device_id: 7b61b4e7a5a143aba0f231ebec9c2d3e
     domain: zha
     platform: device
     subtype: button_2
@@ -79,7 +79,7 @@
 - alias: Nursery Button 3 Press
   description: ''
   trigger:
-  - device_id: 01fc85454daa467fb573a084af664b6a
+  - device_id: 7b61b4e7a5a143aba0f231ebec9c2d3e
     domain: zha
     platform: device
     subtype: button_3
@@ -92,7 +92,7 @@
 - alias: Nursery Button 4 Press
   description: ''
   trigger:
-  - device_id: 01fc85454daa467fb573a084af664b6a
+  - device_id: 7b61b4e7a5a143aba0f231ebec9c2d3e
     domain: zha
     platform: device
     subtype: button_4
