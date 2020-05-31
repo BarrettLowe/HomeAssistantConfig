@@ -23,7 +23,7 @@ interior:
     - group.kitchen
     - group.living_room
     - group.office
-    - light.y
+    - light.laundry
     - group.hallway
     - group.nursery
   
