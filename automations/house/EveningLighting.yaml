@@ -3,19 +3,14 @@
     platform: time
     at: "21:00:00"
   condition:
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: person.barrett
-          state: home
-        - condition: state
-          entity_id: person.brandie
-          state: home
+    - condition: state
+      entity_id: binary_sensor.house_occupancy
+      state: 'on'
   action:
-    - service: light.turn_off
+    - service: switch.turn_off
       entity_id: switch.kitchen_crappy
     - service: python_script.reduce_all_lights_by_pct
       data:
-        transition: 10
+        transition: 30
         color_temp: 440 # Amber Tone
         pct: 50

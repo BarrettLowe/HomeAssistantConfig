@@ -15,9 +15,14 @@
         after: sunset
         after_offset: "-00:45:00"
       #and someone is home
-      - condition: state
-        entity_id: group.all_people
-        state: 'home'
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: input_select.vacation_mode
+            state: 'Home'
+          - condition: state
+            entity_id: binary_sensor.house_occupancy
+            state: 'on'
       - condition: state
         entity_id: group.bedroom
         state: 'off'

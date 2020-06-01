@@ -10,7 +10,7 @@
   condition: []
   id: '1524425355681'
   trigger:
-  - entity_id: group.all_people
-    from: not_home
+  - entity_id: binary_sensor.house_occupancy
+    from: 'off'
     platform: state
-    to: home
+    to: 'on'

@@ -2,16 +2,18 @@
   trigger:
   - event: sunset
     platform: sun
-    offset: "-01:00:00"
+    offset: "-00:45:00"
   condition:
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: person.barrett
-          state: home
-        - condition: state
-          entity_id: person.brandie
-          state: home
+    condition: and
+    conditions:
+      - condition: not
+        conditions:
+          - condition: state
+            entity_id: input_select.vacation_mode
+            state:  'Away'
+      - condition: state
+        entity_id: binary_sensor.house_occupancy
+        state: 'on'
   action:
     - service: light.turn_on
       data:

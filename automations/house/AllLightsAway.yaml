@@ -8,6 +8,6 @@
   alias: Nobody Home
   condition: []
   trigger:
-  - entity_id: group.all_people
+  - entity_id: binary_sensor.house_occupancy
     platform: state
-    to: not_home
+    to: 'off'

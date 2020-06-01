@@ -24,8 +24,11 @@
         before: "10:00:00"
       #and someone is home
       - condition: state
-        entity_id: group.all_people
-        state: 'home'
+        entity_id: binary_sensor.house_occupancy
+        state: 'on'
+      - condition: state
+        entity_id: input_select.vacation_mode
+        state: 'Home'
       - condition: state
         entity_id: group.bedroom
         state: 'off'

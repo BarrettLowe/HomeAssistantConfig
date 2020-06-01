@@ -1,6 +1,7 @@
 vacation_mode:
   name: Vacation Mode
   options:
-    - "Off/Home"
+    - Home
     - Away
     - Housesitter
+    - Guests

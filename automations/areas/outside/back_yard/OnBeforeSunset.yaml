@@ -5,8 +5,8 @@
     offset: "-00:45:00"
   condition:
     condition: state
-    entity_id: group.all_people
-    state: 'home' #indicates at least 1 person is home
+    entity_id: binary_sensor.house_occupancy
+    state: 'on'
   action:
     service: homeassistant.turn_on
     entity_id: group.back_yard
