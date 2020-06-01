@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.kitchen_door
-      to: open
+      to: 'on'
       for: "00:01:30"
     - platform: numeric_state
       entity_id: sensor.air_conditioner_power
@@ -15,6 +15,9 @@
         above: 30 #arbitrary number of watts that seems good... :)
       - condition: template
         value_template: "{{ (state_attr('weather.kfws_daynight', 'temperature')|int) > 78 }}"
+      - condition: state
+        entity_id: binary_sensor.kitchen_door
+        state: 'on'
   action:
     - service: notify.alexa_media
       data:
@@ -38,7 +41,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.kitchen_door
-      to: closed
+      to: 'off'
   action:
     - service: notify.everyone
       data:
@@ -46,4 +49,4 @@
         data:
           tag: sliding_door
     - service: automation.turn_off
-      entity_id: automation.sliding_door_notification_start
+      entity_id: automation.sliding_door_notification_cancel
