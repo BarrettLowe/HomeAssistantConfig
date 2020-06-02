@@ -1,0 +1,58 @@
+- badges: []
+  title: Nursery
+  icon: mdi:baby-carriage
+  path: nursery
+  cards:
+    - type: vertical-stack
+      cards:
+        - type: custom:button-card
+          color_type: icon
+          icon: >
+            [[[
+              var st = states['binary_sensor.crib_occupied'].state;
+              return (st == 'on' ? 'mdi:baby-face-outline' : 'mdi:baby');
+            ]]]
+          label: >
+            [[[
+              var st = states['binary_sensor.crib_occupied'].state;
+              return (st == 'on' ? 'Baby: In Crib' : 'Baby: On The Loose');
+            ]]]
+          show_label: true
+          entity: binary_sensor.crib_occupied
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: script.nap_time
+              icon: mdi:sleep
+            - type: custom:button-card
+              entity: script.summon_barrett
+              icon: mdi:message-alert
+            - type: custom:button-card
+              entity: script.nursery_dark
+              icon: mdi:weather-night
+        - type: horizontal-stack
+          cards:
+            - type: custom:button-card
+              entity: script.bright_room
+              data:
+                variables:
+                  room: nursery
+              icon: mdi:lightbulb-on
+            - type: custom:button-card
+              entity: script.start_white_noise
+              icon: mdi:speaker-wireless
+    - type: entities
+      title: Lights
+      entities:
+        - light.nursery_dresser
+        - light.nursery_sconces
+        - light.rocking_chair
+        - light.futon_light
+    - type: entity
+      entity: fan.nursery
+    - type: picture-glance
+      entity: camera.nursery_cam
+      entities: 
+        - camera.nursery_cam
+      image: /local/nursery_snapshot.jpg
+      show_state: false

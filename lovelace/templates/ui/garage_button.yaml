@@ -1,0 +1,20 @@
+default:
+  entity: ""
+  name: Unnamed
+
+card:
+  type: custom:button-card
+  color_type: icon
+  color: "#03a9f4"
+  entity: "[[entity]]"
+  icon: mdi:garage-alert
+  state: 
+    - value: 'closed'
+      icon: mdi:garage
+    - value: 'open'
+      icon: mdi:garage-closed
+    - value: 'unavailable'
+      icon: mdi:garage-alert
+  name: "[[name]]"
+  tap_action:
+    action: more-info

@@ -19,16 +19,16 @@
         - columns: 3
           entities:
             - binary_sensor.internet_connection
-            - sensor.network_in_eth0
-            - sensor.network_out_eth0
+            - sensor.network_in_eno1
+            - sensor.network_out_eno1
             - entity: sensor.speedtest_ping
             - entity: sensor.speedtest_download
             - entity: sensor.speedtest_upload
           title: Network Stats
           type: glance
         - entities:
-            - sensor.ipv4_address_eth0
-            - sensor.ipv6_address_eth0
+            - sensor.ipv4_address_eno1
+            - sensor.ipv6_address_eno1
             - binary_sensor.internet_connection
             - binary_sensor.mqtt_broker
           type: entities
@@ -120,6 +120,7 @@
         - entity: binary_sensor.barrett_phone_charging
         - entity: device_tracker.barrett_pixel
         - entity: device_tracker.barrett_pixel_nmap
+        - entity: device_tracker.barrett_ma
         - entity: sensor.barrett_phone_battery
       show_header_toggle: false
       title: Barrett - Status
@@ -130,6 +131,7 @@
         - entity: binary_sensor.brandie_phone_charging
         - entity: device_tracker.brandie_pixel
         - entity: device_tracker.brandie_pixel_nmap
+        - entity: device_tracker.brandie_ma
         - entity: sensor.brandie_phone_battery
       show_header_toggle: false
       title: Brandie - Status

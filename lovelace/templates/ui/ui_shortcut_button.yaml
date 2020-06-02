@@ -1,0 +1,15 @@
+default:
+  path: "/lovelace"
+  icon: "mdi:exlamation"
+
+card:
+  type: custom:button-card
+  color_type: card
+  color: "#03a9f4"
+  icon: "[[icon]]"
+  tap_action:
+    action: navigate
+    navigation_path: "[[path]]"
+  styles:
+    card:
+      - height: 70px

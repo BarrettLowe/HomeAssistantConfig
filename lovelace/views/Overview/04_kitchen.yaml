@@ -1,0 +1,62 @@
+- badges: []
+  title: Kitchen
+  icon: mdi:chef-hat
+  path: kitchen
+  cards:      
+    - type: custom:card-templater
+      card:
+        type: entities
+        title: Lights
+        entities:
+          - switch.kitchen_crappy
+          - light.under_cabinet_lights
+          - colors:
+              - brightness: 150
+                rgb_color:
+                  - string_template: '{{ states("input_number.cabinet_nighttime_red") | int }}'
+                  - string_template: >-
+                      {{ states("input_number.cabinet_nighttime_green") | int
+                      }}
+                  - string_template: >-
+                      {{ states("input_number.cabinet_nighttime_blue") | int
+                      }}
+                transition: 1
+              - brightness: 255
+                rgb_color:
+                  - string_template: '{{ states("input_number.cabinet_daytime_red") | int }}'
+                  - string_template: '{{ states("input_number.cabinet_daytime_green") | int }}'
+                  - string_template: '{{ states("input_number.cabinet_daytime_blue") | int }}'
+                transition: 1
+              - brightness: 150
+                rgb_color:
+                  - string_template: '{{ states("input_number.cabinet_morning_red") | int }}'
+                  - string_template: '{{ states("input_number.cabinet_morning_green") | int }}'
+                  - string_template: '{{ states("input_number.cabinet_morning_blue") | int }}'
+                transition: 1
+              - brightness: 150
+                rgb_color:
+                  - 70
+                  - 200
+                  - 150
+              - brightness: 100
+                rgb_color:
+                  - 90
+                  - 0
+                  - 255
+            entity: light.under_cabinet_lights
+            justify: around
+            type: 'custom:rgb-light-card'
+          - light.kitchen_desk
+          - light.kitchen_lamp
+          - light.sink
+      entities: 
+        - light.under_cabinet_lights
+    - type: custom:mini-media-player
+      entity: media_player.snapcast_kitchen
+    - type: entity
+      entity: binary_sensor.kitchen_door
+    - type: custom:decluttering-card
+      template: light_door_combo
+      variables:
+        - light: light.pantry
+        - door: binary_sensor.pantry_door

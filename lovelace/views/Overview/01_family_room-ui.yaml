@@ -1,0 +1,26 @@
+- badges: []
+  cards:
+    - entities:
+        - entity: light.bar
+        - entity: light.mantle_lamp
+        - entity: light.fireplace_lamp
+        - entity: light.tv_lamp
+        - entity: light.smells_shelf
+        - entity: light.game_table_lamp
+      title: Lights
+      type: entities
+    - type: entities
+      entities:
+        - entity: sensor.lil_bee_temperature
+      show_header_toggle: false
+    - entity: light.recessed_lights
+      name: Recessed Lights
+      type: light
+    - entity: media_player.vizio_smartcast
+      type: media-control
+    - type: alarm-panel
+      entity: !secret alarmEntity
+      name: SimpliSafe
+  path: family_room
+  title: Family Room
+  icon: mdi:home-heart

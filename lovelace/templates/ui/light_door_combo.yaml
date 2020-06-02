@@ -1,0 +1,19 @@
+default:
+  light: ""
+  door: ""
+
+card:
+  type: custom:button-card
+  color_type: icon
+  entity: "[[light]]"
+  label: >
+    [[[
+      var st = states['[[door]]'].state;
+      return (st == 'off' ? 'Closed' : 'Open');
+    ]]]
+  show_label: true
+  icon: >
+    [[[
+      var st = states['[[door]]'].state;
+      return (st == 'off' ? "mdi:door" : "mdi:door-open")
+    ]]]

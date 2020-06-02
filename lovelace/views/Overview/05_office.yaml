@@ -1,0 +1,12 @@
+- badges: []
+  title: Office
+  path: office
+  icon: mdi:desk-lamp
+  cards:
+    - type: entities
+      title: Entities
+      entities:
+        - switch.office_overhead_light
+        - fan.fan_office
+        - light.brandies_desk
+        - sensor.office_temperature

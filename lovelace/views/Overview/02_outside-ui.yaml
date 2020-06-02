@@ -1,5 +1,24 @@
 - badges: []
   cards:
+    - type: horizontal-stack
+      title: Garages
+      cards:
+        - type: custom:decluttering-card
+          template: garage_button
+          variables:
+            - entity: cover.near_garage
+            - name: Near 
+        - type: custom:decluttering-card
+          template: garage_button
+          variables:
+            - entity: cover.middle_garage
+            - name: Middle 
+        - type: custom:decluttering-card
+          template: garage_button
+          variables:
+            - entity: cover.far_garage
+            - name: Far
+
     - entities:
         - entity: light.globe_lights
         - entity: switch.tree_light
@@ -27,11 +46,25 @@
       name: Driveway
       type: light
     - entities:
-        - entity: cover.far_garage
-        - entity: cover.middle_garage
-        - entity: cover.near_garage
         - entity: binary_sensor.garage_motion
       title: Garage
       type: glance
+    - entity: camera.aarlo_driveway
+      name: Driveway
+      show:
+        - motion
+        - snapshot
+        - battery_level
+        - captured_today
+      type: 'custom:aarlo-glance'
+    - entity: camera.aarlo_front_door
+      name: Front Door
+      show:
+        - motion
+        - snapshot
+        - battery_level
+        - captured_today
+      type: 'custom:aarlo-glance'
   path: outside
   title: Outside
+  icon: mdi:tree

@@ -1,0 +1,16 @@
+- badges: []
+  title: Living and Dining
+  path: living_dining
+  icon: mdi:silverware
+  cards:
+    - type: entities
+      title: Dining Room
+      entities:
+        - light.dog_lamp
+        - light.chandelier
+    - type: entities
+      title: Living Room
+      entities:
+        - light.couch_lamp
+        - light.piano_lamp
+        - binary_sensor.living_room_motion

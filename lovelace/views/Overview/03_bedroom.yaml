@@ -1,0 +1,40 @@
+- badges: []
+  cards:
+    - type: entities
+      title: Scripts
+      entities:
+        - type: custom:paper-buttons-row
+          buttons:
+            - entity: script.bright_room
+              data:
+                variables:
+                  room: bedroom
+              name: false
+            - entity: script.brandie_sleeps
+              icon: mdi:sleep
+              name: false
+            - entity: script.night_shutdown_house
+              icon: mdi:weather-night
+              name: false
+    - type: entities
+      title: Lights
+      entities:
+        - light.brandies_side
+        - light.barretts_side
+        - light.dresser
+        - switch.jewelry_lamp
+    - type: horizontal-stack
+      cards:
+        - type: custom:decluttering-card
+          template: light_door_combo
+          variables:
+            - light: light.brandies_closet
+            - door: binary_sensor.brandies_closet_door
+        - type: custom:decluttering-card
+          template: light_door_combo
+          variables:
+            - light: light.barretts_closet
+            - door: binary_sensor.barretts_closet_door
+  path: bedroom
+  icon: mdi:bed-empty
+  title: Bedroom
