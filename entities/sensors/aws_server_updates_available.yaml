@@ -1,0 +1,4 @@
+platform: command_line
+name: Remote General Updates
+command: !secret server_gen_update_cmd
+scan_interval: 3600

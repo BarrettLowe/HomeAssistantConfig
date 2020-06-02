@@ -1,0 +1,4 @@
+platform: command_line
+name: Remote Security Updates
+command: !secret server_sec_update_cmd 
+scan_interval: 3600
