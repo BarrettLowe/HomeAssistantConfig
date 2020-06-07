@@ -1,3 +1,0 @@
-hass_opensprinkler:
-  host: "192.168.86.58:8080"
-  password: !secret opensprinkler_pass
