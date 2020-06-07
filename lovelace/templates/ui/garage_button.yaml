@@ -12,7 +12,7 @@ card:
     - value: 'closed'
       icon: mdi:garage
     - value: 'open'
-      icon: mdi:garage-closed
+      icon: mdi:garage-open
     - value: 'unavailable'
       icon: mdi:garage-alert
   name: "[[name]]"
