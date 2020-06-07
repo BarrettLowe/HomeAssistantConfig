@@ -17,9 +17,14 @@
       #and someone is home
       - condition: and
         conditions:
-          - condition: state
-            entity_id: input_select.vacation_mode
-            state: 'Home'
+          - condition: or
+            conditions: 
+              - condition: state
+                entity_id: input_select.vacation_mode
+                state: 'Home'
+              - condition: state
+                entity_id: input_select.vacation_mode
+                state: 'Guests'
           - condition: state
             entity_id: binary_sensor.house_occupancy
             state: 'on'
