@@ -4,7 +4,8 @@ device_tracker:
     hosts: 
       - 192.168.86.0/24
     home_interval: 30
-    interval_seconds: 60
+    interval_seconds: 300
+    scan_options: "-F --host-timeout 1s"
   - platform: mqtt_json
     devices:
       barrett_pixel: owntracks/Barrett/pixel
