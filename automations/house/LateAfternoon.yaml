@@ -6,14 +6,21 @@
   condition:
     condition: and
     conditions:
-      - condition: not
-        conditions:
-          - condition: state
-            entity_id: input_select.vacation_mode
-            state:  'Away'
       - condition: state
         entity_id: binary_sensor.house_occupancy
         state: 'on'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: media_player.vizio_smartcast
+            state: 'off'
+          - condition: and
+            conditions:
+              - condition: state
+                entity_id: media_player.vizio_smartcast
+                state: 'on'
+              - condition: template
+                value_template: '{{ state_attr("media_player.vizio_smartcast","source") == "SmartCast Home" }}'
   action:
     - service: light.turn_on
       data:
@@ -21,8 +28,6 @@
         transition: 60
         color_temp: 375
         brightness: 255
-    - service: switch.turn_on
-      entity_id: group.family_room
     - service: light.turn_on 
       data:
         entity_id: group.bedroom
