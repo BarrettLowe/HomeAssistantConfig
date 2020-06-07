@@ -10,15 +10,16 @@
           icon: >
             [[[
               var st = states['binary_sensor.crib_occupied'].state;
-              return (st == 'on' ? 'mdi:baby-face-outline' : 'mdi:baby');
+              return (st == 'on' ? 'mdi:baby-face-outline' : (st == 'off' ? 'mdi:baby' : 'mdi:alert'));
             ]]]
           label: >
             [[[
               var st = states['binary_sensor.crib_occupied'].state;
-              return (st == 'on' ? 'Baby: In Crib' : 'Baby: On The Loose');
+              return (st == 'on' ? 'Baby: In Crib' : (st == 'off' ? 'Baby: On The Loose' : 'Unavailable'));
             ]]]
           show_label: true
           entity: binary_sensor.crib_occupied
+          name: Crib Status
         - type: horizontal-stack
           cards:
             - type: custom:button-card
@@ -30,6 +31,7 @@
             - type: custom:button-card
               entity: script.nursery_dark
               icon: mdi:weather-night
+
         - type: horizontal-stack
           cards:
             - type: custom:button-card
@@ -41,6 +43,28 @@
             - type: custom:button-card
               entity: script.start_white_noise
               icon: mdi:speaker-wireless
+            - type: custom:button-card
+              entity: binary_sensor.nursery_noise
+              icon: mdi:microphone-outline
+              tap_action: 
+                action: call-service
+                service: >
+                  [[[
+                    if (entity.state == 'unavailable')
+                      return 'ffmpeg.start';
+                    else
+                      return 'ffmpeg.stop';
+                  ]]]
+                service_data:
+                  entity_id: binary_sensor.nursery_noise
+              state:
+                - value: unavailable
+                  icon: mdi:microphone-off
+                - value: 'off'
+                  color: green
+                - value: 'on'
+                  color: red
+              color_type: icon
     - type: entities
       title: Lights
       entities:
@@ -54,5 +78,5 @@
       entity: camera.nursery_cam
       entities: 
         - camera.nursery_cam
-      image: /local/nursery_snapshot.jpg
+      camera_image: camera.nursery_camera_snapshot_cam
       show_state: false

@@ -22,7 +22,7 @@
     service: snapcast.set_latency
     data:
       entity_id: media_player.snapcast_kitchen
-      latency: 325
+      latency: -40
 
 
 - alias: Snapclient Volume Reset

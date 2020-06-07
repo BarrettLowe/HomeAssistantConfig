@@ -27,10 +27,10 @@ card:
             color: var(--paper-item-icon-active-color)
       tap_action: 
         action: call-service
-        service: script.toggle_audio_source
+        service: python_script.toggle_audio_source
         service_data:
           speakers: "media_player.[[entity]]"
-          audio_source: "[[source]]"
+          source: "[[source]]"
       hold_action:
         action: more-info
         entity: "[[more_info_entity]]"

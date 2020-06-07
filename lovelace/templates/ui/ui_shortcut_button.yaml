@@ -5,7 +5,7 @@ default:
 card:
   type: custom:button-card
   color_type: card
-  color: "#03a9f4"
+  color: "var(--primary-color)"
   icon: "[[icon]]"
   tap_action:
     action: navigate
