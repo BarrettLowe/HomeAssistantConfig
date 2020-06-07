@@ -1,3 +1,16 @@
 alias: Start White Noise
 sequence:
-  - delay: "00:00:01"
+  - service: media_player.select_source
+    data: 
+      entity_id: media_player.mpd
+      source: Whitenoise
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.snapcast_nursery
+      source: HomeAssistantUI
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.snapcast_nursery
+      volume_level: 0.5
+  - service: media_player.media_play
+    entity_id: media_player.mpd
