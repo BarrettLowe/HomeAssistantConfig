@@ -1,0 +1,7 @@
+---
+manual_dim:
+  module: manual_dim
+  class: ManualDimmer
+volume_fade_out:
+  module: volume_fade_out
+  class: VolumeFader
