@@ -23,18 +23,25 @@
         - light.barretts_side
         - light.dresser
         - switch.jewelry_lamp
-    - type: horizontal-stack
+    - type: vertical-stack
       cards:
-        - type: custom:decluttering-card
-          template: light_door_combo
-          variables:
-            - light: light.brandies_closet
-            - door: binary_sensor.brandies_closet_door
-        - type: custom:decluttering-card
-          template: light_door_combo
-          variables:
-            - light: light.barretts_closet
-            - door: binary_sensor.barretts_closet_door
+        - type: horizontal-stack
+          cards:
+            - type: custom:decluttering-card
+              template: light_door_combo
+              variables:
+                - light: light.brandies_closet
+                - door: binary_sensor.brandies_closet_door
+            - type: custom:decluttering-card
+              template: light_door_combo
+              variables:
+                - light: light.barretts_closet
+                - door: binary_sensor.barretts_closet_door
+        - type: entities
+          show_header_toggle: false
+          entities:
+            - automation.barretts_closet
+            - automation.brandies_closet
   path: bedroom
   icon: mdi:bed-empty
   title: Bedroom
