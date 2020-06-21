@@ -17,3 +17,5 @@ card:
       var st = states['[[door]]'].state;
       return (st == 'off' ? "mdi:door" : "mdi:door-open")
     ]]]
+  hold_action:
+    action: more-info
