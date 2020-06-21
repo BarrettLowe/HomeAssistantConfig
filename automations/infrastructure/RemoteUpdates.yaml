@@ -1,0 +1,10 @@
+- alias: Remote Updates Available
+  trigger:
+    - platform: state
+      entity_id: sensor.remote_general_updates, sensor.remote_security_updates
+      from: "0"
+  action:
+    service: persistent_notification.create
+    data_template:
+      title: Updates Available
+      message: System updates are available on the remote server.
