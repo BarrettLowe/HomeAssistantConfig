@@ -16,3 +16,13 @@ sequence:
       entity_id: 
         - automation.under_cabinet_lights_daytime
         - automation.under_cabinet_lights_nighttime
+  - delay:
+      seconds: 1
+  - service: homeassistant.turn_on
+    entity_id: script.nursery_dark
+  - service: homeassistant.turn_off
+    entity_id: light.barretts_closet
+  - service: light.turn_on
+    entity_id: light.brandies_closet
+    data:
+      brightness: 1
