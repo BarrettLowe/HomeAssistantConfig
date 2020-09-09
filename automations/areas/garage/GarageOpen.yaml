@@ -13,7 +13,7 @@
       to: 'open'
       for: 00:05:00
   action:
-    - service: notify.barrett
+    - service: notify.mobile_app_barrett
       data_template:
         message: >
           {{ trigger.to_state.attributes.friendly_name }} has been opened for 5 minutes

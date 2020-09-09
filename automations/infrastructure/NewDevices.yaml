@@ -3,7 +3,7 @@
     platform: event
     event_type: device_tracker_new_device
   action:
-    - service: notify.barrett
+    - service: notify.mobile_app_barrett
       data_template:
         message: >
           Device Data:

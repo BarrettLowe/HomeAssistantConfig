@@ -6,11 +6,11 @@
     from: 'on'
     to: 'off'
   action:
-    - service: notify.barrett
+    - service: notify.mobile_app_barrett
       data:
         message: The deep freeze has been turned off. Is this right?!"
         title: WARNING
-    - service: notify.brandie
+    - service: notify.mobile_app_brandie
       data:
         message: The deep freeze has been turned off. Is this right?!
         title: WARNING
@@ -23,7 +23,7 @@
     below: 1
     for: 01:00:00
   action:
-    - service: notify.barrett
+    - service: notify.mobile_app_barrett
       data:
         message: The deep freeze is drawing about {{ states("sensor.deep_freeze_power") }} watts! That's a little low!
         title: WARNING

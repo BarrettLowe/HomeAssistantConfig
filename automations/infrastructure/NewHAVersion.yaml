@@ -5,7 +5,7 @@
     to: 'on'
     entity_id: binary_sensor.updater
   action:
-    - service: notify.barrett
+    - service: notify.mobile_app_barrett
       data_template:
         title: 'New Home Assistant Release'
         message: "Home Assistant  {{ state_attr('binary_sensor.updater', 'newest_version') }}  is now available. Release notes: {{ state_attr('binary_sensor.updater', 'release_notes') }}"

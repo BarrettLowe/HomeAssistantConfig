@@ -6,7 +6,7 @@
     for: '00:10:00'
     entity_id: device_tracker.front_landscape, device_tracker.back_landscape
   action:
-    - service: notify.barrett
+    - service: notify.mobile_app_barrett
       data_template:
         title: "Device Offline"
         message: "{{ trigger.entity_id.split('.')[-1] }} is offline. Please check into it..."

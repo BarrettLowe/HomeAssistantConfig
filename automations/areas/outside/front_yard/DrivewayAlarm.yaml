@@ -12,7 +12,7 @@
     # and the alarm is not triggered
     - service: script.turn_on
       entity_id: script.alarm_driveway
-    - service: notify.barrett
+    - service: notify.mobile_app_barrett
       data:
         message: "MOTION DETECTED IN THE DRIVEWAY"
         title: ALERT

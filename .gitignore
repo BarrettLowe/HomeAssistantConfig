@@ -20,11 +20,15 @@ www/
 zigbee.db
 zwcfg_0xe89d291e.xml
 zwscene.xml
+*.pyc
 
 alexa_media.brandievo@gmail.com.pickle
 ip_bans.yaml
 esphome/irrigation_controller/partitions.csv
 .xbox-token.json
 themes/grey_night/grey_night.yaml
-home_rpis_id_rsa
+ssh/*
 zones.yaml
+appdaemon/appdaemon.yaml
+appdaemon/compiled
+appdaemon/namespaces

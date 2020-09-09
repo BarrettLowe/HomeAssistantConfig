@@ -1,13 +1,13 @@
 - alias: Aurora
   id: 'AURORA'
   action:
-    - service: notify.barrett
+    - service: notify.mobile_app_barrett
       data:
         message: 'There is a chance to see the northern lights in the next 5 minutes!'
         title: Northern Lights
         data:
           icon: https://goo.gl/xeetdy
-    - service: notify.brandie
+    - service: notify.mobile_app_brandie
       data:
         message: 'There is a chance to see the northern lights in the next 5 minutes!'
         title: Northern Lights
@@ -35,13 +35,13 @@
 
 - alias: Test Notify
   action:
-    - service: notify.brandie
+    - service: notify.mobile_app_brandie
       data:
         message: Test Notification
         title: TEST
         data:
           icon: https://goo.gl/xeetdy
-    - service: notify.barrett
+    - service: notify.mobile_app_barrett
       data:
         message: Test Notification
         title: TEST
@@ -69,7 +69,7 @@
   - data:
       message: The middle garage is open but nobody is home!
       title: Garage Alert
-    service: notify.barrett
+    service: notify.mobile_app_barrett
 
 - id: 'BLLLEAVES'
   alias: Brandie Leaves
@@ -89,7 +89,7 @@
   - data:
       message: The middle garage is open but nobody is home!
       title: Garage Alert
-    service: notify.brandie
+    service: notify.mobile_app_brandie
 
 
 - alias: Notify Brandie when Barrett's Phone is about to die
@@ -99,7 +99,7 @@
     value_template: '{{ states("sensor.barrett_phone_battery") }}'
     below: 20
   action:
-    - service: notify.brandie
+    - service: notify.mobile_app_brandie
       data:
         message: FYI - Barrett's phone battery < 20%
         title: Barrett's Phone is Dying
@@ -111,7 +111,7 @@
     value_template: '{{ states("sensor.brandie_phone_battery") }}'
     below: 20
   action:
-    - service: notify.barrett
+    - service: notify.mobile_app_barrett
       data:
         message: FYI - Brandie's phone battery < 20%
         title: Brandie's Phone is Dying
