@@ -4,22 +4,12 @@
     condition: and
     conditions:
     # do not trigger if Barrett isn't home
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: binary_sensor.barrett_phone_charging
-            state: 'off'
-          - condition: state
-            entity_id: person.barrett
-            state: 'not_home'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: binary_sensor.brandie_phone_charging
-            state: 'off'
-          - condition: state
-            entity_id: person.brandie
-            state: 'not_home'
+      - condition: state
+        entity_id: binary_sensor.barrett_in_bed
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.brandie_in_bed
+        state: 'off'
       - condition: time
         before: "10:00:00"
       #and someone is home
