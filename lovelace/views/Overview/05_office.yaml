@@ -6,7 +6,7 @@
     - type: entities
       title: Entities
       entities:
-        - switch.office_overhead_light
+        - light.office_overhead_light
         - fan.fan_office
         - light.brandies_desk
         - sensor.office_temperature

@@ -77,7 +77,7 @@
         - entity: light.brandies_desk
         - entity: sensor.office_humidity
         - entity: sensor.office_temperature
-        - entity: switch.office_overhead_light
+        - entity: light.office_overhead_light
         - entity: fan.fan_office
       title: Office
       type: entities
