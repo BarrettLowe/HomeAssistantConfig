@@ -5,16 +5,10 @@
     from: 'off'
     to: 'on'
   action:
-    service: homeassistant.turn_on
-    entity_id: light.entry
-
-- alias: Entry Light Off
-  trigger:
-    platform: state
-    entity_id: binary_sensor.front_door
-    from: 'on'
-    to: 'off'
-    for: 00:05:00
-  action:
-    service: homeassistant.turn_off
-    entity_id: light.entry    
+    - service: homeassistant.turn_on
+      entity_id: light.entry
+    - delay:
+        minutes: 5
+    - service: homeassistant.turn_off
+      entity_id: light.entry
+  mode: restart

@@ -7,6 +7,8 @@ homeassistant:
     - type: homeassistant
     - type: trusted_networks
       trusted_networks:
-       - 192.168.86.174
+      #  - 192.168.86.174
+       - 192.168.86.0/24
       trusted_users:
         192.168.86.174: ae0e3ad42fb8415cb2fcabed1efb65f5
+        192.168.86.0/24: a495b1674f7d426a88acb3c77f149f60

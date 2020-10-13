@@ -3,9 +3,13 @@ sequence:
   - service: light.turn_off
     entity_id: group.hallway
   - service: light.turn_on
-    entity_id: light.rocking_chair, light.nursery_dresser
+    entity_id: light.nursery_dresser
     data:
       brightness: 1
+      rgb_color: 
+        - 255
+        - 255
+        - 255
   - service: light.turn_off
     entity_id:
       - light.nursery_sconces

@@ -2,8 +2,6 @@ alias: Shutdown House at Night
 sequence:
   - service: script.turn_on
     entity_id: script.all_lights_off
-  - service: media_player.media_stop
-    entity_id: media_player.mpd
   - service: media_player.turn_off
     entity_id: media_player.vizio_smartcast
   - condition: state
@@ -11,3 +9,10 @@ sequence:
     state: disarmed
   - service: alarm_control_panel.alarm_arm_home
     entity_id: !secret alarmEntity
+  - condition:
+    condition: not
+    conditions:
+      - condition: template
+        value_template: '{{ state_attr("media_player.mpd", "source") == "Whitenoise" }}'
+  - service: media_player.media_stop
+    entity_id: media_player.mpd

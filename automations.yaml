@@ -1,0 +1,39 @@
+- id: '1602298536860'
+  alias: Tag Vacuum Pause is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 5957db82-93d4-4795-8c8a-4e43dee7aec7
+  condition: []
+  action:
+  - service: vacuum.pause
+    data: {}
+    entity_id: vacuum.roborock
+  mode: single
+- id: '1602300036549'
+  alias: Tag Bright Front is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: f6f6ebb3-68bf-4405-8596-3c79374af343
+  condition: []
+  action:
+  - service: script.bright_room
+    data:
+      room: dining_room
+  - service: script.bright_room
+    data:
+      room: living_room
+  mode: single
+- id: '1602336989035'
+  alias: Tag Garage Opener is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 6f9c87a2-fe87-42bb-a224-fe8caba6787e
+  condition: []
+  action:
+  - service: cover.toggle
+    data: {}
+    entity_id: cover.middle_garage
+  mode: single

@@ -42,6 +42,7 @@
           entities:
             - automation.barretts_closet
             - automation.brandies_closet
+            - automation.nursery_noise_notification
   path: bedroom
   icon: mdi:bed-empty
   title: Bedroom

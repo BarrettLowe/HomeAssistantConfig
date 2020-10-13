@@ -12,7 +12,7 @@ class ManualDimmer(hass.Hass):
 
   def initialize(self):
     self.listen_event(self.transitionLight, 'MANUAL_DIM')
-    self.listen_event(self.volumeFade, 'MANUAL_FADE')
+    # self.listen_event(self.volumeFade, 'MANUAL_FADE')
     
   def transitionLight(self, event, data, kwargs):
     entity = None

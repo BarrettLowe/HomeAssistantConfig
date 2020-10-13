@@ -39,6 +39,6 @@ card:
         - type: custom:decluttering-card
           template: speaker_select
           variables:
-            - speaker_name: Nursery
-            - entity: snapcast_nursery
+            - speaker_name: Office
+            - entity: snapcast_office
             - source: "[[source_name]]"

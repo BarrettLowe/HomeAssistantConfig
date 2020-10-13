@@ -2,43 +2,6 @@
   cards:
     - type: vertical-stack
       cards:
-        - type: weather-forecast
-          entity: weather.kfws_hourly
-    - type: vertical-stack
-      cards:
-        - type: horizontal-stack
-          cards:
-            - type: sensor
-              entity: sensor.thermostat_temperature
-              name: Thermostat
-              graph: line
-            - type: sensor
-              entity: sensor.lil_bee_temperature
-              name: Family Room
-              graph: line
-        - type: horizontal-stack
-          cards:
-            - type: sensor
-              entity: sensor.office_temperature
-              name: Office
-              graph: line
-            - type: sensor
-              entity: sensor.nursery_temperature
-              name: Nursery
-              graph: line
-        - type: horizontal-stack
-          cards:
-            - type: sensor
-              entity: sensor.garage_temperature
-              name: Garage
-              graph: line
-            - type: sensor
-              entity: sensor.bedroom_temperature
-              name: Bedroom
-              graph: line
-
-    - type: vertical-stack
-      cards:
         - type: horizontal-stack
           cards:
             - type: custom:decluttering-card
@@ -85,6 +48,84 @@
               variables:
                 - path: /lovelace/living_dining
                 - icon: mdi:silverware
+
+    - type: vertical-stack
+      cards:
+        - type: weather-forecast
+          entity: weather.kfws_hourly
+    - type: vertical-stack
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: sensor
+              entity: sensor.thermostat_temperature
+              name: Thermostat
+              graph: line
+            - type: sensor
+              entity: sensor.lil_bee_temperature
+              name: Family Room
+              graph: line
+        - type: horizontal-stack
+          cards:
+            - type: horizontal-stack
+              title: Humidor
+              cards:
+                - type: sensor
+                  entity: sensor.humidor_temperature
+                  graph: line
+                  name: "Temp"
+                - type: sensor
+                  entity: sensor.humidor_humidity
+                  graph: line
+                  name: "Humidity"
+            - type: sensor
+              entity: sensor.nursery_temperature
+              name: Nursery
+              graph: line
+        # - type: custom:button-card
+        #   entity: sensor.humidor_humidity
+        #   icon: mdi:cigar
+        #   name: Humidor
+        #   styles:
+        #       grid:
+        #         - grid-template-areas: '"i hum" "n n" "temp temp"'
+        #         - grid-template-columns: 1fr 1fr
+        #         - grid-template-rows: 1fr min-content min-content
+        #       custom_fields:
+        #         hum:
+        #           - align_self: start
+        #           - justify-self: end
+        #         temp:
+        #           - padding-bottom: 2px
+        #           - align-self: middle
+        #           - justify-self: start
+        #           - --text-color-sensor: '[[[ if (states["sensor.humidor_humidity"].state > 75) return "red"; ]]]'
+        #   custom_fields:
+        #     hum: >
+        #       [[[
+        #         return `<ha-icon
+        #           icon="mdi:water-percent"
+        #           style="width: 12px; height: 12px; color: yellow;">
+        #           </ha-icon><span>${entity.state}%</span>`
+        #       ]]]
+        #     temp: >
+        #       [[[
+        #         return `<ha-icon
+        #           icon="mdi:thermometer"
+        #           style="width: 12px; height: 12px; color: deepskyblue;">
+        #           </ha-icon><span>Temp: <span style="color: var(--text-color-sensor);">${states['sensor.humidor_temperature'].state}°F</span></span>`
+        #       ]]]
+        - type: horizontal-stack
+          cards:
+            - type: sensor
+              entity: sensor.garage_temperature
+              name: Garage
+              graph: line
+            - type: sensor
+              entity: sensor.bedroom_temperature
+              name: Bedroom
+              graph: line
+
 
     - cards:
 

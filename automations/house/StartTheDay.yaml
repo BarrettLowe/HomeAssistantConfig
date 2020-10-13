@@ -8,7 +8,7 @@
     condition: and
     conditions:
       - condition: state
-        entity_id: group.interior
+        entity_id: light.sink
         state: 'off'
       - condition: template
         value_template: "{{ states('sensor.time') >= (state_attr('input_datetime.morning_routine_start_time', 'timestamp') | int | timestamp_custom('%H:%M', False)) }}"

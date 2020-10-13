@@ -74,6 +74,7 @@ living_room:
     - light.couch_lamp
     - light.piano_lamp
     - light.entry
+    - light.display_table_lamp
 
 
 office:
@@ -81,7 +82,7 @@ office:
   icon: mdi:desktop-mac
   entities:
     - light.brandies_desk
-    - switch.office_overhead_light
+    - light.office_overhead_light
 
 movie_room:
   name: Movie Room

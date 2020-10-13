@@ -78,7 +78,7 @@
           hide:
             controls: true
         - type: custom:mini-media-player
-          entity: media_player.snapcast_nursery
+          entity: media_player.snapcast_office
           hide:
             controls: true
 

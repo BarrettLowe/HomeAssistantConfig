@@ -1,9 +1,9 @@
-platform: template
-sensors:
-  freeze_warning:
-    value_template: >
-      "{{ state_attr('weather.thermostat', 'forecast')[0].templow < 38 }}"
-    friendly_name: "It will freeze tomorrow"
-    device_class: cold
-    icon_template: mdi:snowflake-alert
+# platform: template
+# sensors:
+#   freeze_warning:
+#     value_template: >
+#       "{{ state_attr('weather.thermostat', 'forecast')[0].templow < 38 }}"
+#     friendly_name: "It will freeze tomorrow"
+#     device_class: cold
+#     icon_template: mdi:snowflake-alert
 

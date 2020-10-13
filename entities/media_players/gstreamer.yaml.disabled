@@ -1,0 +1,2 @@
+platform: gstreamer
+pipeline: "audioresample ! audioconvert ! audio/x-raw,rate=48000,channels=2,format=S16LE ! wavenc ! filesink location=/tmp/snapcast_gstreamer"
