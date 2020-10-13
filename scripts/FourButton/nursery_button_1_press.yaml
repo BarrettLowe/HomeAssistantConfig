@@ -1,11 +1,18 @@
 alias: Nursery Button 1 Press
-sequence: 
-  - service: script.turn_on
-    entity_id: script.bright_room
-    data:
-      variables:
-        room: nursery
+sequence:
   - service: light.turn_on
     entity_id: group.nursery
     data:
       color_temp: 370
+      transition: 0
+      brightness: 1
+  - service: light.turn_on
+    entity_id: light.nursery_dresser, light.futon_light, light.rocking_chair
+    data_template:
+      transition: >-
+        {% if states.sensor.time.state < '08:30' | timestamp_custom('%H:%M', False) and states.sensor.time.state > '05:30' | timestamp_custom('%H:%M', False) %}
+        90
+        {% else %}
+        1
+        {% endif %}
+      brightness: 255

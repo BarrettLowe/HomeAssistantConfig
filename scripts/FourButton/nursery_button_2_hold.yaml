@@ -1,3 +1,9 @@
 alias: Nursery Button 2 Hold
 sequence: 
-  - delay: "00:00:01"
+  - service: media_player.media_pause
+    data:
+      entity_id: media_player.mpd
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.snapcast_nursery
+      source: Nothing
