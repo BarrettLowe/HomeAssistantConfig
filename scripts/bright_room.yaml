@@ -1,19 +1,25 @@
 alias: Bright Room
 icon: mdi:lightbulb-multiple
+mode: single
 fields:
   room:
     description: The group (room) to manipulate
     example: bedroom
+  transTime:
+    description: Amount of time transition should take
+    example: 10
 sequence:
-  - service: light.turn_on
-    data_template:
-      entity_id: group.{{ room }}
-  - service: switch.turn_on
-    data_template:
-      entity_id: group.{{ room }}
+  # - service: light.turn_on
+  #   data_template:
+  #     entity_id: group.{{ room }}
+  #     brightness: 1
+  # - service: switch.turn_on
+  #   data_template:
+  #     entity_id: group.{{ room }}
 # This is stupid but there seems to be a bug for some zigbee bulbs
 # where you must turn on before assigning brightness
   - service: light.turn_on
     data_template:
       entity_id: group.{{ room }}
+      transition: "{{ transTime|default(1) }}"
       brightness: 255
