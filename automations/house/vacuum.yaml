@@ -10,27 +10,44 @@
     platform: time
     at: '08:00:00'
   condition:
-  - condition: time
-    weekday:
-    - mon
-    - wed
-    - fri
+    condition: and
+    conditions:
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      - condition: not
+        conditions:
+          - condition: state
+            entity_id: input_select.vacation_mode
+            state: "Away"
 
-- alias: Vacuum Bedroom and Hallway
+- alias: Vacuum Bedroom, Hallway, Nursery
   action:
     - service: python_script.vacuum_zones
       data:
         zones:
           - "Bedroom"
           - "Hall"
-
+          - "Nursery"
   trigger:
     platform: time
-    at: '08:00:00'
+    at: '13:00:00'
   condition:
-  - condition: time
-    weekday:
-    - tue
+    condition: and
+    conditions:
+      - condition: time
+        weekday:
+        - mon
+        - thu
+      - condition: not
+        conditions:
+          - condition: state
+            entity_id: input_select.vacation_mode
+            state: "Away"
 
 - alias: Vacuum Living and Dining Rooms
   action:
@@ -41,26 +58,41 @@
           - "Dining Room"
   trigger:
     platform: time
-    at: '08:00:00'
+    at: '13:00:00'
   condition:
-  - condition: time
-    weekday:
-    - thu
+    condition: and
+    conditions:
+      - condition: time
+        weekday:
+        - tue
+      - condition: not
+        conditions:
+          - condition: state
+            entity_id: input_select.vacation_mode
+            state: "Away"
 
-- alias: Vacuum Office and Guest Bath
+- alias: Vacuum Office, Guest Bath, Guest Room
   action:
     - service: python_script.vacuum_zones
       data:
         zones:
           - "Office"
           - "Guest Bath"
+          - "Guest Room"
   trigger:
     platform: time
-    at: '12:00:00'
+    at: '1:00:00'
   condition:
-  - condition: time
-    weekday:
-    - wed
+    condition: and
+    conditions:
+      - condition: time
+        weekday:
+        - wed
+      - condition: not
+        conditions:
+          - condition: state
+            entity_id: input_select.vacation_mode
+            state: "Away"
 
 - alias: Vacuum To Trashcan
   # initial_state: false
