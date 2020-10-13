@@ -30,3 +30,5 @@
   action:
     service: homeassistant.turn_on
     entity_id: group.bedroom
+    data:
+      brightness: 255
