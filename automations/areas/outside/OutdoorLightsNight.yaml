@@ -7,6 +7,10 @@
   action:
     - entity_id: group.front_yard
       service: homeassistant.turn_on
+    - entity_id: light.front_porch
+      service: homeassistant.turn_on
+      data:
+        brightness: 255
     - data:
         entity_id: light.driveway
         rgb_color:
@@ -28,6 +32,8 @@
   action:
     - service: homeassistant.turn_off
       entity_id: group.front_yard
+    - service: homeassistant.turn_off
+      entity_id: light.front_porch
     - condition: state
       entity_id: input_boolean.christmas_time
       state: 'on'
