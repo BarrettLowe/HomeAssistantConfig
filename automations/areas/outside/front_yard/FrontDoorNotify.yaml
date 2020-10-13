@@ -16,13 +16,14 @@
     entity_id: binary_sensor.front_door
     from: 'on'
     to: 'off'
-    for:
-      minutes: 1
+  mode: restart
   action:
-    service: homeassistant.turn_on
-    entity_id: 
-      - automation.notify_barrett_when_someone_is_at_the_front_door
-      # - automation.notify_brandie_when_someone_is_at_the_front_door
+    - delay:
+        minutes: 5
+    - service: homeassistant.turn_on
+      entity_id: 
+        - automation.notify_barrett_when_someone_is_at_the_front_door
+        # - automation.notify_brandie_when_someone_is_at_the_front_door
 
   
 - alias: Notify Barrett when someone is at the front door
@@ -62,7 +63,7 @@
     #       - condition: template
     #         value_template: '{{ (as_timestamp(now()) -(states.input_datetime.front_door_notification_start.attributes.timestamp | default(0)) | int > 0) and ((states.input_datetime.front_door_notification_stop.attributes.timestamp  - as_timestamp(now()) | default(0)) | int > 0)}}'
   action:
-    - service: notify.barrett
+    - service: notify.mobile_app_barrett
       data:
         message: "Someone may be here, motion detected at front door"
         title: "Heads up!"
