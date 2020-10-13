@@ -1,7 +1,7 @@
 source: sensor.ac_total_kwh
 cycle: monthly
 offset:
-  days: 12
+  days: 0
 tariffs:
   - week
   - weekend
