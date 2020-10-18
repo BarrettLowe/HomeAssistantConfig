@@ -1,0 +1,19 @@
+- alias: Vacation Mode On
+  trigger:
+    - platform: state
+      entity_id: input_select.vacation_mode
+      to: "Away"
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.vacuum_programs
+
+- alias: Vacation Mode Off
+  trigger:
+    - platform: state
+      entity_id: input_select.vacation_mode
+      from: Away
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.vacuum_programs

@@ -140,4 +140,9 @@
       template: my_first_template
       variables:
         icon: "fire"
+    - entities:
+      - entity: input_boolean.vacuum_programs
+      - entity: switch.pihole_switch
+      type: entities
+      show_header_toggle: false
   title: Nitty Gritty
