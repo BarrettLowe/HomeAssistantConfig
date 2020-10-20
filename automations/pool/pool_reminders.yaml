@@ -1,0 +1,63 @@
+- alias: Pool Needs Tending
+  trigger:
+    platform: time
+    at: "11:30:00"
+  condition:
+    condition: or
+    conditions:
+      - condition: template
+        value_template: "{{ states('sensor.since_pool_last_chem_check') > states('input_datetime.pool_chemicals_checked') }}"
+      - condition: template
+        value_template: "{{  states('sensor.since_pool_last_brushed') > states('input_datetime.pool_brushed') }} "
+  action:
+    - service: notify.everyone
+      data_template:
+        title: Pool Reminder
+        message: >-
+          {% if states('sensor.since_pool_last_chem_check') <= states('input_datetime.pool_chemicals_checked') %}
+            The pool needs to be brushed.
+          {% elif states('sensor.since_pool_last_brushed') <= states('input_datetime.pool_brushed') %}
+            The pool chemicals need to be checked.
+          {% else %}
+            The pool needs brushing and chemical testing
+          {% endif %}
+        data:
+          clickAction: >-
+            {% if states('sensor.since_pool_last_chem_check') > states('input_datetime.pool_chemicals_checked') %}
+              https://www.poolmaster.com/wp-content/uploads/2013/03/22260_22264_22270_22280-_5WayTestKitInstructions_English.pdf
+            {% else %}
+              /lovelace-pool
+            {% endif %}
+          tag: pool
+          sticky: true
+
+- alias: Pool Filter Reminder
+  trigger:
+    platform: time
+    at: "09:30:00"
+  condition:
+    condition: and
+    conditions:
+      - condition: or
+        conditions:
+          - condition: template
+            value_template: "{{ states('sensor.since_pool_last_backwashed') > states('input_datetime.pool_backwashed') }}"
+          - condition: template
+            value_template: "{{  states('sensor.since_pool_last_filter_cleaning') > states('input_datetime.pool_filter_cleaned') }} "
+      - condition: time
+        weekday:
+          - sat
+  action:
+    - service: notify.everyone
+      data_template:
+        title: Pool Reminder
+        message: >-
+          {% if states('sensor.since_pool_last_backwashed') <= states('input_datetime.pool_backwashed') %}
+            The pool filter needs to be cleaned.
+          {% else %}
+            The pool filter needs to be backwashed
+          {% endif %}
+        data:
+          clickAction: /lovelace-pool
+          tag: pool_filter
+          sticky: true

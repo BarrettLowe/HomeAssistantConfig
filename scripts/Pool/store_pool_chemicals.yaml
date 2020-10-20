@@ -1,0 +1,6 @@
+alias: Store Pool Chemicals
+sequence:
+  - service: input_datetime.set_datetime
+    data_template:
+      entity_id: input_datetime.pool_chemicals_checked
+      date: '{{ (as_timestamp(now()) | timestamp_custom("%Y-%m-%d", true)) }}'

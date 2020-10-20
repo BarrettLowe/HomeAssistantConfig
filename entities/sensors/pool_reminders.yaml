@@ -1,0 +1,14 @@
+platform: template
+sensors:
+  since_pool_last_brushed:
+    value_template:  >-
+      {{ ((as_timestamp(states('sensor.date_time_iso')) - as_timestamp(states('input_datetime.pool_brushed'))) / 60 / 60 / 24) | int  }}
+  since_pool_last_chem_check:
+    value_template:  >-
+      {{ ((as_timestamp(states('sensor.date_time_iso')) - as_timestamp(states('input_datetime.pool_chemicals_checked'))) / 60 / 60 / 24) | int  }}
+  since_pool_last_backwashed:
+    value_template:  >-
+      {{ ((as_timestamp(states('sensor.date_time_iso')) - as_timestamp(states('input_datetime.pool_backwashed'))) / 60 / 60 / 24) | int  }}
+  since_pool_last_filter_cleaning:
+    value_template:  >-
+      {{ ((as_timestamp(states('sensor.date_time_iso')) - as_timestamp(states('input_datetime.pool_filter_cleaned'))) / 60 / 60 / 24) | int  }}

@@ -1,0 +1,7 @@
+alias: Store Pool Filter Cleaned
+sequence:
+  - service: input_datetime.set_datetime
+    data_template:
+      entity_id: input_datetime.pool_filter_cleaned
+      date: '{{ (as_timestamp(now()) | timestamp_custom("%Y-%m-%d", true)) }}'
+  - service: script.store_pool_backwash

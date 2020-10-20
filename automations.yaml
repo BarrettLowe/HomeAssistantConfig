@@ -37,3 +37,47 @@
     data: {}
     entity_id: cover.middle_garage
   mode: single
+- id: '1603159118621'
+  alias: Tag Pool Brushed is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 410b2918-b1ba-4c0d-843b-c2d7aef044fd
+  condition: []
+  action:
+  - service: script.store_pool_brushing
+    data: {}
+  mode: single
+- id: '1603159158058'
+  alias: Tag Pool Chemicals Checked is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 0e361d97-c869-474b-9902-1db5fe2abeec
+  condition: []
+  action:
+  - service: script.store_pool_chemicals
+    data: {}
+  mode: single
+- id: '1603159203371'
+  alias: Tag Pool Backwashed is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 856a9518-3c9b-4a9c-9bf1-4447b125cc61
+  condition: []
+  action:
+  - service: script.store_pool_backwash
+    data: {}
+  mode: single
+- id: '1603159254708'
+  alias: Tag Pool Filter Cleaned is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 7a36bdf9-8bc7-447f-9162-f881c51ff940
+  condition: []
+  action:
+  - service: script.store_pool_filter_cleaned
+    data: {}
+  mode: single

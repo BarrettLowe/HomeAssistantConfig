@@ -1,0 +1,6 @@
+alias: Store Pool Brushing
+sequence:
+  - service: input_datetime.set_datetime
+    data_template:
+      entity_id: input_datetime.pool_brushed
+      date: '{{ (as_timestamp(now()) | timestamp_custom("%Y-%m-%d", true)) }}'

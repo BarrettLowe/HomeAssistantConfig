@@ -1,0 +1,27 @@
+days_between_pool_brushing:
+  min: 1
+  max: 100
+  mode: box
+  unit_of_measurement: Days
+  icon: mdi:broom
+
+days_between_pool_chemicals:
+  min: 1
+  max: 100
+  mode: box
+  unit_of_measurement: Days
+  icon: mdi:flask-outline
+
+days_between_pool_backwash:
+  min: 1
+  max: 150
+  mode: box
+  unit_of_measurement: Days
+  icon: mdi:water-pump
+
+days_between_pool_filter_cleaning:
+  min: 1
+  max: 150
+  mode: box
+  unit_of_measurement: Days
+  icon: mdi:air-filter

@@ -1,0 +1,12 @@
+- alias: Pool Fill Notification
+  trigger:
+    - platform: state
+      entity_id: switch.pool_fill
+      from: 'off'
+      to: 'on'
+      for: 03:00:00
+  action:
+    - service: notify.everyone
+      data:
+        title: ALERT
+        message: "The pool water has been on 3 hours!"

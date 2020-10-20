@@ -1,0 +1,15 @@
+pool_brushed:
+  has_date: true
+  has_time: false
+
+pool_chemicals_checked:
+  has_date: true
+  has_time: false
+
+pool_backwashed:
+  has_date: true
+  has_time: false
+
+pool_filter_cleaned:
+  has_date: true
+  has_time: false
