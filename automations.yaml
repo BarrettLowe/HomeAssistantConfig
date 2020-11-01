@@ -37,6 +37,40 @@
     data: {}
     entity_id: cover.middle_garage
   mode: single
+- id: '1602596187676'
+  alias: WFH Bright Front
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.living_room_motion
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    after: '7:45'
+    before: '10:00'
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: group.living_room
+      state: 'off'
+    - condition: state
+      entity_id: group.dining_room
+      state: 'off'
+  action:
+  - service: script.bright_room
+    data:
+      room: living_room
+  - service: script.bright_room
+    data:
+      room: dining_room
+  mode: single
 - id: '1603159118621'
   alias: Tag Pool Brushed is scanned
   description: ''
