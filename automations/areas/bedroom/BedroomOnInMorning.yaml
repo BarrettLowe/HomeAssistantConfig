@@ -28,7 +28,7 @@
     from: 'off'
     to: 'on'
   action:
-    service: homeassistant.turn_on
+    service: light.turn_on
     entity_id: group.bedroom
     data:
       brightness: 255

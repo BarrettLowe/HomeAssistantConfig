@@ -6,17 +6,17 @@
     condition: or
     conditions:
       - condition: template
-        value_template: "{{ states('sensor.since_pool_last_chem_check') > states('input_datetime.pool_chemicals_checked') }}"
+        value_template: "{{ states('sensor.since_pool_last_chem_check') > states('input_number.days_between_pool_chemicals') }}"
       - condition: template
-        value_template: "{{  states('sensor.since_pool_last_brushed') > states('input_datetime.pool_brushed') }} "
+        value_template: "{{  states('sensor.since_pool_last_brushed') > states('input_number.days_between_pool_brushing') }} "
   action:
     - service: notify.everyone
       data_template:
         title: Pool Reminder
         message: >-
-          {% if states('sensor.since_pool_last_chem_check') <= states('input_datetime.pool_chemicals_checked') %}
+          {% if states('sensor.since_pool_last_chem_check') <= states('input_number.days_between_pool_chemicals') %}
             The pool needs to be brushed.
-          {% elif states('sensor.since_pool_last_brushed') <= states('input_datetime.pool_brushed') %}
+          {% elif states('sensor.since_pool_last_brushed') <= states('input_number.days_between_pool_brushing') %}
             The pool chemicals need to be checked.
           {% else %}
             The pool needs brushing and chemical testing
@@ -41,9 +41,9 @@
       - condition: or
         conditions:
           - condition: template
-            value_template: "{{ states('sensor.since_pool_last_backwashed') > states('input_datetime.pool_backwashed') }}"
+            value_template: "{{ states('sensor.since_pool_last_backwashed') >= states('input_number.days_between_pool_backwash') }}"
           - condition: template
-            value_template: "{{  states('sensor.since_pool_last_filter_cleaning') > states('input_datetime.pool_filter_cleaned') }} "
+            value_template: "{{  states('sensor.since_pool_last_filter_cleaning') >= states('input_number.days_between_pool_filter_cleaning') }} "
       - condition: time
         weekday:
           - sat
@@ -52,7 +52,7 @@
       data_template:
         title: Pool Reminder
         message: >-
-          {% if states('sensor.since_pool_last_backwashed') <= states('input_datetime.pool_backwashed') %}
+          {% if states('sensor.since_pool_last_backwashed') < states('input_number.days_between_pool_backwash') %}
             The pool filter needs to be cleaned.
           {% else %}
             The pool filter needs to be backwashed
