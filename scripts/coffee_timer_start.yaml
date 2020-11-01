@@ -1,0 +1,28 @@
+alias: Coffee Timer Start
+sequence:
+  - service: python_script.notify_via_light
+    data:
+      entity_id: light.kitchen_desk
+  - delay: "00:04:30"
+  - service: scene.create
+    data:
+      scene_id: music_before_coffee_timer
+      snapshot_entities: 
+        - media_player.snapcast_kitchen
+        - media_player.mpd
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.snapcast_kitchen
+      source: HomeAssistantUI
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.mpd
+      source: "Coffee Timer"
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.snapcast_kitchen
+      volume_level: 0.5
+  - service: media_player.media_play
+    entity_id: media_player.mpd
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.coffee_time_alarming

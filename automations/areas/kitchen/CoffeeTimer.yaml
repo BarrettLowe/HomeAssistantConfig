@@ -1,0 +1,11 @@
+- alias: Tag Coffee Tag is scanned
+  trigger:
+    - platform: tag
+      tag_id: 7d6717b7-7cc7-430d-916d-5621d60e6889
+  action:
+    service_template: >
+      {% if (states('input_boolean.coffee_time_alarming') == 'on') %}
+        script.coffee_timer_stop
+      {% else %}
+        script.coffee_timer_start
+      {% endif %}
