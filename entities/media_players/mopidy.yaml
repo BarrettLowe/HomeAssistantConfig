@@ -1,3 +1,3 @@
 platform: mpd
-host: 40817795-mopidy
+host: 192.168.86.33
 port: 6600
