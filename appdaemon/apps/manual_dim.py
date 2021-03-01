@@ -20,11 +20,15 @@ class ManualDimmer(hass.Hass):
     brightness = None
     try:
         entity = data['entity_id']
-        transition = data['transition']
         brightness = data['brightness']
     except Exception as e:
         self.log("Error receiving data for manual dim: {}".format(e))
         return
+
+    try:
+        transition = data['transition']
+    except Exception as e:
+        transition = 1
 
     canDim = self.get_state(entity,attribute='supported_features') & 1
     if (not canDim):
