@@ -26,44 +26,44 @@
         # - automation.notify_brandie_when_someone_is_at_the_front_door
 
   
-- alias: Notify Barrett when someone is at the front door
-  trigger:
-    platform: state
-    entity_id: binary_sensor.aarlo_motion_front_door
-    from: 'off'
-    to: 'on'
-  condition: 
-    condition: and
-    conditions:
-      - condition: or
-        conditions:
-          - condition: and
-            conditions:
-            - condition: state
-              entity_id: person.barrett
-              state: 'home'
-            - condition: state
-              entity_id: input_boolean.front_door_notify_barrett_home
-              state: 'on'
-          - condition: and
-            conditions:
-              - condition: state
-                entity_id: person.barrett
-                state: 'not_home'
-              - condition: state
-                entity_id: input_boolean.front_door_notify_barrett_away
-                state: 'on'
-      - condition: time
-        after: '07:00:00'
-        before: '21:00:00'
-    #   - condition: or
-    #     conditions:
-    #       - condition: template
-    #         value_template: '{{ (as_timestamp(now()) -(states.input_datetime.front_door_notification_start.timestamp | default(0)) | int > 0) and ((states.input_datetime.front_door_notification_stop.attributes.timestamp  - as_timestamp(now()) | default(0)) | int > 0)}}'
-    #       - condition: template
-    #         value_template: '{{ (as_timestamp(now()) -(states.input_datetime.front_door_notification_start.attributes.timestamp | default(0)) | int > 0) and ((states.input_datetime.front_door_notification_stop.attributes.timestamp  - as_timestamp(now()) | default(0)) | int > 0)}}'
-  action:
-    - service: notify.mobile_app_barrett
-      data:
-        message: "Someone may be here, motion detected at front door"
-        title: "Heads up!"
+# - alias: Notify Barrett when someone is at the front door
+#   trigger:
+#     platform: state
+#     entity_id: binary_sensor.aarlo_motion_front_door
+#     from: 'off'
+#     to: 'on'
+#   condition: 
+#     condition: and
+#     conditions:
+#       - condition: or
+#         conditions:
+#           - condition: and
+#             conditions:
+#             - condition: state
+#               entity_id: person.barrett
+#               state: 'home'
+#             - condition: state
+#               entity_id: input_boolean.front_door_notify_barrett_home
+#               state: 'on'
+#           - condition: and
+#             conditions:
+#               - condition: state
+#                 entity_id: person.barrett
+#                 state: 'not_home'
+#               - condition: state
+#                 entity_id: input_boolean.front_door_notify_barrett_away
+#                 state: 'on'
+#       - condition: time
+#         after: '07:00:00'
+#         before: '21:00:00'
+#     #   - condition: or
+#     #     conditions:
+#     #       - condition: template
+#     #         value_template: '{{ (as_timestamp(now()) -(states.input_datetime.front_door_notification_start.timestamp | default(0)) | int > 0) and ((states.input_datetime.front_door_notification_stop.attributes.timestamp  - as_timestamp(now()) | default(0)) | int > 0)}}'
+#     #       - condition: template
+#     #         value_template: '{{ (as_timestamp(now()) -(states.input_datetime.front_door_notification_start.attributes.timestamp | default(0)) | int > 0) and ((states.input_datetime.front_door_notification_stop.attributes.timestamp  - as_timestamp(now()) | default(0)) | int > 0)}}'
+#   action:
+#     - service: notify.mobile_app_barrett
+#       data:
+#         message: "Someone may be here, motion detected at front door"
+#         title: "Heads up!"

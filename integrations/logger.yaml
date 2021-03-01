@@ -2,12 +2,10 @@ logger:
   default: warning
   logs:
     # custom_components.hass_opensprinkler: debug
-    # custom_components.aarlo: debug
     # homeassistant.components.python_script: debug
     homeassistant.components.updater: debug
     homeassistant.components.ecobee: debug
     # homeassistant.components.zha: debug
     # zigpy: debug
     # bellows: debug
-    # pyaarlo: debug
     pyecobee: debug

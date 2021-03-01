@@ -49,22 +49,6 @@
         - entity: binary_sensor.garage_motion
       title: Garage
       type: glance
-    - entity: camera.aarlo_driveway
-      name: Driveway
-      show:
-        - motion
-        - snapshot
-        - battery_level
-        - captured_today
-      type: 'custom:aarlo-glance'
-    - entity: camera.aarlo_front_door
-      name: Front Door
-      show:
-        - motion
-        - snapshot
-        - battery_level
-        - captured_today
-      type: 'custom:aarlo-glance'
   path: outside
   title: Outside
   icon: mdi:tree

@@ -1,18 +1,18 @@
-- alias: 'Alarm Driveway At Night'
-  trigger:
-    platform: state
-    entity_id: binary_sensor.aarlo_motion_driveway
-    to: 'on'
-  condition:
-    - condition: time
-      after: '00:00:00'
-      before: '6:00:00'
-  action:
-    # start alarm on movement if alarm activated
-    # and the alarm is not triggered
-    - service: script.turn_on
-      entity_id: script.alarm_driveway
-    - service: notify.mobile_app_barrett
-      data:
-        message: "MOTION DETECTED IN THE DRIVEWAY"
-        title: ALERT
+# - alias: 'Alarm Driveway At Night'
+#   trigger:
+#     platform: state
+#     entity_id: binary_sensor.aarlo_motion_driveway
+#     to: 'on'
+#   condition:
+#     - condition: time
+#       after: '00:00:00'
+#       before: '6:00:00'
+#   action:
+#     # start alarm on movement if alarm activated
+#     # and the alarm is not triggered
+#     - service: script.turn_on
+#       entity_id: script.alarm_driveway
+#     - service: notify.mobile_app_barrett
+#       data:
+#         message: "MOTION DETECTED IN THE DRIVEWAY"
+#         title: ALERT
