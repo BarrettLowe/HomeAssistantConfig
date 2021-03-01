@@ -1,5 +1,4 @@
 shell_command:
-  start_neato: "/usr/bin/curl -X GET !secret barrettStartNeatoUrl"
   ring_barrett: "/usr/bin/curl -X GET !secret barrettRingUrl"
   ring_brandie: "/usr/bin/curl -X GET !secret brandieRingUrl"
   curl_post: "curl -X POST -d '{{ data }}' {{ url }}"
