@@ -9,10 +9,6 @@ device_tracker.barrett_pixel_nmap:
 sun.sun:
   hidden: true
 device_tracker.barrett_pixel: {}
-person.barrett:
-  entity_picture: /local/barrett.jpg
-person.brandie:
-  entity_picture: /local/brandie.jpg
 binary_sensor.barretts_closet_door:
   device_class: door
 binary_sensor.brandies_closet_door:
