@@ -1,2 +1,0 @@
-ecobee:
-  api_key: !secret ecobeeAPIKey
