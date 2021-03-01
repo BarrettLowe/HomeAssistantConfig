@@ -1,0 +1,19 @@
+- alias: xbox turns on tv
+  condition:
+    condition: state
+    entity_id: media_player.vizio_smartcast
+    state: 'off'
+  trigger:
+    - platform: state
+      entity_id: media_player.xboxone
+      from: 'off'
+      to: 'on'
+  action: 
+    - service: homeassistant.turn_on
+      data:
+        entity_id: media_player.vizio_smartcast
+    - delay: "00:00:05"
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.vizio_smartcast
+        source: "HDMI-1"
