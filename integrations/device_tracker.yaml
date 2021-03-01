@@ -6,7 +6,3 @@ device_tracker:
     home_interval: 30
     interval_seconds: 300
     scan_options: "-F --host-timeout 1s"
-  - platform: mqtt_json
-    devices:
-      barrett_pixel: owntracks/Barrett/pixel
-      brandie_pixel: owntracks/Brandie/pixel
