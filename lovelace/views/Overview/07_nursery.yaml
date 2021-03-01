@@ -23,48 +23,13 @@
         - type: horizontal-stack
           cards:
             - type: custom:button-card
-              entity: script.nap_time
-              icon: mdi:sleep
-            - type: custom:button-card
-              entity: script.summon_barrett
-              icon: mdi:message-alert
-            - type: custom:button-card
-              entity: script.nursery_dark
+              entity: script.nursery_button_3_hold
               icon: mdi:weather-night
-
-        - type: horizontal-stack
-          cards:
+              name: Red Light
             - type: custom:button-card
-              entity: script.bright_room
-              data:
-                variables:
-                  room: nursery
+              entity: script.nursery_button_1_press
               icon: mdi:lightbulb-on
-            - type: custom:button-card
-              entity: script.start_white_noise
-              icon: mdi:speaker-wireless
-            - type: custom:button-card
-              entity: binary_sensor.nursery_noise
-              icon: mdi:microphone-outline
-              tap_action: 
-                action: call-service
-                service: >
-                  [[[
-                    if (entity.state == 'unavailable')
-                      return 'ffmpeg.start';
-                    else
-                      return 'ffmpeg.stop';
-                  ]]]
-                service_data:
-                  entity_id: binary_sensor.nursery_noise
-              state:
-                - value: unavailable
-                  icon: mdi:microphone-off
-                - value: 'off'
-                  color: green
-                - value: 'on'
-                  color: red
-              color_type: icon
+              name: Lights On
     - type: entities
       title: Lights
       entities:

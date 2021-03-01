@@ -1,3 +1,1 @@
 rest_command:
-  snapclient_toggle_kitchen:
-    url: !secret kitchenSoundOnCmd
