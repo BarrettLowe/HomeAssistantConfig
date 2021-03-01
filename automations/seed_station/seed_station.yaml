@@ -12,3 +12,16 @@
   action:
     - service: homeassistant.turn_on
       entity_id: switch.christmas_tree
+- alias: Seed Watering Reminder
+  trigger:
+    platform: time
+    at: "12:30:00"
+  condition:
+    - condition: state
+      entity_id: input_boolean.seed_station_enabled
+      state: 'on'
+  action:
+    service: notify.mobile_app_brandie
+    data:
+      message: "Don't Forget to Water Your Seeds!"
+      title: Seeds
