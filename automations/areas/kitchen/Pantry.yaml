@@ -1,18 +1,28 @@
-- alias: Pantry Auto On and Off
+- alias: Pantry Auto On
   action:
     - data:
         entity_id: light.pantry
-        transition: 1
-        brightness: 255
-      service_template: >
-        {% if trigger.to_state.state == 'off' and trigger.from_state.state == 'on' %}
-        light.toggle
-        {% else %}
-        light.turn_on
-        {% endif %}
-  condition:
-    condition: template
-    value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
+      service: light.turn_on
+    - data:
+        entity_id: light.pantry
+        # transition: 1
+        #brightness: 254
+      service: light.turn_on
+  # condition:
+  #   condition: template
+  #   value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
   trigger:
     entity_id: binary_sensor.pantry_door
     platform: state
+    to: "on"
+- alias: Pantry Auto Off
+  action:
+    service: light.turn_off
+    entity_id: light.pantry
+  # condition:
+  #   condition: template
+  #   value_template: "{{ trigger.to_state.state != trigger.from_state.state }}"
+  trigger:
+    entity_id: binary_sensor.pantry_door
+    platform: state
+    to: "off"
