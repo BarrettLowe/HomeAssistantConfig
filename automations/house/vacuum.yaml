@@ -8,20 +8,20 @@
           - "Kitchen"
   trigger:
     platform: time
-    at: '08:00:00'
+    at: "08:00:00"
   condition:
     condition: and
     conditions:
       - condition: time
         weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
       - condition: state
         entity_id: input_boolean.vacuum_programs
-        state: 'on'
+        state: "on"
 
 - alias: Vacuum Bedroom, Hallway, Nursery
   action:
@@ -33,17 +33,17 @@
           - "Nursery"
   trigger:
     platform: time
-    at: '13:00:00'
+    at: "13:00:00"
   condition:
     condition: and
     conditions:
       - condition: time
         weekday:
-        - mon
-        - thu
+          - mon
+          - thu
       - condition: state
         entity_id: input_boolean.vacuum_programs
-        state: 'on'
+        state: "on"
 
 - alias: Vacuum Living and Dining Rooms
   action:
@@ -54,16 +54,16 @@
           - "Dining Room"
   trigger:
     platform: time
-    at: '13:00:00'
+    at: "13:00:00"
   condition:
     condition: and
     conditions:
       - condition: time
         weekday:
-        - tue
+          - tue
       - condition: state
         entity_id: input_boolean.vacuum_programs
-        state: 'on'
+        state: "on"
 
 - alias: Vacuum Office, Guest Bath, Guest Room
   action:
@@ -75,30 +75,29 @@
           - "Guest Room"
   trigger:
     platform: time
-    at: '1:00:00'
+    at: "13:00:00"
   condition:
     condition: and
     conditions:
       - condition: time
         weekday:
-        - wed
+          - wed
       - condition: state
         entity_id: input_boolean.vacuum_programs
-        state: 'on'
+        state: "on"
 
 - alias: Vacuum To Trashcan
-  # initial_state: false
   action:
-    - delay: '00:00:02'
+    - delay: "00:00:02"
     - service: vacuum.pause
       entity_id: vacuum.roborock
-    - delay: '00:00:02'
+    - delay: "00:00:02"
     - service: vacuum.send_command
       data:
         entity_id: vacuum.roborock
-        command: 'go_to'
+        command: "go_to"
         params:
-          'spot_id': 'Trashcan'
+          "spot_id": "Trashcan"
     - service: automation.turn_off
       entity_id: automation.vacuum_to_trashcan
   trigger:
@@ -120,7 +119,7 @@
           actions:
             - action: URI
               title: View
-              uri: '/lovelace/vacuum'
+              uri: "/lovelace/vacuum"
           tag: vacuum
           sticky: true
 
