@@ -1,0 +1,7 @@
+platform: template
+sensors:
+  nursery_panel_visible:
+    value_template: >
+      "{{ state_attr('sensor.nursery_wall_panel', 'visiblity') == 'visible' }}"
+    friendly_name: "Nursery Panel Visible"
+  

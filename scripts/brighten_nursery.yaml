@@ -1,4 +1,5 @@
-alias: Nursery Button 1 Press
+alias: Brighten Nursery
+icon: mdi:lightbulb-multiple
 sequence:
   - service: light.turn_on
     entity_id: group.nursery
@@ -7,7 +8,7 @@ sequence:
       transition: 0
       brightness: 1
   - service: light.turn_on
-    entity_id: light.nursery_dresser, light.futon_light, light.rocking_chair
+    entity_id: light.nursery_dresser, light.futon_light, light.rocking_chair, light.nursery_wall_panel_screen
     data_template:
       transition: >-
         {% if states.sensor.time.state < '08:30' | timestamp_custom('%H:%M', False) and states.sensor.time.state > '05:30' | timestamp_custom('%H:%M', False) %}
