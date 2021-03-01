@@ -1,0 +1,17 @@
+- alias: Church On Sundays (Covid)
+  trigger: 
+    - platform: time
+      at: "08:55:00"
+  condition:
+    - condition: state
+      entity_id: binary_sensor.house_occupancy
+      state: 'on'
+    - condition: time
+      weekday:
+        - sun
+  action:
+    service: media_extractor.play_media
+    data:
+      entity_id: media_player.hugh_jass
+      media_content_type: video/youtube
+      media_content_id: "https://www.youtube.com/watch?v=hAjf8UDA_jY"
