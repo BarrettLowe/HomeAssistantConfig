@@ -1,6 +1,0 @@
-platform: mqtt
-state_topic: "owntracks/Barrett/pixel"
-name: "Barrett Phone Charging"
-value_template: "{{ value_json.charging }}"
-payload_on: 'true'
-payload_off: 'false'

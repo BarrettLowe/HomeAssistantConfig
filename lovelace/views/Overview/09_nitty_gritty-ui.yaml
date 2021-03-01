@@ -117,7 +117,7 @@
     - entities:
         - entity: person.barrett
         - entity: binary_sensor.barrett_in_bed
-        - entity: binary_sensor.barrett_phone_charging
+        - entity: binary_sensor.barrett_is_charging
         - entity: device_tracker.barrett_pixel
         - entity: device_tracker.barrett_pixel_nmap
         - entity: device_tracker.barrett_ma
@@ -128,7 +128,7 @@
     - entities:
         - entity: person.brandie
         - entity: binary_sensor.brandie_in_bed
-        - entity: binary_sensor.brandie_phone_charging
+        - entity: binary_sensor.brandie_is_charging
         - entity: device_tracker.brandie_pixel
         - entity: device_tracker.brandie_pixel_nmap
         - entity: device_tracker.brandie_ma

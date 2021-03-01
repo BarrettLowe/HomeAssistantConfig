@@ -21,8 +21,8 @@
   trigger:
     platform: state
     entity_id:
-      - binary_sensor.barrett_phone_charging
-      - binary_sensor.brandie_phone_charging
+      - binary_sensor.barrett_is_charging
+      - binary_sensor.brandie_is_charging
     from: 'on'
     to: 'off'
   condition:

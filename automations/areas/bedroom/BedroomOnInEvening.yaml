@@ -5,10 +5,10 @@
     conditions:
       # if neither phone is plugged in (not in bed)
       - condition: state
-        entity_id: binary_sensor.barrett_phone_charging
+        entity_id: binary_sensor.barrett_in_bed
         state: 'off'
       - condition: state
-        entity_id: binary_sensor.brandie_phone_charging
+        entity_id: binary_sensor.brandie_in_bed
         state: 'off'
       #and it's after sunset - 45 minutes
       - condition: sun

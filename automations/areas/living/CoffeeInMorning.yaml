@@ -14,10 +14,10 @@
       - condition: or
         conditions:
           - condition: state
-            entity_id: binary_sensor.barrett_phone_charging
+            entity_id: binary_sensor.barrett_is_charging
             state: 'off'
           - condition: state
-            entity_id: binary_sensor.brandie_phone_charging
+            entity_id: binary_sensor.brandie_is_charging
             state: 'off'
   action:
     service: homeassistant.turn_on

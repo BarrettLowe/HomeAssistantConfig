@@ -1,6 +1,6 @@
-platform: mqtt
-state_topic: "owntracks/Brandie/pixel"
-name: "Brandie Phone Battery"
-unit_of_measurement: "%"
-value_template: '{{ value_json.battery_level }}'
-device_class: battery
+# platform: mqtt
+# state_topic: "owntracks/Brandie/pixel"
+# name: "Brandie Phone Battery"
+# unit_of_measurement: "%"
+# value_template: '{{ value_json.battery_level }}'
+# device_class: battery

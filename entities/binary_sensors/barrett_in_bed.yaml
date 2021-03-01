@@ -2,4 +2,4 @@ platform: template
 sensors:
   barrett_in_bed:
     value_template: >
-      {{ states('binary_sensor.barrett_phone_charging') == 'on' and states('person.barrett') == 'home' }}
+      {{ states('binary_sensor.barrett_is_charging') == 'on' and states('person.barrett') == 'home' }}
