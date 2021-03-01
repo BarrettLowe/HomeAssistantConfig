@@ -115,3 +115,42 @@
   - service: script.store_pool_filter_cleaned
     data: {}
   mode: single
+- id: '1607052130781'
+  alias: Tag Truck Garage Door Opener is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: ff95ee88-68fc-46d7-8e6b-16cfcc2d7083
+  condition: []
+  action:
+  - service: cover.toggle
+    data: {}
+    entity_id: cover.middle_garage
+  mode: single
+- id: '1609546605238'
+  alias: Hall on with motion sometimes
+  description: Hallway lights come on with motion in hall, if nobody in bed and if
+    after sunset/before sunrise
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.hallway_motion
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.brandie_in_bed
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.barrett_in_bed
+    state: 'off'
+  - condition: or
+    conditions:
+    - condition: sun
+      before: sunrise
+    - condition: sun
+      after: sunset
+  action:
+  - service: homeassistant.turn_on
+    data: {}
+    entity_id: group.hallway
+  mode: single
