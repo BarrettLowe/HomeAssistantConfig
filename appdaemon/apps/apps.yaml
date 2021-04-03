@@ -5,3 +5,6 @@ manual_dim:
 volume_fade_out:
   module: volume_fade_out
   class: VolumeFader
+randomized_spotify:
+  module: randomized_spotify
+  class: RandomizedSpotify
