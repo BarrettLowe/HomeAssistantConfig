@@ -32,3 +32,4 @@ zones.yaml
 appdaemon/appdaemon.yaml
 appdaemon/compiled
 appdaemon/namespaces
+blueprints/
