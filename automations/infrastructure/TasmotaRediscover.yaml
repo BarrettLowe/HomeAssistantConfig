@@ -1,0 +1,12 @@
+- id: Sync Tasmota states
+  alias: Sync Tasmota states
+  initial_state: true
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+  # sync state for devices with default fulltopics
+  - service: mqtt.publish
+    data:
+      topic: cmnd/tasmotas/SetOption19
+      payload: '1'
