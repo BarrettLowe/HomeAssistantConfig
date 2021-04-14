@@ -154,3 +154,13 @@
     data: {}
     entity_id: group.hallway
   mode: single
+- id: '1618145203714'
+  alias: Laundry Room Motion
+  description: ''
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.laundry_motion
+      no_motion_wait: 300
+      light_target:
+        entity_id: light.laundry
