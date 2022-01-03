@@ -1,8 +1,1 @@
 device_tracker:
-  - platform: nmap_tracker
-    track_new_devices: yes
-    hosts: 
-      - 192.168.86.0/24
-    home_interval: 30
-    interval_seconds: 300
-    scan_options: "-F --host-timeout 1s"

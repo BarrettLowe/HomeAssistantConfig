@@ -7,8 +7,6 @@
       entity_id: binary_sensor.house_occupancy
       state: 'on'
   action:
-    - service: switch.turn_off
-      entity_id: switch.kitchen_crappy
     - service: python_script.reduce_all_lights_by_pct
       data:
         transition: 30

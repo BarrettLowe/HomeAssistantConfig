@@ -1,9 +1,9 @@
-platform: mqtt
-name: "Nursery Wall Panel Screen"
-command_topic: "NurseryWallPanel/cmd"
-state_topic: "NurseryWallPanel/state"
-brightness_state_topic: "NurseryWallPanel/state/brightness"
-brightness_command_topic: "NurseryWallPanel/cmd/brightness"
-payload_on: "on"
-payload_off: "off"
-optimistic: false
+- platform: mqtt
+  name: "Nursery Wall Panel Screen"
+  command_topic: "NurseryWallPanel/cmd"
+  state_topic: "NurseryWallPanel/state"
+  brightness_state_topic: "NurseryWallPanel/state/brightness"
+  brightness_command_topic: "NurseryWallPanel/cmd/brightness"
+  payload_on: "on"
+  payload_off: "off"
+  optimistic: false

@@ -19,14 +19,6 @@
         entity_id: binary_sensor.kitchen_door
         state: 'on'
   action:
-    - service: notify.alexa_media
-      data:
-        target: 
-          - media_player.kitchen
-          - media_player.bedroom
-        message: "It's kind of warm out. Want to close the kitchen door?"
-        data:
-          type: tts
     - service: notify.everyone
       data:
         title: ALERT

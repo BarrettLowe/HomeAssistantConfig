@@ -1,0 +1,44 @@
+- id: '1641158624105'
+  name: Day House Temperature
+  entities:
+    input_number.hallway_temperature_weight:
+      initial:
+      editable: false
+      min: 0
+      max: 1
+      step: 0.01
+      mode: box
+      friendly_name: Hallway Temperature Weight
+      state: '0.5'
+    input_number.lillians_room_temperature_weight:
+      initial:
+      editable: false
+      min: 0
+      max: 1
+      step: 0.01
+      mode: box
+      friendly_name: Lillians Room Temperature Weight
+      state: '0.5'
+  icon: mdi:weather-sunny
+- id: '1641158763722'
+  name: Night House Temperature
+  entities:
+    input_number.hallway_temperature_weight:
+      initial:
+      editable: false
+      min: 0
+      max: 1
+      step: 0.01
+      mode: box
+      friendly_name: Hallway Temperature Weight
+      state: '0.3'
+    input_number.lillians_room_temperature_weight:
+      initial:
+      editable: false
+      min: 0
+      max: 1
+      step: 0.01
+      mode: box
+      friendly_name: Lillians Room Temperature Weight
+      state: '0.7'
+  icon: mdi:weather-night

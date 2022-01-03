@@ -1,0 +1,9 @@
+platform: template
+sensors:
+  house_temperature:
+    friendly_name: "Weighted House Temperature"
+    value_template: >-
+        {{ (float(states('sensor.lillians_room_temperature')) * float(states('input_number.lillians_room_temperature_weight')) +
+        float(states('sensor.hallway_temperature')) * float(states('input_number.hallway_temperature_weight'))) | round(2)
+        }}
+    unit_of_measurement: °F

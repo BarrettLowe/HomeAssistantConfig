@@ -2,29 +2,15 @@
   trigger:
   - event: sunset
     platform: sun
-    offset: "-00:45:00"
+    offset: "-01:05:00"
   condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: binary_sensor.house_occupancy
-        state: 'on'
-      - condition: or
-        conditions:
-          - condition: state
-            entity_id: media_player.vizio_smartcast
-            state: 'off'
-          - condition: and
-            conditions:
-              - condition: state
-                entity_id: media_player.vizio_smartcast
-                state: 'on'
-              - condition: template
-                value_template: '{{ state_attr("media_player.vizio_smartcast","source") == "SmartCast Home" }}'
+    - condition: state
+      entity_id: binary_sensor.house_occupancy
+      state: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: group.family_room
+        entity_id: group.family_room, group.living_room
         transition: 60
         color_temp: 375
         brightness: 255

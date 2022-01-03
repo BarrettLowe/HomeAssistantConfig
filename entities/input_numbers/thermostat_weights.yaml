@@ -1,0 +1,12 @@
+lillians_room_temperature_weight:
+    name: Lillians Room Temperature Weight
+    min: 0
+    max: 1
+    step: 0.01
+    mode: box
+hallway_temperature_weight:
+    name: Hallway Temperature Weight
+    min: 0
+    max: 1
+    step: 0.01
+    mode: box

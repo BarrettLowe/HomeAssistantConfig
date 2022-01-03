@@ -1,8 +1,8 @@
 platform: template
 sensors:
-  snapcast_tv_source:
-    friendly_name: Snapcast TV Audio Source
-    value_template: "{{ state_attr('media_player.snapcast_tv', 'source') }}"
+  snapcast_nursery_source:
+    friendly_name: Snapcast Nursery Audio Source
+    value_template: "{{ state_attr('media_player.snapcast_nursery', 'source') }}"
     icon_template: mdi:headphones
   snapcast_backyard_source:
     friendly_name: Snapcast Backyard Audio Source
@@ -16,8 +16,7 @@ sensors:
     friendly_name: Snapcast Shop Audio Source
     value_template: "{{ state_attr('media_player.snapcast_shop','source') }}"
     icon_template: mdi:headphones
-
-  snapcast_office_source:
-    friendly_name: Snapcast Office Audio Source
-    value_template: "{{ state_attr('media_player.snapcast_office','source') }}"
+  snapcast_family_room_source:
+    friendly_name: Snapcast Family Room Audio Source
+    value_template: "{{ state_attr('media_player.snapcast_family_room','source') }}"
     icon_template: mdi:headphones

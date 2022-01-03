@@ -1,0 +1,3 @@
+platform: ffmpeg
+input: rtsp://192.168.86.33:8554/lillian
+name: Lillian Cam

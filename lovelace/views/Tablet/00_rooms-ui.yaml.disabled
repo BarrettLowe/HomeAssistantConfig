@@ -55,17 +55,15 @@
         - entity: light.bar
         - entity: light.recessed_lights
         - entity: light.fireplace_lamp
-        - entity: light.tv_lamp
         - entity: light.smells_shelf
-        - entity: light.game_table_lamp
+        - entity: light.breakfast_table_lamp
         - entity: light.mantle_lamp
-        - entity: switch.mantle
       title: Family Room
       type: entities
     - entities:
         - entity: light.barretts_side
         - entity: light.brandies_side
-        - entity: switch.jewelry_lamp
+        - entity: light.jewelry_lamp
         - entity: binary_sensor.barretts_closet_door
         - entity: binary_sensor.brandies_closet_door
         - entity: script.start_bedroom_diffuser
@@ -109,7 +107,7 @@
       type: entities
     - entities:
         - entity: light.globe_lights
-        - entity: switch.tree_light
+        - entity: light.backyard_tree
         - entity: light.east_beds
         - entity: light.fig_and_sun_deck
         - entity: light.garden_behind_pool

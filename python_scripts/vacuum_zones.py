@@ -5,7 +5,7 @@
 def scr():
     zones = data.get("zones")
     try:
-        if (hass.states.get("vacuum.roborock") == "unavailable"):
+        if (hass.states.get("vacuum.roborock") == "Unavailable"):
             hass.services.call("notify","everyone", {
                 "message":"The vacuum is not available and cannot run!",
                 "title":"Vacuum ERROR"

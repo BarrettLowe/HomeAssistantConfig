@@ -6,9 +6,9 @@
     condition: or
     conditions:
       - condition: template
-        value_template: "{{ states('sensor.since_pool_last_chem_check') > states('input_number.days_between_pool_chemicals') }}"
+        value_template: "{{ states('sensor.since_pool_last_chem_check') | int > states('input_number.days_between_pool_chemicals') | int }}"
       - condition: template
-        value_template: "{{  states('sensor.since_pool_last_brushed') > states('input_number.days_between_pool_brushing') }} "
+        value_template: "{{  states('sensor.since_pool_last_brushed') | int > states('input_number.days_between_pool_brushing') | int }} "
   action:
     - service: notify.everyone
       data_template:
@@ -41,9 +41,9 @@
       - condition: or
         conditions:
           - condition: template
-            value_template: "{{ states('sensor.since_pool_last_backwashed') >= states('input_number.days_between_pool_backwash') }}"
+            value_template: "{{ states('sensor.since_pool_last_backwashed') | int >= states('input_number.days_between_pool_backwash') | int }}"
           - condition: template
-            value_template: "{{  states('sensor.since_pool_last_filter_cleaning') >= states('input_number.days_between_pool_filter_cleaning') }} "
+            value_template: "{{  states('sensor.since_pool_last_filter_cleaning') | int >= states('input_number.days_between_pool_filter_cleaning') | int }} "
       - condition: time
         weekday:
           - sat

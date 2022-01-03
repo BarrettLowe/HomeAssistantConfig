@@ -164,3 +164,105 @@
       no_motion_wait: 300
       light_target:
         entity_id: light.laundry
+- id: '1619705307519'
+  alias: When the snoo sack is available send brandie and notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.snoo_sack_status
+    from: Temporarily sold out
+  condition: []
+  action:
+  - service: notify.mobile_app_brandie
+    data:
+      message: Snoo sack MAY be available
+  mode: single
+- id: '1621605153327'
+  alias: Vacuum Error
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: vacuum.roborock
+    attribute: state
+    to: error
+  condition: []
+  action:
+  - service: notify.mobile_app_brandie
+    data:
+      title: Vacuum Error
+      message: Vacuum has an error. Fix or live in filth.
+  mode: single
+- id: '1632850897888'
+  alias: Tasmota State on Boot
+  description: Request state of all tasmota devices on boot
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      topic: cmnd/tasmotas/state
+  mode: single
+- id: '1638041536115'
+  alias: Bedroom Sensor Broken
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.bedroom_temperature
+    to: nan
+  condition: []
+  action:
+  - device_id: ce3c9f645f9b45a99a767a2471908f16
+    domain: mobile_app
+    type: notify
+    message: Bedroom temperature is broken
+    title: Alert - Fix Required
+  mode: single
+- id: '1639888102191'
+  alias: Lillian's Temp Sensor Offline
+  description: ''
+  trigger:
+  - device_id: bc541a734916c1b2939155747a40a59e
+    domain: zha
+    platform: device
+    type: device_offline
+    subtype: device_offline
+  condition:
+  - condition: state
+    entity_id: switch.hoist_switch
+    state: 'on'
+  action:
+  - service: light.turn_on
+    target:
+      entity_id: light.barretts_side
+    data:
+      brightness: 1
+  - service: notify.mobile_app_barrett
+    data:
+      message: Lillian's Sensor is offline and the heater is on!
+      title: Warning!
+  mode: single
+- id: '1641062113818'
+  alias: Wake Up
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.barrett_is_charging
+    from: 'on'
+    to: 'off'
+  - platform: state
+    entity_id: binary_sensor.brandie_is_charging
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: time
+    after: 04:30:00
+    before: 09:00:00
+  action:
+  - service: select.select_option
+    target:
+      entity_id: select.kitchen_wled_color_palette
+    data:
+      option: Morning
+  mode: single

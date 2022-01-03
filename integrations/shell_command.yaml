@@ -3,3 +3,4 @@ shell_command:
   ring_brandie: "/usr/bin/curl -X GET !secret brandieRingUrl"
   curl_post: "curl -X POST -d '{{ data }}' {{ url }}"
   reset_tv_view: !secret resetTVCmd
+  reboot_valetudo: 'ssh -o StrictHostKeyChecking=no -i /config/keys/valetudo root@192.168.86.14 sudo reboot'

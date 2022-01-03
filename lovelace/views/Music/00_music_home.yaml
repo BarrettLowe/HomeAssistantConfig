@@ -7,25 +7,22 @@
         text: Sources
       - type: custom:fold-entity-row
         head: 
-          entity: media_player.mpd
+          entity: media_player.snapcast_kitchen
           type: custom:mini-media-player
           hide:
             source: true
             power: true
             progress: true
           group: true
-          tap_action:
-            action: navigate
-            navigation_path: /hassio/ingress/40817795_mopidy
         entities: 
           - type: custom:decluttering-card
             template: source_speakers
             variables:
-              - source_name: HomeAssistantUI
+              - source_name: Kitchen
         open: false
       - type: custom:fold-entity-row
         head: 
-          entity: media_player.spotify_barrett_lowe
+          entity: media_player.snapcast_backyard
           type: custom:mini-media-player
           hide:
             source: true
@@ -36,11 +33,11 @@
           - type: custom:decluttering-card
             template: source_speakers
             variables:
-              - source_name: SpotifyBEL
+              - source_name: Backyard
         open: false
       - type: custom:fold-entity-row
         head: 
-          entity: media_player.spotify_brandie_lowe
+          entity: media_player.snapcast_shop
           type: custom:mini-media-player
           hide:
             source: true
@@ -51,7 +48,7 @@
           - type: custom:decluttering-card
             template: source_speakers
             variables:
-              - source_name: SpotifyBLL
+              - source_name: Shop
         open: false
 
     - type: vertical-stack
@@ -95,19 +92,72 @@
     #       hide:
     #         controls: true
     #       group: true
-    - type: custom:mini-media-player
-      entity: media_player.snapcast_backyard
-      hide:
-        power: true
-        icon: true
-        source: true
-      speaker_group:
-        platform: snapcast
-        show_group_count: true
-        entities:
-          - entity_id: media_player.snapcast_kitchen
-            name: Kitchen
-
+    # - type: custom:mini-media-player
+    #   entity: media_player.snapcast_backyard
+    #   hide:
+    #     power: true 
+    #     icon: true
+    #     source: true
+    #   speaker_group:
+    #     platform: snapcast
+    #     show_group_count: true
+    #     entities:
+    #       - entity_id: media_player.snapcast_kitchen
+    #         name: Kitchen
+    #       - entity_id: media_player.snapcast_family_room
+    #         name: Family Room
+    #       - entity_id: media_player.snapcast_shop
+    #         name: Shop
+    # - type: custom:mini-media-player
+    #   entity: media_player.snapcast_kitchen
+    #   hide:
+    #     power: true 
+    #     icon: true
+    #     source: true
+    #   speaker_group:
+    #     platform: snapcast
+    #     show_group_count: true
+    #     entities:
+    #       - entity_id: media_player.snapcast_backyard
+    #         name: Backyard
+    #       - entity_id: media_player.snapcast_family_room
+    #         name: Family Room
+    #       - entity_id: media_player.snapcast_shop
+    #         name: Shop
+    #       - entity_id: media_player.snapcast_kitchen
+    #         name: Kitchen
+    # - type: custom:mini-media-player
+    #   entity: media_player.snapcast_family_room
+    #   hide:
+    #     power: true 
+    #     icon: true
+    #     source: true
+    #   speaker_group:
+    #     platform: snapcast
+    #     show_group_count: true
+    #     entities:
+    #       - entity_id: media_player.snapcast_backyard
+    #         name: Backyard
+    #       - entity_id: media_player.snapcast_kitchen
+    #         name: Kitchen
+    #       - entity_id: media_player.snapcast_shop
+    #         name: Shop
+    # - type: custom:mini-media-player
+    #   entity: media_player.snapcast_shop
+    #   hide:
+    #     power: true 
+    #     icon: true
+    #     source: true
+    #   speaker_group:
+    #     platform: snapcast
+    #     show_group_count: true
+    #     entities:
+    #       - entity_id: media_player.snapcast_backyard
+    #         name: Backyard
+    #       - entity_id: media_player.snapcast_kitchen
+    #         name: Kitchen
+    #       - entity_id: media_player.snapcast_family_room
+    #         name: Family Room
 
   # panel: true
   title: Jam Selection

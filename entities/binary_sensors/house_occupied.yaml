@@ -5,6 +5,6 @@ sensors:
     value_template: >-
       {{ is_state('person.barrett', 'home') or
       is_state('person.brandie', 'home') or
-      is_state('sensor.vacation_mode', 'Guests') }}
+      is_state('input_select.vacation_mode', 'Guests') }}
     device_class: occupancy
     icon_template: mdi:account-group

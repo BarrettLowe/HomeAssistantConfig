@@ -1,45 +1,23 @@
-barrett:
-  name: Barrett
-  entities:
-    - device_tracker.barrett_pixel
-    - device_tracker.barrett_pixel_nmap
-brandie:
-  name: Brandie
-  entities:
-    - device_tracker.brandie_pixel
-    - device_tracker.brandie_pixel_nmap
-all_people:
-  name: "Who's Here"
-  entities:
-    - group.barrett
-    - group.brandie
-
 interior:
   name: Interior
   entities:
     - group.bedroom
-    - group.dining_room
     - group.family_room
     - group.kitchen
     - group.living_room
-    - group.office
     - light.laundry
     - group.hallway
     - group.nursery
+    - group.bathroom
   
 ## ROOMS
 family_room:
   name: Family Room
   icon: mdi:television-classic
   entities:
+    - light.shelf_lamp
+    - light.reading_lamp
     - light.fireplace_lamp
-    - light.game_table_lamp
-    - light.bar
-    - light.tv_lamp
-    - light.recessed_lights
-    - light.smells_shelf
-    - light.mantle_lamp
-    - switch.mantle
 
 bedroom:
   name: Bedroom
@@ -47,25 +25,23 @@ bedroom:
   entities:
     - light.barretts_side
     - light.brandies_side
-    - light.dresser
-    - switch.jewelry_lamp
+
+bathroom:
+  name: Bathroom
+  icon: mdi:toilet
+  entities:
+    - light.bathroom_recessed_lights
+    - light.bathroom_vanity_sconces
 
 kitchen:
   name: Kitchen
   icon: mdi:pot-mix
   entities:
-    - light.sink
     - light.kitchen_lamp
     - light.kitchen_desk
-    - switch.kitchen_crappy
     - light.under_cabinet_lights
+    - light.breakfast_table_lamp
 
-dining_room:
-  name: Dining Room
-  icon: mdi:silverware
-  entities:
-    - light.dog_lamp
-    - light.chandelier
 
 living_room:
   name: Living Room
@@ -73,28 +49,17 @@ living_room:
   entities:
     - light.couch_lamp
     - light.piano_lamp
-    - light.entry
-    - light.display_table_lamp
-
-
-office:
-  name: Office
-  icon: mdi:desktop-mac
-  entities:
-    - light.brandies_desk
-    - light.office_overhead_light
-
-movie_room:
-  name: Movie Room
-  entities:
-    - switch.futon
+    - light.corner_lamp
+    - light.dog_lamp
+    - light.desk_lamp
+    - light.high_shelf
 
 back_yard:
   name: Backyard
   icon: mdi:tree
   entities:
     - light.globe_lights
-    - switch.tree
+    - light.backyard_tree
     - light.east_beds
     - light.southeast_corner_bed
     - light.garden_behind_pool
@@ -103,11 +68,7 @@ back_yard:
 front_yard:
   name: Front Yard
   entities:
-    - light.garage_landscape
-    - light.porch_landscape
-    - light.bedroom_landscape
-    - light.east_oak
-    - light.front_porch
+    - light.porch_light
     
 hallway:
   name: Hallway
@@ -115,6 +76,7 @@ hallway:
   entities:
     - light.hallway_south
     - light.hallway_north
+    - light.hallway_lamp
   
 nursery:
   name: Nursery

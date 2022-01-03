@@ -1,5 +1,5 @@
 http:
   # base_url: !secret http_base_url
   use_x_forwarded_for: true
-  trusted_proxies: 172.30.33.3
+  trusted_proxies: 172.18.0.2
   login_attempts_threshold: 3

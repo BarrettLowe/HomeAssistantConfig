@@ -1,7 +1,7 @@
 - alias: Snapclient Volume on Start
   trigger:
     - platform: state
-      entity_id: media_player.snapcast_backyard, media_player.snapcast_kitchen, media_player.snapcast_shop, media_player.snapcast_tv
+      entity_id: media_player.snapcast_backyard, media_player.snapcast_kitchen, media_player.snapcast_shop, media_player.snapcast_tv, media_player.snapcast_kitchen
       from: 'off'
       to: 'on'
   action:
@@ -10,27 +10,10 @@
         entity_id: "{{ trigger.entity_id }}"
         volume_level: 0.5
 
-- alias: Snapcast Kitchen Latency
-  trigger:
-    - platform: state
-      entity_id: media_player.snapcast_kitchen
-      from:  "off"
-      to:  "on"
-    - platform: state
-      entity_id: sensor.snapcast_kitchen_source
-  action:
-    service: snapcast.set_latency
-    data:
-      entity_id: media_player.snapcast_kitchen
-      latency: -40
 
-
-- alias: Snapclient Volume Reset
+- alias: Snapclient Nightly Reset
   trigger:
     - platform: time
       at: 00:00:00
   action:
-    service: media_player.volume_set
-    data:
-      entity_id: media_player.snapcast_backyard, media_player.snapcast_kitchen, media_player.snapcast_shop, media_player.snapcast_tv
-      volume_level: 0.5
+    - service: script.reset_all_speakers

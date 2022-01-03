@@ -21,7 +21,7 @@
 
     - entities:
         - entity: light.globe_lights
-        - entity: switch.tree_light
+        - entity: light.backyard_tree
         - entity: light.garden_behind_pool
         - entity: light.southeast_corner_bed
         - entity: light.fig_and_sun_deck

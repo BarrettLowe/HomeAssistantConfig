@@ -1,3 +1,3 @@
-platform: mpd
-host: 192.168.86.33
-port: 6600
+# platform: mpd
+# host: 192.168.86.33
+# port: 6600

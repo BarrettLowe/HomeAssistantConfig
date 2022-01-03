@@ -3,7 +3,7 @@ switches:
   pihole_switch:
     command_on: !secret picommand_on
     command_off: !secret picommand_off
-    command_state: "curl -X GET 'http://192.168.86.10/admin/api.php?status'"
+    command_state: "curl -s -X GET 'http://192.168.86.10/admin/api.php?status'"
     value_template: > 
       {{ value_json.status == 'enabled' }}
     friendly_name: Pi Hole Blocking

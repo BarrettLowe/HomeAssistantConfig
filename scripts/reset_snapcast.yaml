@@ -1,0 +1,30 @@
+alias: Reset All Speakers
+sequence:
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.snapcast_backyard, media_player.snapcast_kitchen, media_player.snapcast_shop, media_player.snapcast_family_room
+      volume_level: 1.0
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.mpd
+      volume_level: 0.5
+  - service: media_player.select_source
+    entity_id: media_player.snapcast_kitchen
+    data:
+      source: Kitchen
+  - service: media_player.select_source
+    entity_id: media_player.snapcast_backyard
+    data:
+      source: Backyard
+  - service: media_player.select_source
+    entity_id: media_player.snapcast_family_room
+    data:
+      source: FamilyRoom
+  - service: media_player.select_source
+    entity_id: media_player.snapcast_nursery
+    data:
+      source: Nursery
+  - service: media_player.select_source
+    entity_id: media_player.snapcast_shop
+    data:
+      source: Shop

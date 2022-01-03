@@ -14,10 +14,9 @@ card:
         - type: custom:decluttering-card
           template: speaker_select
           variables:
-            - speaker_name: TV
-            - entity: snapcast_tv
+            - speaker_name: Family Room
+            - entity: snapcast_family_room
             - source: "[[source_name]]"
-            - more_info_entity: media_player.vizio_smartcast
         - type: custom:decluttering-card
           template: speaker_select
           variables:
@@ -39,6 +38,6 @@ card:
         - type: custom:decluttering-card
           template: speaker_select
           variables:
-            - speaker_name: Office
-            - entity: snapcast_office
+            - speaker_name: Nursery
+            - entity: snapcast_nursery
             - source: "[[source_name]]"

@@ -1,0 +1,9 @@
+- platform: switch
+  name: Kitchen Overhead
+  entity_id: switch.kitchen_crappy
+- platform: switch
+  name: Jewelry Lamp
+  entity_id: switch.jewelry_lamp
+- platform: switch
+  name: Backyard Tree
+  entity_id: switch.tree_light

@@ -1,0 +1,46 @@
+- alias: Max Brightness Changed
+  trigger:
+    - platform: state
+      entity_id: 
+        - input_number.bathroom_max_brightness
+        - input_number.office_max_brightness
+        - input_number.family_room_max_brightness
+        - input_number.bedroom_max_brightness
+        - input_number.kitchen_max_brightness
+  action:
+    - alias: "Dim Area"
+      event: SetMaxBrightness
+      event_data:
+        group: "{{ '_'.join(trigger.entity_id.split('.')[1].split('_')[:-2]) }}"
+        maxBrightness: "{{ trigger.to_state.state | int }}"
+        previousMaxBrightness: "{{ trigger.from_state.state | int}}"
+
+- alias: Bathroom To Max Brightness
+  trigger:
+    - platform: state
+      entity_id: 
+        - light.bathroom_recessed_lights
+        - light.bathroom_vanity_sconces
+      to: 'on'
+      from: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: "{{ trigger.entity_id }}"
+        brightness: "{{ states('input_number.bathroom_max_brightness') }}"
+
+- alias: Set bathroom brightness
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.someone_in_bed
+  action:
+    - service: input_number.set_value
+      entity_id: input_number.bathroom_max_brightness
+      data:
+        value: >
+          {% if trigger.to_state.state == 'on' %}
+          {{ states('input_number.bathroom_night_brightness') | int }}
+          {% else %}
+          255
+          {% endif %}

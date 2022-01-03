@@ -8,3 +8,6 @@ volume_fade_out:
 randomized_spotify:
   module: randomized_spotify
   class: RandomizedSpotify
+group_brightness:
+  module: group_brightness
+  class: SetMaxBrightness

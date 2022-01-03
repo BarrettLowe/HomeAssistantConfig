@@ -1,10 +1,7 @@
 # Turn lights on when someone comes home
 - action:
   - data:
-      entity_id: group.family_room
-    service: homeassistant.turn_on
-  - data:
-      entity_id: group.kitchen
+      entity_id: group.kitchen, group.living_room, group.family_room
     service: homeassistant.turn_on
   alias: Somebody Home
   condition: []

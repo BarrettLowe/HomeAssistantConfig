@@ -3,23 +3,13 @@ sequence:
   - service: homeassistant.turn_off
     data:
       entity_id: 
-        - automation.under_cabinet_lights_daytime
-        - automation.under_cabinet_lights_nighttime
-  - service: homeassistant.turn_off
-    data:
-      entity_id: 
         - group.bedroom
         - group.dining_room
         - group.family_room
-        - group.kitchen
+        - area.kitchen
         - group.living_room
         - group.office
         - light.laundry
         - group.hallway
         - group.back_yard
         - light.bedroom_landscape
-  - service: homeassistant.turn_on
-    data:
-      entity_id: 
-        - automation.under_cabinet_lights_daytime
-        - automation.under_cabinet_lights_nighttime

@@ -2,9 +2,11 @@ transition = data.get("transition")
 pct = data.get("pct")
 color_temp = data.get("color_temp")
 
+ignored_ents = ['light.undercabinet_lights','light.porch_light']
+
 devices = []
 for device in hass.states.all():
-    if device.domain == 'light' and device.entity_id != 'light.undercabinet_lights' and device.state == 'on':
+    if device.domain == 'light' and not device.entity_id in ignored_ents and device.state == 'on':
         try:
             logger.error(device.attributes['brightness'])
             if device.attributes['supported_features'] & 1: #light.SUPPORT_BRIGHTNESS

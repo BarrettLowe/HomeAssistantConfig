@@ -22,7 +22,7 @@
         - light.brandies_side
         - light.barretts_side
         - light.dresser
-        - switch.jewelry_lamp
+        - light.jewelry_lamp
     - type: vertical-stack
       cards:
         - type: horizontal-stack

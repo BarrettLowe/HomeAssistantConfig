@@ -1,0 +1,4 @@
+platform: generic_thermostat
+name: Lillians Room
+heater: switch.hoist_switch
+target_sensor: sensor.lillians_room_temperature

@@ -1,5 +1,9 @@
 panel_iframe:
   irrigation:
-    title: 'Irrigation'
-    url: '/sprinkler_irrigation'
+    title: "Irrigation"
+    url: "http://sprinkler.lowehomeautomation.xyz"
     icon: mdi:sprinkler
+  configuration:
+    title: "Config"
+    url: "http://172.30.32.10:8443"
+    icon: mdi:wrench

@@ -1,0 +1,5 @@
+platform: template
+sensors:
+  someone_in_bed:
+    value_template: >
+      {{ states('binary_sensor.barrett_in_bed') == 'on' or states('binary_sensor.brandie_in_bed') == 'on' }}

@@ -3,19 +3,18 @@
     platform: time
     at: '18:00:00'
   condition:
-    condition: template
-    value_template: >-
-      '{{ now().weekday() == 3 }}' #TODO: Make this not be the 2nd source of truth
+    conditions:
+      - condition: template
+        alias: "State contains 'Tomorrow'"
+        value_template: >
+          {{ 'Tomorrow' in states('sensor.trash_day') }}
   action: 
-    service_template: >-
-      {% if is_state("person.barrett", "Wisconsin") %}
-      notify.mobile_app_brandie
-      {% else %}
-      notify.mobile_app_barrett
-      {% endif %}
+    service:
+      - notify.mobile_app_barrett
+      - notify.mobile_app_brandie
     data:
       message: The trash needs to be taken out tonight, don't forget!
-      title: Don't let it get stinky...
+      title: Don't let it stink!
       
 - alias: Trash Reminder the Morning Of
   trigger:
@@ -28,9 +27,10 @@
   condition:
     condition: and
     conditions:
-      - condition: state
-        entity_id: binary_sensor.trash_day
-        state: 'on'
+      - condition: template
+        alias: "State contains 'Today'"
+        value_template: >
+          {{ 'Today' in states('sensor.trash_day') }}
       - condition: time
         after: '05:00:00'
         before: '11:00:00'

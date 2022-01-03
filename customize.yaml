@@ -26,3 +26,6 @@ scene.evening_post_dinner:
 media_player.mpd:
   friendly_name: Home Assistant Music
   icon: mdi:spotify
+
+light.bathroom_vanity_sconces:
+  brightness_template: "{{ (value * 2.55 * 2) | int }}"

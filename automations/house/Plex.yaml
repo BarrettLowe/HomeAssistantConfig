@@ -16,7 +16,6 @@
           - light.fireplace_lamp
           - switch.kitchen_crappy
           - light.bar
-          - light.tv_lamp
     - event: MANUAL_DIM
       event_data:
         entity_id: light.recessed_lights
@@ -41,6 +40,8 @@
           - light.hallway_south
     - service: switch.turn_off
       entity_id: switch.kitchen_crappy
+    - service: homeassistant.turn_off
+      entity_id: automation.plex_dim_on_play
 
 - alias: Plex Brighten When Paused
   trigger:
@@ -48,12 +49,15 @@
       entity_id: media_player.plex_plex_for_xbox_xboxone
       from: 'playing'
       to: 'paused'
+      for:
+        seconds: 30
     - platform: state
       entity_id: media_player.plex_plex_for_xbox_xboxone
-      from: 'playing'
       to: 'idle'
   action:
-    service: scene.turn_on
-    data:
-      entity_id: scene.pre_plex_scene
+    - service: scene.turn_on
+      data:
+        entity_id: scene.pre_plex_scene
+    - service: homeassistant.turn_on
+      entity_id: automation.plex_dim_on_play
   

@@ -4,9 +4,8 @@
         - entity: light.bar
         - entity: light.mantle_lamp
         - entity: light.fireplace_lamp
-        - entity: light.tv_lamp
         - entity: light.smells_shelf
-        - entity: light.game_table_lamp
+        - entity: light.breakfast_table_lamp
       title: Lights
       type: entities
     - type: entities

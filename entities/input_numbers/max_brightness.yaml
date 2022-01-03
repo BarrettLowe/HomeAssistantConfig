@@ -1,0 +1,23 @@
+bathroom_max_brightness:
+  max: 255
+  min: 1
+
+office_max_brightness:
+  max: 255
+  min: 1
+
+bedroom_max_brightness:
+  max: 255
+  min: 1
+
+family_room_max_brightness:
+  max: 255
+  min: 1
+
+kitchen_max_brightness:
+  max: 255
+  min: 1
+
+bathroom_night_brightness:
+  max: 255
+  min: 1

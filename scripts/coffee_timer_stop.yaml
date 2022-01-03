@@ -1,7 +1,7 @@
 alias: Coffee Timer Stop
 sequence:
   - service: scene.turn_on
-    data:
+    target:
       entity_id: scene.music_before_coffee_timer
   - service: input_boolean.turn_off
     data:

@@ -5,7 +5,9 @@ logger:
     # homeassistant.components.python_script: debug
     homeassistant.components.updater: debug
     homeassistant.components.ecobee: debug
+    homeassistant.components.snapcast: debug
+    snapcast: debug
     # homeassistant.components.zha: debug
     # zigpy: debug
     # bellows: debug
-    pyecobee: debug
+    # pyecobee: debug

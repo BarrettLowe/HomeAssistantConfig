@@ -21,6 +21,7 @@ zigbee.db
 zwcfg_0xe89d291e.xml
 zwscene.xml
 *.pyc
+keys/
 
 alexa_media.brandievo@gmail.com.pickle
 ip_bans.yaml

@@ -2,14 +2,15 @@ alias: Coffee Timer Start
 sequence:
   - service: python_script.notify_via_light
     data:
-      entity_id: light.kitchen_desk
+      entity_id: light.bar_wled_master
   - delay: "00:04:30"
   - service: scene.create
     data:
       scene_id: music_before_coffee_timer
-      snapshot_entities: 
+      snapshot_entities:  
         - media_player.snapcast_kitchen
         - media_player.mpd
+        - light.under_cabinet_lights
   - service: media_player.select_source
     data:
       entity_id: media_player.snapcast_kitchen
@@ -20,9 +21,16 @@ sequence:
       source: "Coffee Timer"
   - service: media_player.volume_set
     data:
-      entity_id: media_player.snapcast_kitchen
+      entity_id: media_player.mpd
       volume_level: 0.5
   - service: media_player.media_play
     entity_id: media_player.mpd
   - service: input_boolean.turn_on
     entity_id: input_boolean.coffee_time_alarming
+  - service: select.select_option
+    data:
+      option: Coffee
+    target:
+      entity_id:
+        - select.kitchen_wled_preset
+        - select.bar_wled_preset
